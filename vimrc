@@ -117,25 +117,25 @@ set list
 set lcs=tab:▸\ ,eol:¬,trail:.,extends:#,nbsp:_
 
 "Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
-noremap <leader>w :w<CR>
-noremap <leader>x :x<CR>
-noremap <leader>q :q<CR>
-noremap <leader>h :h 
-noremap <leader>so :so %<cr>
-noremap <leader>v :vs 
-noremap <leader>s :split 
-noremap <leader>n :NERDTreeToggle<CR>
+noremap <Leader>W :w !sudo tee % > /dev/null<CR>
+noremap <Leader>w :w<CR>
+noremap <Leader>x :x<CR>
+noremap <Leader>q :q<CR>
+noremap <Leader>h :h 
+noremap <Leader>so :so %<cr>
+noremap <Leader>v :vs 
+noremap <Leader>s :split 
+noremap <Leader>n :NERDTreeToggle<CR>
 "cd to directory of current file
-map <leader>cd <ESC>:CD
+map <Leader>cd <ESC>:CD
 "execute last command mode command.
-map <leader>, <ESC>:<Up><CR>
+map <Leader>, <ESC>:<Up><CR>
 "split line at cursor.
-map <leader>o i<CR><ESC> %<cr>
+map <Leader>o i<CR><ESC>
 "manipulate clipboard
-map <leader>y "+y
-map <leader>d "+d
-map <leader>p "+p
+map <Leader>y "+y
+map <Leader>d "+d
+map <Leader>p "+p
 
 function! RelativeNumberToggle()
   if(&relativenumber == 1)
