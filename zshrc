@@ -178,3 +178,6 @@ alias cdmahx="cd $DPROJ/NetBeansProjects/MahoutX"
 alias cddoct="cd $DPROJ/doctoral"
 alias cdml10m="cd $DPROJ/doctoral/dataset/MovieLens/10M100K"
 alias cdrsm="cd $DPROJ/doctoral/codes/RS_matlab"
+
+#set vi mode
+bindkey -v

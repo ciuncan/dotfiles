@@ -136,3 +136,5 @@ PATH=$PATH:$HOME/Applications/julia
 PATH=$PATH:$DPROJ/scripts/bash
 
 export ftp_loc=/run/user/ceyhun/gvfs/ftp:host=akademik.bahcesehir.edu.tr/public_html
+set -o vi
+
