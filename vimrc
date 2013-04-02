@@ -15,6 +15,7 @@ Bundle 'tpope/vim-vividchalk'
 Bundle 'vim-scripts/jQuery'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-git'
+Bundle 'vim-scripts/closetag.vim.git'
 
 "following plugins looks nice, but will enable them when I feel I need them:
 "
