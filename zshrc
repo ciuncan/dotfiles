@@ -161,7 +161,7 @@ ZSH_THEME="bira"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -180,4 +180,4 @@ alias cdml10m="cd $DPROJ/doctoral/dataset/MovieLens/10M100K"
 alias cdrsm="cd $DPROJ/doctoral/codes/RS_matlab"
 
 #set vi mode
-bindkey -v
+#bindkey -v
