@@ -117,6 +117,9 @@ set list
 " Highlight problematic whitespace
 set lcs=tab:▸\ ,eol:¬,trail:.,extends:#,nbsp:_
 
+"leader key is comma
+let mapleader = ","
+
 "Save a file as root (,W)
 noremap <Leader>W :w !sudo tee % > /dev/null<CR>
 noremap <Leader>w :w<CR>
@@ -187,9 +190,6 @@ au Bufenter *.tex set spell
 "Map F4 key when opening a LaTeX file to make and view pdf when pressed.
 "au Bufenter *.tex map <F4> <ESC>:silent !viewpdf<CR>
 
-"leader key is comma
-let mapleader = ","
-
 "Pressing < or > will let you indent/unident selected lines
 vnoremap < <gv
 vnoremap > >gv
@@ -206,6 +206,7 @@ map <c-s> :w<cr>
 "Buffer naviation
 map <M-Left> :bprevious<CR>
 map <M-Right> :bnext<CR>
+"TODO M-h causes help menu to pop in GVim, solve this
 map <M-l> :bprevious<CR>
 map <M-h> :bnext<CR>
 
@@ -227,6 +228,7 @@ nmap k gk
 nmap j gj
 "same behaviour in visual mode too, but when in linewise visual use normal line
 "movement (according to line numbers)
+"TODO when a number is specified for movement, use normal jk
 vmap <expr> j mode()==#"V" ? "j" : "gj"
 vmap <expr> k mode()==#"V" ? "k" : "gk"
 "Navigation in insert mode.
