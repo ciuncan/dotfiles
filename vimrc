@@ -16,9 +16,11 @@ Bundle 'vim-scripts/jQuery'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-git'
 Bundle 'vim-scripts/closetag.vim.git'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 
 "following plugins looks nice, but will enable them when I feel I need them:
 "
+"Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'majutsushi/tagbar'
 "Bundle 'Shougo/neocomplcache'
 "Bundle 'godlygeek/tabular'
@@ -125,6 +127,7 @@ noremap <Leader>W :w !sudo tee % > /dev/null<CR>
 noremap <Leader>w :w<CR>
 noremap <Leader>x :x<CR>
 noremap <Leader>q :q<CR>
+noremap <Leader>e :e 
 noremap <Leader>h :h 
 noremap <Leader>so :so %<cr>
 noremap <Leader>v :vs 
@@ -140,6 +143,9 @@ map <Leader>o i<CR><ESC>
 map <Leader>y "+y
 map <Leader>d "+d
 map <Leader>p "+p
+map <Leader>Y "+Y
+map <Leader>D "+D
+map <Leader>P "+P
 
 function! RelativeNumberToggle()
   if(&relativenumber == 1)
@@ -210,11 +216,12 @@ map <M-Right> :bnext<CR>
 map <M-l> :bprevious<CR>
 map <M-h> :bnext<CR>
 
-"Ctrl-backspace/delete deletes previous/next word
-"noremap <C-Backspace> db
-"noremap! <C-Backspace> db
-"noremap <C-Del> dw
-"noremap! <C-Del> dw
+"Ctrl-backspace/delete deletes previous/next word. Can be used faster than db. 
+"TODO find a better way for insert/command mode deletion
+noremap <C-Backspace> db
+noremap! <C-Backspace> <ESC>ldbi
+noremap <C-Del> dw
+noremap! <C-Del> <ESC>ldwi
 
 "Select all.
 map <c-a> ggVG
