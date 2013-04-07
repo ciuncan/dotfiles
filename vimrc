@@ -16,7 +16,9 @@ Bundle 'vim-scripts/jQuery'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-git'
 Bundle 'vim-scripts/closetag.vim.git'
+Bundle 'othree/html5.vim.git'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
+Bundle 'gregsexton/MatchTag'
 
 "following plugins looks nice, but will enable them when I feel I need them:
 "
