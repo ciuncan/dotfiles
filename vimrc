@@ -135,6 +135,8 @@ noremap <Leader>so :so %<cr>
 noremap <Leader>v :vs 
 noremap <Leader>s :split 
 noremap <Leader>n :NERDTreeToggle<CR>
+noremap <Leader>ff :silent !firefox %<CR>
+noremap <Leader>ch :silent !google-chrome % &<CR>
 "cd to directory of current file
 map <Leader>cd <ESC>:CD
 "execute last command mode command.
@@ -185,6 +187,9 @@ au Bufenter *.hs map <F6> :!runhaskell "%"<CR>
 
 "Set complier for haskell files
 au Bufenter *.hs compiler ghc
+
+"Enable spell-check when opening html files. 
+au Bufenter *.html  set spell
 
 "Enable spell-check when opening LaTeX files
 au Bufenter *.tex set spell
