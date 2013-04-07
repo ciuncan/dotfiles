@@ -125,7 +125,7 @@ set lcs=tab:▸\ ,eol:¬,trail:.,extends:#,nbsp:_
 let mapleader = ","
 
 "Save a file as root (,W)
-noremap <Leader>W :w !sudo tee % > /dev/null<CR>
+noremap <Leader>W :w !sudo tee % > /dev/null
 noremap <Leader>w :w<CR>
 noremap <Leader>x :x<CR>
 noremap <Leader>q :q<CR>
@@ -137,6 +137,8 @@ noremap <Leader>s :split
 noremap <Leader>n :NERDTreeToggle<CR>
 noremap <Leader>ff :silent !firefox %<CR>
 noremap <Leader>ch :silent !google-chrome % &<CR>
+"List buffers
+noremap <Leader>b :buffers<CR>
 "cd to directory of current file
 map <Leader>cd <ESC>:CD
 "execute last command mode command.
@@ -273,6 +275,9 @@ cmap ;p <C-r>"
 "Tip 2: Easy shortcurts for replacing
 noremap ;; :%s:::g<Left><Left><Left>
 noremap ;' :%s:::cg<Left><Left><Left><Left>
+
+": functions the same way : functions.
+nnoremap ; :
 
 "Tip 3: Quick mapping to put \(\) in your pattern string
 cmap ;\ \(\)<Left><Left>
