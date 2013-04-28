@@ -166,7 +166,7 @@ plugins=(git vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ceyhun/Applications/scala-2.10.0/bin:/home/ceyhun/Applications/ScalaLab210:/home/ceyhun/Applications/julia:/home/ceyhun/Dropbox/Projects/scripts/bash
+export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ceyhun/Applications/scala-2.10.0/bin:/home/ceyhun/Applications/ScalaLab210:/home/ceyhun/Applications/julia/usr/bin:/home/ceyhun/Dropbox/Projects/scripts/bash:$HOME/Applications/Sublime\ Text\ 2
 
 export ftp_loc=/run/user/ceyhun/gvfs/ftp:host=akademik.bahcesehir.edu.tr/public_html
 

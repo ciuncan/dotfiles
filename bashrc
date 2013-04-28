@@ -129,11 +129,9 @@ alias cddoct="cd $DPROJ/doctoral"
 alias cdml10m="cd $DPROJ/doctoral/dataset/MovieLens/10M100K"
 alias cdrsm="cd $DPROJ/doctoral/codes/RS_matlab"
 
-export WINEPREFIX=$HOME/.local/share/wineprefixes/mgs2
-
-PATH=$PATH:$HOME/Applications/julia
-
+PATH=$PATH:$HOME/Applications/julia/usr/bin
 PATH=$PATH:$DPROJ/scripts/bash
+PATH=$PATH:$HOME/Applications/Sublime\ Text\ 2
 
 export ftp_loc=/run/user/ceyhun/gvfs/ftp:host=akademik.bahcesehir.edu.tr/public_html
 set -o vi
