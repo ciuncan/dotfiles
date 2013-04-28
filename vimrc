@@ -19,6 +19,8 @@ Bundle 'vim-scripts/closetag.vim.git'
 Bundle 'othree/html5.vim.git'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 Bundle 'gregsexton/MatchTag'
+Bundle 'ack.vim'
+Bundle 'airblade/vim-gitgutter'
 
 "following plugins looks nice, but will enable them when I feel I need them:
 "

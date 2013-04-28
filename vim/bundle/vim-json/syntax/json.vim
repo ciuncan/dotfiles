@@ -39,7 +39,7 @@ syn match   jsonEscape    "\\["\\/bfnrt]" contained
 syn match   jsonEscape    "\\u\x\{4}" contained
 
 " Syntax: Strings should always be enclosed with quotes.
-syn match   jsonNoQuotes  "\<\a\+\>"
+syn match   jsonNoQuotes  "\<\w\+\>"
 
 " Syntax: Numbers
 syn match   jsonNumber    "-\=\<\%(0\|[1-9]\d*\)\%(\.\d\+\)\=\%([eE][-+]\=\d\+\)\=\>"
