@@ -1,0 +1,13 @@
+
+map J :tprev<CR>
+map K :tnext<CR>
+map j <Down>
+map k <Up>
+map x d
+map X u
+
+map R :reloadall<CR>
+map <Esc> :stop<CR>
+map <S-Esc> :stopall<CR>
+
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
