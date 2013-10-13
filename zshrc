@@ -156,7 +156,7 @@ ZSH_THEME="bira"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -165,19 +165,20 @@ plugins=(git vi-mode syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
+export COPY="/host/backup/Copy"
+export DPROJ="$COPY/Projects"
+
+export SBT_HOME=$HOME/apps/sbt
+export SCALA_HOME=$HOME/apps/scala-2.9.2
+export SCALDING_HOME=$HOME/apps/scalding
+export HADOOP_PREFIX=$HOME/apps/hadoop
+export HIVE_HOME=$HOME/apps/hive
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+
 # Customize to your needs...
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ceyhun/Dropbox/Projects/scripts/bash
+export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin:$HADOOP_PREFIX/bin:$HIVE_HOME/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$HOME/.cabal/bin:/usr/local/heroku/bin:$DPROJ/scripts/bash
 
-export ftp_loc=/run/user/ceyhun/gvfs/ftp:host=akademik.bahcesehir.edu.tr/public_html
-
-#export SCALA_HOME="$HOME/Applications/scala-2.10.0" 
-#export SCALALAB_HOME="$HOME/Applications/ScalaLab210"
-
-export DPROJ="$HOME/Dropbox/Projects"
-alias cdmahx="cd $DPROJ/NetBeansProjects/MahoutX"
-alias cddoct="cd $DPROJ/doctoral"
-alias cdml10m="cd $DPROJ/doctoral/dataset/MovieLens/10M100K"
-alias cdrsm="cd $DPROJ/doctoral/codes/RS_matlab"
+alias apt=aptitude
 
 #set vi mode
 #bindkey -v
