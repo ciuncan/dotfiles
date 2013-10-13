@@ -27,30 +27,30 @@ syn region  jsonStringSQ oneline  start=+'+  skip=+\\\\\|\\"+  end=+'+
 
 " Syntax: JSON Keywords
 " Separated into a match and region because a region by itself is always greedy
-syn match jsonKeywordMatch /"[^\"\:]\+"\:/ contains=jsonKeywordRegion
+syn match  jsonKeywordMatch /"[^\"\:]\+"[[:blank:]\r\n]*\:/ contains=jsonKeywordRegion
 if has('conceal')
-   syn region jsonKeywordRegion matchgroup=Quote start=/"/  end=/"\ze\:/ concealends contained
+   syn region  jsonKeywordRegion matchgroup=Quote start=/"/  end=/"\ze[[:blank:]\r\n]*\:/ concealends contained
 else
-   syn region jsonKeywordRegion matchgroup=Quote start=/"/  end=/"\ze\:/ contained
+   syn region  jsonKeywordRegion matchgroup=Quote start=/"/  end=/"\ze[[:blank:]\r\n]*\:/ contained
 endif
 
 " Syntax: Escape sequences
 syn match   jsonEscape    "\\["\\/bfnrt]" contained
 syn match   jsonEscape    "\\u\x\{4}" contained
 
-" Syntax: Strings should always be enclosed with quotes.
-syn match   jsonNoQuotes  "\<\w\+\>"
-
 " Syntax: Numbers
 syn match   jsonNumber    "-\=\<\%(0\|[1-9]\d*\)\%(\.\d\+\)\=\%([eE][-+]\=\d\+\)\=\>"
 
 " ERROR WARNINGS **********************************************
 "
+" Syntax: Strings should always be enclosed with quotes.
+syn match   jsonNoQuotes  "\<[[:alpha:]]\+\>"
+
 " Syntax: An integer part of 0 followed by other digits is not allowed.
 syn match   jsonNumError  "-\=\<0\d\.\d*\>"
 
 " Syntax: Decimals smaller than one should begin with 0 (so .1 should be 0.1).
-syn match   jsonNumError  "\:\@<=\s*\zs\.\d\+"
+syn match   jsonNumError  "\:\@<=[[:blank:]\r\n]*\zs\.\d\+"
 
 " Syntax: No comments in JSON, see http://stackoverflow.com/questions/244777/can-i-comment-a-json-file 
 syn match   jsonCommentError  "//.*"
@@ -63,16 +63,22 @@ syn match   jsonSemicolonError  ";"
 syn match   jsonCommaError  ",\_s*[}\]]"
 
 " ********************************************** END OF ERROR WARNINGS
+" Allowances for JSONP: function call at the beginning of the file,
+" parenthesis and semicolon at the end.
+" Function name validation based on 
+" http://stackoverflow.com/questions/2008279/validate-a-javascript-function-name/2008444#2008444
+syn match  jsonPadding "\%^[[:blank:]\r\n]*[_$[:alpha:]][_$[:alnum:]]*[[:blank:]\r\n]*("
+syn match  jsonPadding ");[[:blank:]\r\n]*\%$"
 
 " Syntax: Boolean
-syn keyword jsonBoolean   true false
+syn keyword  jsonBoolean   true false
 
 " Syntax: Null
-syn keyword jsonNull      null
+syn keyword  jsonNull      null
 
 " Syntax: Braces
-syn region jsonFold matchgroup=jsonBraces start="{" end="}" transparent fold
-syn region jsonFold matchgroup=jsonBraces start="\[" end="]" transparent fold
+syn region  jsonFold matchgroup=jsonBraces start="{" end="}" transparent fold
+syn region  jsonFold matchgroup=jsonBraces start="\[" end="]" transparent fold
 
 " Define the default highlighting.
 " For version 5.7 and earlier: only when not done already
@@ -84,20 +90,21 @@ if version >= 508 || !exists("did_json_syn_inits")
   else
     command -nargs=+ HiLink hi def link <args>
   endif
-  HiLink jsonString             String
-  HiLink jsonEscape             Special
-  HiLink jsonNumber		Number
-  HiLink jsonBraces		Operator
-  HiLink jsonNull		Function
-  HiLink jsonBoolean		Boolean
-  HiLink jsonKeywordRegion      Label
+  HiLink jsonPadding				Operator
+  HiLink jsonString				String
+  HiLink jsonEscape				Special
+  HiLink jsonNumber				Number
+  HiLink jsonBraces				Operator
+  HiLink jsonNull					Function
+  HiLink jsonBoolean				Boolean
+  HiLink jsonKeywordRegion		Label
 
-  HiLink jsonNumError           Error
-  HiLink jsonCommentError       Error
-  HiLink jsonSemicolonError     Error
-  HiLink jsonCommaError     	Error
-  HiLink jsonStringSQ           Error
-  HiLink jsonNoQuotes           Error
+  HiLink jsonNumError			Error
+  HiLink jsonCommentError		Error
+  HiLink jsonSemicolonError	Error
+  HiLink jsonCommaError			Error
+  HiLink jsonStringSQ			Error
+  HiLink jsonNoQuotes			Error
   delcommand HiLink
 endif
 

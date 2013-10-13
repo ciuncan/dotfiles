@@ -1,3 +1,4 @@
+set shell=/bin/bash
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -19,16 +20,18 @@ Bundle 'vim-scripts/closetag.vim.git'
 Bundle 'othree/html5.vim.git'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 Bundle 'gregsexton/MatchTag'
-Bundle 'ack.vim'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'cloudhead/shady.vim'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'groenewege/vim-less'
 
 "following plugins looks nice, but will enable them when I feel I need them:
 "
-"Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'majutsushi/tagbar'
 "Bundle 'Shougo/neocomplcache'
 "Bundle 'godlygeek/tabular'
-"Bundle 'groenewege/vim-less'
 "Bundle 'jgdavey/vim-blockle'
 "Bundle 'kana/vim-textobj-user'
 "Bundle 'kien/ctrlp.vim'
@@ -187,10 +190,10 @@ filetype plugin on
 cmap CD cd %:p:h<CR>:pwd<CR>
 
 "Map F6 key when opening a Haskell file to run it when pressed.
-au Bufenter *.hs map <F6> :!runhaskell "%"<CR>
+au Bufenter *.{,l}hs map <F6> :!runhaskell "%"<CR>
 
 "Set complier for haskell files
-au Bufenter *.hs compiler ghc
+au Bufenter *.{,l}hs compiler ghc
 
 "Enable spell-check when opening html files. 
 au Bufenter *.html  set spell
@@ -257,7 +260,12 @@ imap <c-l> <esc>la
 "page up/down
 imap <c-u> <esc><c-u>a
 imap <c-d> <esc><c-d>a
-
+"Window resizing
+"TODO not workin??
+map <silent> <A-h> <C-w><
+map <silent> <A-j> <C-W>-
+map <silent> <A-k> <C-W>+
+map <silent> <A-l> <C-w>>
 "Navigation in command mode.
 cmap <c-h> <Left>
 cmap <c-l> <Right>
@@ -306,8 +314,8 @@ let g:tex_flavor='latex'
 "let g:Tex_ViewRule_pdf = 'C:/Program\ Files\ (x86)/SumatraPDF/SumatraPDF.exe'
 "}
 
-call pathogen#infect()
-call pathogen#helptags()
+"call pathogen#infect()
+"call pathogen#helptags()
 
 " tagbar for scala 
 "let g:tagbar_type_scala = {
