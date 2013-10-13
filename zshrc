@@ -184,3 +184,8 @@ alias cdrsm="cd $DPROJ/doctoral/codes/RS_matlab"
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+
+function mkc () {
+    mkdir -p "$@" && cd "$@"
+}
+
