@@ -22,6 +22,10 @@ echo -n "Changing to the $dir directory ..."
 cd $dir
 echo "done"
 
+# create dotfiles_old in homedir
+echo -n "Cloning out oh-my-zsh"
+git clone https://github.com/robbyrussell/oh-my-zsh
+
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the $HOME/dotfiles directory specified in $files
 for file in $files; do
     echo "Moving any existing dotfiles from $HOME to $olddir"
