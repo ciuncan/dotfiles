@@ -26,6 +26,7 @@ Bundle 'eagletmt/ghcmod-vim'
 Bundle 'cloudhead/shady.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'groenewege/vim-less'
+Bundle 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM'
 
 "following plugins looks nice, but will enable them when I feel I need them:
 "
