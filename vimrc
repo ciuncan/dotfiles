@@ -67,6 +67,10 @@ if has("gui_running")
 else
 endif
 
+"Enough with the dinging!
+set visualbell
+set noerrorbells
+
 "Activate TAB completion
 set nocompatible
 
