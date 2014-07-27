@@ -1,3 +1,4 @@
+set noerrorbells
 
 map J :tprev<CR>
 map K :tnext<CR>
