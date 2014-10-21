@@ -1,7 +1,7 @@
 " Vim indent file
 " Language:	Julia
 " Maintainer:	Carlo Baldassi <carlobaldassi@gmail.com>
-" Last Change:	2011 dec 11
+" Last Change:	2014 may 29
 " Notes:        based on Bram Moneaar's indent file for vim
 
 setlocal autoindent
@@ -19,7 +19,7 @@ if exists("*GetJuliaIndent")
   finish
 endif
 
-let s:skipPatterns = '\<julia\%(ComprehensionFor\|RangeEnd\|CommentL\|\%([EILbf]\|Shell\)\=String\|RegEx\)\>'
+let s:skipPatterns = '\<julia\%(ComprehensionFor\|RangeEnd\|CommentL\|\%([EILbf]\|Shell\)\=String\|RegEx\|InQuote\)\>'
 
 function JuliaMatch(lnum, str, regex, st)
   let s = a:st

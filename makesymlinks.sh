@@ -88,3 +88,9 @@ fi
 
 #install_zsh
 #install_fish
+
+#install vundle for vim:
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+rm -rf ~/.vim/bundle
+vim +PluginInstall +qall
+

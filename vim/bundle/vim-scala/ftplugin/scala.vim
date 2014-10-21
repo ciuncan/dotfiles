@@ -1,9 +1,9 @@
-setlocal textwidth=140
-setlocal shiftwidth=2
-setlocal softtabstop=2
-setlocal expandtab
-setlocal formatoptions=tcqr
+setlocal formatoptions+=ro
 setlocal commentstring=//%s
+let &l:include = '^\s*import'
+let &l:includeexpr = 'substitute(v:fname,"\\.","/","g")'
+setlocal path+=src/main/scala,src/test/scala
+setlocal suffixesadd=.scala
 
 set makeprg=sbt\ -Dsbt.log.noformat=true\ compile
 set efm=%E\ %#[error]\ %f:%l:\ %m,%C\ %#[error]\ %p^,%-C%.%#,%Z,
@@ -117,16 +117,21 @@ if globpath(&rtp, 'plugin/fuf.vim') != ''
         return scala#GetDirForFuzzyFinder(a:from, 'src/../')
     endfunction
 
-    nnoremap <buffer> <silent> ,ft :FufFile <c-r>=scala#GetTestDirForFuzzyFinder('%:p:h')<cr><cr>
-    nnoremap <buffer> <silent> ,fs :FufFile <c-r>=scala#GetMainDirForFuzzyFinder('%:p:h')<cr><cr>
-    nnoremap <buffer> <silent> ,fr :FufFile <c-r>=scala#GetRootDirForFuzzyFinder('%:p:h')<cr><cr>
+    " If you want to disable the default key mappings, write the following line in
+    " your ~/.vimrc
+    "     let g:scala_use_default_keymappings = 0
+    if get(g:, 'scala_use_default_keymappings', 1)
+      nnoremap <buffer> <silent> <Leader>ft :FufFile <c-r>=scala#GetTestDirForFuzzyFinder('%:p:h')<cr><cr>
+      nnoremap <buffer> <silent> <Leader>fs :FufFile <c-r>=scala#GetMainDirForFuzzyFinder('%:p:h')<cr><cr>
+      nnoremap <buffer> <silent> <Leader>fr :FufFile <c-r>=scala#GetRootDirForFuzzyFinder('%:p:h')<cr><cr>
+    endif
 endif
 
 " If you want to disable the default key mappings, write the following line in
 " your ~/.vimrc
 "     let g:scala_use_default_keymappings = 0
 if get(g:, 'scala_use_default_keymappings', 1)
-    nnoremap <buffer> ,jt :call JustifyCurrentLine()<cr>
+    nnoremap <buffer> <Leader>jt :call JustifyCurrentLine()<cr>
 endif
 
 "
@@ -164,3 +169,27 @@ let g:tagbar_type_scala = {
       \ 'case class' : 'r'
     \ }
 \ }
+
+function! s:CreateOrExpression(keywords)
+  return '('.join(a:keywords, '|').')'
+endfunction
+
+function! s:NextSection(backwards)
+  if a:backwards
+    let dir = '?'
+  else
+    let dir = '/'
+  endif
+  let keywords = [ 'def', 'class', 'trait', 'object' ]
+  let keywordsOrExpression = s:CreateOrExpression(keywords)
+
+  let modifiers = [ 'public', 'private', 'private\[\w*\]', 'protected', 'abstract', 'case', 'override', 'implicit', 'final', 'sealed']
+  let modifierOrExpression = s:CreateOrExpression(modifiers)
+
+  let regex = '^ *('.modifierOrExpression.' )* *'.keywordsOrExpression."\r"
+  execute 'silent normal! ' . dir . '\v'.regex
+endfunction
+
+noremap <script> <buffer> <silent> ]] :call <SID>NextSection(0)<cr>
+
+noremap <script> <buffer> <silent> [[ :call <SID>NextSection(1)<cr>

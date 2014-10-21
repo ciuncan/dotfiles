@@ -4,7 +4,9 @@
 	unquotedKeyword:'singleQuotedString',
 	'singleQuotedKeyword':true,
 	"decimalCantStartWithPeriod":.1,
+	"semicolonAtEndOfThisObject":"trailingComma",
 };
+
 
 // normative JSON examples from http://json.org/example.html
 
@@ -24,7 +26,7 @@
     "glossary": {
         "title": "example glossary",
 		"GlossDiv": {
-            "title": "S",
+			"title": "S",
 			"GlossList": {
                 "GlossEntry": {
                     "ID": "SGML",
@@ -69,3 +71,25 @@
         "onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90;"
     }
 }}    
+
+//missing comma errors
+{
+  "object1": "missingComma"
+  "object2": "value"
+}
+[
+  { "object1": 1 }
+  { "object2": 2 }
+]
+{
+  "object1": []
+  "object2": []
+}
+{
+  "object1": {}
+  "object2": []
+}
+{
+  "object1": true
+  "object2": 2
+}

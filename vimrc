@@ -1,8 +1,8 @@
 set shell=/bin/bash
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'JuliaLang/julia-vim'
 Bundle 'vim-scripts/matlab.vim'
@@ -53,6 +53,7 @@ Bundle 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM'
 "Bundle 'tpope/vim-cucumber'
 "Bundle 'tpope/vim-endwise'
 "Bundle 'tpope/vim-fugitive'
+call vundle#end()
 
 "Set colorscheme to 'vividchalk'
 color vividchalk
