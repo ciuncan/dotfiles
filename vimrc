@@ -106,14 +106,22 @@ set hlsearch
 "Enable incremental search
 set incsearch
 
+set smartcase
+
 "Enable automatic indentation
 set autoindent
 
 "Enable smart indentation
 set smartindent
 
+" Set to auto read when a file is changed from the outside
+set autoread
+
 "Enable line numbers
 set number
+
+"Always show current position
+set ruler
 
 "Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -121,14 +129,17 @@ set backspace=indent,eol,start
 "Put spaces instead of tabs
 set expandtab
 
+" Be smart when using tabs ;)
+set smarttab
+
 "Set command hight to 2
 set cmdheight=2
 
 "Enter select mode when using the mouse
 "set selectmode=mouse
 
-"Keep 100 lines of command line history
-set history=100
+"Keep 700 lines of command line history
+set history=700
 
 "Show matching opening bracket when the closing is typed in
 set showmatch
