@@ -265,6 +265,9 @@ au Bufenter *.html  set spell
 "Enable spell-check when opening LaTeX files
 au Bufenter *.tex set spell
 
+"Set syntax for scala
+au Bufenter *.scala set ft=scala
+
 "Map F1 key when opening a LaTeX file to compile all it when pressed.
 "au Bufenter *.tex map <F1> <ESC><c-s>:silent !make<CR>
 "Map F2 key when opening a LaTeX file to compile it when pressed.
