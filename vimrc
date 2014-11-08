@@ -65,14 +65,16 @@ Bundle 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM'
 call vundle#end()
 
 "Set colorscheme to 'vividchalk'
-color vividchalk
+color solarized "vividchalk
+set t_Co=256
 
 "Set font Monaco 9
 if has("gui_running")
+  color solarized "vividchalk
   if has("gui_gtk2")
-    set guifont=Monaco\ 12
+    set guifont=Inconsolata\ 16 "Meslo\ LG\ S\ Regular
   elseif has("gui_win32")
-    set guifont=Monaco:h12:cTURKISH
+    set guifont=Inconsolata:h16:cTURKISH "Meslo\ LG\ S\ Regular
   endif
 else
 endif
