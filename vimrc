@@ -173,8 +173,11 @@ noremap <Leader>e :e
 noremap <Leader>h :h 
 noremap <Leader>so :so %<cr>
 noremap <Leader>v :vs 
+"noremap <Leader>t :set ignorecase!<CR>
+noremap <Leader>t :TagbarToggle<CR>
 noremap <Leader>s :split 
 noremap <Leader>n :NERDTreeToggle<CR>
+noremap <Leader>r :NERDTreeFind<CR>
 noremap <Leader>ff :silent !firefox %<CR>
 noremap <Leader>ch :silent !google-chrome % &<CR>
 "List buffers
@@ -193,6 +196,30 @@ map <Leader>Y "+Y
 map <Leader>D "+D
 map <Leader>P "+P
 
+function! Comment()
+  let ext = tolower(expand('%:e'))
+  if ext == 'php' || ext == 'rb' || ext == 'sh' || ext == 'py'
+    silent s/^/\#/
+  elseif ext == 'js' || ext == 'scala'
+    silent s:^:\/\/:g
+  elseif ext == 'vim'
+    silent s:^:\":g
+  endif
+endfunction
+ 
+function! Uncomment()
+  let ext = tolower(expand('%:e'))
+  if ext == 'php' || ext == 'rb' || ext == 'sh' || ext == 'py'
+    silent s/^\#//
+  elseif ext == 'js' || ext == 'scala'
+    silent s:^\/\/::g
+  elseif ext == 'vim'
+    silent s:^\"::g
+  endif
+endfunction
+ 
+map <A-/> :call Comment()<CR>
+map <A-?> :call Uncomment()<CR>
 function! RelativeNumberToggle()
   if(&relativenumber == 1)
     set number
@@ -217,6 +244,8 @@ set statusline=%n:\ %f%m%r%w\ [%Y,%{&fileencoding},%{&fileformat}]\ [%{getcwd()}
 
 "Enable syntax highlighting
 syntax on
+set background=dark
+let g:solarized_termcolors=256
 
 "Enable filetype dependent plugins
 filetype plugin on
