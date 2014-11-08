@@ -1,3 +1,5 @@
 [user]
 	email = ceyhuncanu@gmail.com
 	name = ciuncan
+[push]
+	default = simple
