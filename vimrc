@@ -144,6 +144,11 @@ set history=700
 "Show matching opening bracket when the closing is typed in
 set showmatch
 
+" Turn backup off
+set nobackup
+set nowb
+set noswapfile
+
 "Left-right arrow keys continue moving at the end of line to next line, and
 "begining to previous line
 set whichwrap+=<,>,[,],b,s,h,l
