@@ -290,9 +290,8 @@ map <c-s> :w<cr>
 "Buffer naviation
 map <M-Left> :bprevious<CR>
 map <M-Right> :bnext<CR>
-"TODO M-h causes help menu to pop in GVim, solve this
-map <M-l> :bprevious<CR>
-map <M-h> :bnext<CR>
+map <A-J> :bprevious<CR>
+map <A-K> :bnext<CR>
 
 "Ctrl-backspace/delete deletes previous/next word. Can be used faster than db. 
 "TODO find a better way for insert/command mode deletion
@@ -378,6 +377,12 @@ let g:tex_flavor='latex'
 "let g:Tex_ViewRule_pdf = 'C:/Program\ Files\ (x86)/SumatraPDF/SumatraPDF.exe'
 "}
 
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
 "call pathogen#infect()
 "call pathogen#helptags()
 
@@ -401,3 +406,4 @@ let g:tex_flavor='latex'
 " toggle tagbar
 "nmap <F8> :TagbarToggle<CR> 
 
+set timeout ttimeoutlen=50
