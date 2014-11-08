@@ -82,6 +82,8 @@ endif
 "Enough with the dinging!
 set visualbell
 set noerrorbells
+set t_vb=
+set tm=500
 
 "Activate TAB completion
 set nocompatible
