@@ -94,3 +94,15 @@ rm -rf ~/.vim/bundle
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
+#install zsh-syntax-highlighting
+cd ~/.oh-my-zsh && git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+#zsh-completions
+git clone git://github.com/zsh-users/zsh-completions.git
+
+
+z_loc=~/.oh-my-zsh/z
+mkdir -p "$z_loc" && cd "$z_loc"
+git clone https://github.com/rupa/z "$z_loc"
+chmod +x "$z_loc/z.sh"
+
+

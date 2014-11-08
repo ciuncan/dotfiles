@@ -161,7 +161,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git vi-mode syntax-highlighting history-substring-search)
+plugins=(git npm vi-mode syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -192,4 +192,9 @@ bindkey -M vicmd 'j' history-substring-search-down
 function mkc () {
     mkdir -p "$@" && cd "$@"
 }
+
+source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fpath=(~/.oh-my-zsh/zsh-completions/src $fpath)
+rm -f ~/.zcompdump; compinit
+source ~/.oh-my-zsh/z/z.sh
 
