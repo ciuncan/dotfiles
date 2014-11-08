@@ -414,13 +414,11 @@ let g:airline_symbols.space = "\ua0"
 " OPTIONAL: This enables automatic indentation as you type.
 filetype indent on
 
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
+"ctags configuration
+set tags=./tags,tags,../tags
 
-"let g:Tex_ViewRule_pdf = 'C:/Program\ Files\ (x86)/SumatraPDF/SumatraPDF.exe'
-"}
+"gnome-terminal Alt key problem workaround
+" https://stackoverflow.com/questions/6778961/alt-key-shortcuts-not-working-on-gnome-terminal-with-vim
 
 let c='a'
 while c <= 'z'
@@ -428,27 +426,5 @@ while c <= 'z'
   exec "imap \e".c." <A-".c.">"
   let c = nr2char(1+char2nr(c))
 endw
-"call pathogen#infect()
-"call pathogen#helptags()
-
-" tagbar for scala 
-"let g:tagbar_type_scala = {
-"    \ 'ctagstype' : 'Scala',
-"    \ 'kinds'     : [
-"        \ 'p:packages:1',
-"        \ 'V:values',
-"        \ 'v:variables',
-"        \ 'T:types',
-"        \ 't:traits',
-"        \ 'o:objects',
-"        \ 'a:aclasses',
-"        \ 'c:classes',
-"        \ 'r:cclasses',
-"        \ 'm:methods'
-"    \ ]
-"\ }
-
-" toggle tagbar
-"nmap <F8> :TagbarToggle<CR> 
 
 set timeout ttimeoutlen=50
