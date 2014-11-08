@@ -220,9 +220,10 @@ endfunction
  
 map <A-/> :call Comment()<CR>
 map <A-?> :call Uncomment()<CR>
+
 function! RelativeNumberToggle()
   if(&relativenumber == 1)
-    set number
+    set norelativenumber
   else
     set relativenumber
   endif
@@ -230,6 +231,7 @@ endfunc
 
 "Toggle relative numbers
 noremap <C-n> :call RelativeNumberToggle()<cr>
+call RelativeNumberToggle()
 
 "Higlight column indicating maximum text width
 set colorcolumn=+1
