@@ -165,18 +165,21 @@ plugins=(git vi-mode syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
-export COPY="/host/backup/Copy"
+export COPY="/media/data/backup/Copy"
+export DROPB="$HOME/Dropbox"
 export DPROJ="$COPY/Projects"
 
-export SBT_HOME=$HOME/apps/sbt
-export SCALA_HOME=$HOME/apps/scala-2.9.2
-export SCALDING_HOME=$HOME/apps/scalding
-export HADOOP_PREFIX=$HOME/apps/hadoop
-export HIVE_HOME=$HOME/apps/hive
-export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+export DART_SDK="$HOME/Apps/dev/dart/dart-sdk"
+#export SBT_HOME=$HOME/Apps/sbt
+#export SCALA_HOME=$HOME/Apps/scala-2.9.2
+#export SCALDING_HOME=$HOME/Apps/scalding
+#export HADOOP_PREFIX=$HOME/Apps/hadoop
+#export HIVE_HOME=$HOME/apps/hive
+#export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 # Customize to your needs...
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin:$HADOOP_PREFIX/bin:$HIVE_HOME/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$HOME/.cabal/bin:/usr/local/heroku/bin:$DPROJ/scripts/bash
+# /usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HADOOP_PREFIX/bin:$HIVE_HOME/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$HOME/.cabal/bin
+export PATH=$PATH:$HOME/bin:$DPROJ/scripts/bash:$DART_SDK/bin
 
 alias apt=aptitude
 
