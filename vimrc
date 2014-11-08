@@ -397,6 +397,20 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+"airline setup
+set laststatus=2
+let g:airline#extensions#tabline#enabled   = 1
+let g:airline#extensions#tabline#fnamemod  = ':t'
+let g:airline_powerline_fonts              = 1
+let g:airline_section_c                    = '%F'
+let g:airline_section_z                    =
+  \'%3p%% %{g:airline_symbols.linenr}%#__accent_bold#%l/%L%#__restore__#:%3c'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+
 " OPTIONAL: This enables automatic indentation as you type.
 filetype indent on
 
