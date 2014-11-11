@@ -185,7 +185,7 @@ noremap <Leader>b :buffers<CR>
 "cd to directory of current file
 map <Leader>cd <ESC>:CD
 "execute last command mode command.
-map <Leader>, <ESC>:<Up><CR>
+map <Leader>, <ESC><ESC>:<Up><CR>
 "split line at cursor.
 map <Leader>o i<CR><ESC>
 "manipulate clipboard
