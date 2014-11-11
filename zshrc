@@ -198,3 +198,6 @@ fpath=(~/.oh-my-zsh/zsh-completions/src $fpath)
 rm -f ~/.zcompdump; compinit
 source ~/.oh-my-zsh/z/z.sh
 
+# Make Zsh use command-not-found package suggestions:
+source /etc/zsh_command_not_found
+
