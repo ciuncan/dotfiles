@@ -234,7 +234,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         #tray_output none
-        status_command ~/.i3/status_command.sh #i3status
+        #status_command ~/.i3/status_command.sh #i3status
+        status_command ~/.i3/conky-i3bar-wrapper.sh
         colors {
             # solarized
             background #073642
