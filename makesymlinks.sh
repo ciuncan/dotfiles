@@ -7,10 +7,13 @@
 ########## Variables
 
 dir=$HOME/dotfiles                    # dotfiles directory
-olddir=$HOME/dotfiles_old             # old dotfiles backup directory
-files="bashrc ctags gitconfig vimperatorrc vimrc ideavimrc vim zshrc oh-my-zsh oh-my-fish private scrotwm.conf Xresources config/fish"    # list of files/folders to symlink in homedir
 
+olddir=$HOME/dotfiles_old             # old dotfiles backup directory
+# list of files/folders to symlink in homedir
+files="bashrc i3 ctags gitconfig vimperatorrc vimrc ideavimrc vim zshrc oh-my-zsh oh-my-fish private Xresources gtkrc-2.0 config/fish i3status.conf config/gtk-3.0/settings.ini " # config/dunst/dunstrc
 ##########
+
+#mkdir -p $HOME/.config/dunst
 
 # create dotfiles_old in homedir
 echo -n "Creating $olddir for backup of any existing dotfiles in $HOME ..."
@@ -86,8 +89,8 @@ else
 fi
 }
 
-#install_zsh
-#install_fish
+install_zsh
+install_fish
 
 #install vundle for vim:
 rm -rf ~/.vim/bundle
@@ -96,6 +99,7 @@ vim +PluginInstall +qall
 
 #install zsh-syntax-highlighting
 cd ~/.oh-my-zsh && git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+
 #zsh-completions
 git clone git://github.com/zsh-users/zsh-completions.git
 

@@ -182,6 +182,7 @@ export DART_SDK="$HOME/Apps/dev/dart/dart-sdk"
 export PATH=$PATH:$HOME/bin:$DPROJ/scripts/bash:$DART_SDK/bin
 
 alias apt=aptitude
+alias gvim='gvim -p --remote-tab-silent'
 
 #set vi mode
 #bindkey -v
@@ -200,4 +201,3 @@ source ~/.oh-my-zsh/z/z.sh
 
 # Make Zsh use command-not-found package suggestions:
 source /etc/zsh_command_not_found
-
