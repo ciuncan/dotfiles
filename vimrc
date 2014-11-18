@@ -64,17 +64,13 @@ Bundle 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM'
 "Bundle 'tpope/vim-fugitive'
 call vundle#end()
 
-"Set colorscheme to 'vividchalk'
-color solarized "vividchalk
-set t_Co=256
-
 "Set font Monaco 9
 if has("gui_running")
   color solarized "vividchalk
   if has("gui_gtk2")
-    set guifont=Inconsolata\ 16 "Meslo\ LG\ S\ Regular
+    set guifont=Inconsolata\ 12 "Meslo\ LG\ S\ Regular
   elseif has("gui_win32")
-    set guifont=Inconsolata:h16:cTURKISH "Meslo\ LG\ S\ Regular
+    set guifont=Inconsolata:h12:cTURKISH "Meslo\ LG\ S\ Regular
   endif
 else
 endif
@@ -218,8 +214,8 @@ function! Uncomment()
   endif
 endfunction
  
-map <A-/> :call Comment()<CR>
-map <A-?> :call Uncomment()<CR>
+noremap <A-/> :call Comment()<CR>
+noremap <A-?> :call Uncomment()<CR>
 
 function! RelativeNumberToggle()
   if(&relativenumber == 1)
@@ -246,8 +242,12 @@ set statusline=%n:\ %f%m%r%w\ [%Y,%{&fileencoding},%{&fileformat}]\ [%{getcwd()}
 
 "Enable syntax highlighting
 syntax on
+
+"Set colorscheme to 'vividchalk'
+set t_Co=256
 set background=dark
 let g:solarized_termcolors=256
+colorscheme solarized
 
 "Enable filetype dependent plugins
 filetype plugin on
@@ -428,3 +428,4 @@ while c <= 'z'
 endw
 
 set timeout ttimeoutlen=50
+
