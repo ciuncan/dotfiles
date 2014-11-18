@@ -10,7 +10,7 @@ dir=$HOME/dotfiles                    # dotfiles directory
 
 olddir=$HOME/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc i3 ctags gitconfig vimperatorrc vimrc ideavimrc vim zshrc oh-my-zsh oh-my-fish private Xresources gtkrc-2.0 config/fish i3status.conf config/gtk-3.0/settings.ini " # config/dunst/dunstrc
+files="bashrc i3 ctags gitconfig vimperatorrc vimrc ideavimrc vim zshrc oh-my-zsh private Xresources gtkrc-2.0 i3status.conf config/gtk-3.0/settings.ini " # oh-my-fish config/fish config/dunst/dunstrc
 ##########
 
 #mkdir -p $HOME/.config/dunst
