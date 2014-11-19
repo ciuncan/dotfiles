@@ -2,18 +2,25 @@ background no
 out_to_x no
 out_to_console yes
 update_interval 1
+use_spacer left
+pad_percents 3
 
 # Network interface must have an ip address to be considered up
 if_up_strictness address
 
+# Battery
+
+#  {"name": "battery", "color": "\#808080", \
+#    "full_text": " ϟ ${battery_short BAT1}% "},  \
+
 TEXT
 ,[{"name": "uptime", "icon":"~/.i3/xbmicons/mail.xbm", "color": "\#808080", "full_text": " ⇅ up ${uptime_short} "},\
   {"name": "cpu", "color": "\#808080", "full_text": \
-   " ⌘ cpu [${cpu cpu1}%, ${cpu cpu2}%  ${cpu cpu3}%, ${cpu cpu4}%] "},  \
-  {"name": "memory", "color": "\#808080", "full_text": " ⇆ mem ${memperc}% "},  \
-  {"name": "disk", "color": "\#808080", "full_text": " ☸ /home ${fs_used_perc /}% "},  \
+   " ⌘ cpu [${cpu cpu1}%,${cpu cpu2}%,${cpu cpu3}%,${cpu cpu4}%] "},  \
+  {"name": "memory", "color": "\#808080", "full_text": " ⇆ mem ${memperc}% ${mem} "},  \
+  {"name": "disk", "color": "\#808080", "full_text": " ☸ /home ${fs_used_perc /}% ${fs_free /} "},  \
   ${if_up wlan0} \
-	{"name":"wifi", "color": "\#339966", "full_text": " ▲ wlan ${addr wlan0} "}, \
+	{"name":"wifi", "color": "\#339966", "full_text": " ▲ wlan ${addrs wlan0} + Wan IP:${execi 600 ~/.i3/public_ip.sh} ⇃ ${downspeed wlan0} ↾ ${upspeed wlan0} "}, \
   ${else} ${if_up eth0}\
 	{"name":"eth0", "color": "\#339966", \
 	 "full_text": " ⌁ eth ${addr eth0} "}, \
@@ -23,8 +30,6 @@ TEXT
   ${endif}  \
   {"name": "volume", "color": "\#808080", "full_text": \
    " ♬ ${exec amixer sget Master | grep Mono: | sed -e 's/[ \t]*Mono: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'} "},  \
-  {"name": "battery", "color": "\#808080", \
-   "full_text": " ϟ ${battery_percent BAT1}% "},  \
   {"name": "time", "color": "\#CFCFCF", "full_text":  \
    " ⌚ ${time %d/%m/%y} ${time %H:%M}"}\
 ]

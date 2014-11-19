@@ -118,8 +118,8 @@ bindsym $mod+Shift+7 move container to workspace 7:vid,   workspace 7:vid
 bindsym $mod+Shift+8 move container to workspace 8:torr,  workspace 8:torr
 bindsym $mod+Shift+9 move container to workspace 9,       workspace 9
 bindsym $mod+Shift+0 move container to workspace 10,      workspace 10
-bindsym $mod+Shift+bracketleft move container to workspace prev, workspace prev
-bindsym $mod+Sh3ft+bracketright move container to workspace next, workspace next
+bindsym $mod+Shift+braceleft move container to workspace prev, workspace prev
+bindsym $mod+Shift+braceright move container to workspace next, workspace next
 
 
 # workspace assignment (use "xprop")
@@ -240,9 +240,9 @@ bar {
             # solarized
             background #073642
             statusline #eee8d5
-            focused_workspace #cb4b16 #cb4b16 #eee8d5
-            active_workspace #cb4b16 #cb4b16 #eee8d5
-            inactive_workspace #b58900 #b58900 #eee8d5
+            focused_workspace   #cb4b16 #cb4b16 #eee8d5
+            active_workspace    #cb4b16 #cb4b16 #eee8d5
+            inactive_workspace  #b58900 #b58900 #eee8d5
         }
 }
 
