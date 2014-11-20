@@ -18,12 +18,12 @@ TEXT
   {"name": "cpu", "color": "\#808080", "full_text": \
    " ⌘ cpu [${cpu cpu1}%,${cpu cpu2}%,${cpu cpu3}%,${cpu cpu4}%] "},  \
   {"name": "memory", "color": "\#808080", "full_text": " ⇆ mem ${memperc}% ${mem} "},  \
-  {"name": "disk", "color": "\#808080", "full_text": " ☸ /home ${fs_used_perc /}% ${fs_free /} "},  \
-  ${if_up wlan0} \
-	{"name":"wifi", "color": "\#339966", "full_text": " ▲ wlan ${addrs wlan0} + Wan IP:${execi 600 ~/.i3/public_ip.sh} ⇃ ${downspeed wlan0} ↾ ${upspeed wlan0} "}, \
-  ${else} ${if_up eth0}\
+  {"name": "disk", "color": "\#808080", "full_text": " ☸ / ${fs_used_perc /}% ${fs_free /} "},  \
+  ${if_up eth0} \
 	{"name":"eth0", "color": "\#339966", \
-	 "full_text": " ⌁ eth ${addr eth0} "}, \
+	 "full_text": " ⌁ eth ${addr eth0} + Wan IP:${execi 600 ~/.i3/public_ip.sh} ⇃ ${downspeed eth0} ↾ ${upspeed eth0} "}, \
+  ${else} ${if_up wlan0}\
+	{"name":"wifi", "color": "\#339966", "full_text": " ▲ wlan ${addrs wlan0} + Wan IP:${execi 600 ~/.i3/public_ip.sh} ⇃ ${downspeed wlan0} ↾ ${upspeed wlan0} "}, \
 	${else}
 	{"name":"nonet", "color": "\#EE6633", "full_text": " ☠ no net :( "}, \
 	${endif}\
