@@ -102,7 +102,7 @@ bindsym $mod+5 workspace 5:comm
 bindsym $mod+6 workspace 6:fun
 bindsym $mod+7 workspace 7:vid
 bindsym $mod+8 workspace 8:torr
-bindsym $mod+9 workspace 9
+bindsym $mod+9 workspace 9:img
 bindsym $mod+0 workspace 10
 bindsym $mod+bracketleft workspace prev
 bindsym $mod+bracketright workspace next
@@ -116,7 +116,7 @@ bindsym $mod+Shift+5 move container to workspace 5:comm,  workspace 5:comm
 bindsym $mod+Shift+6 move container to workspace 6:fun,   workspace 6:fun
 bindsym $mod+Shift+7 move container to workspace 7:vid,   workspace 7:vid
 bindsym $mod+Shift+8 move container to workspace 8:torr,  workspace 8:torr
-bindsym $mod+Shift+9 move container to workspace 9,       workspace 9
+bindsym $mod+Shift+9 move container to workspace 9:img,   workspace 9:img
 bindsym $mod+Shift+0 move container to workspace 10,      workspace 10
 bindsym $mod+Shift+braceleft move container to workspace prev, workspace prev
 bindsym $mod+Shift+braceright move container to workspace next, workspace next
@@ -134,16 +134,23 @@ assign [class="^Xchat$"] 5:comm
 assign [class="^quasselclient$"] 5:comm
 assign [title="^Quassel IRC"] 5:comm
 assign [title="^weechat"] 5:comm
-assign [class="^Steam$"] 6:fun
-assign [title="^Steam$"] 6:fun
-assign [class="^Video$"] 7:vid
-assign [class="^[Vv]lc$"] 7:vid
-assign [class="^[tT]ransmission-gtk$"] 8:torr
 #assign [class="^Decibel-audio-player.py$"] 7
 assign [class="^TeamViewer.exe$"] 5:comm
 assign [title="^TeamViewer$"] 5:comm
 assign [title="^Computers & Contacts$"] 5:comm
 assign [title="- TeamViewer -"] 5:comm
+assign [class="^Steam$"] 6:fun
+assign [title="^Steam$"] 6:fun
+assign [class="World of Warcraft"] 6:fun
+assign [class="World-of-Warcraft"] 6:fun
+assign [class="(?i)wow"] 6:fun
+assign [class="(?i)battle.net"] 6:fun
+assign [class="^(?i)explorer.exe$"] 6:fun
+assign [name="^Wine System Tray$"] 6:fun
+assign [class="^Video$"] 7:vid
+assign [class="^[Vv]lc$"] 7:vid
+assign [class="^[tT]ransmission-gtk$"] 8:torr
+assign [class="^[gG]imp$"] 9:img
 
 # custom window settings
 for_window [class="^XCalc$"] floating enable
@@ -169,6 +176,7 @@ for_window [title="^Renoise"] border none; fullscreen
 for_window [class="^Sflphone$"] floating enable
 for_window [class="^Workrave$"] floating enable
 for_window [class="^[gG]it-gui$"] floating enable
+for_window [class="(?i)battle.net"] floating enable
 #
 workspace_auto_back_and_forth yes
 
@@ -241,7 +249,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        #tray_output none
+        #tray_output primary
         #status_command ~/.i3/status_command.sh #i3status
         status_command ~/.i3/conky-i3bar-wrapper.sh
         colors {
