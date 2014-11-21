@@ -256,6 +256,40 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+mode "mark_window" {
+    bindsym 1 mark m1
+    bindsym 2 mark m2
+    bindsym 3 mark m3
+    bindsym 4 mark m4
+    bindsym 5 mark m5
+    bindsym a mark ma
+    bindsym b mark mb
+    bindsym c mark mc
+    bindsym d mark md
+    bindsym e mark me
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+m mode "mark_window"
+
+mode "go_to_window" {
+    bindsym 1 [con_mark="m1"] focus
+    bindsym 2 [con_mark="m2"] focus
+    bindsym 3 [con_mark="m3"] focus
+    bindsym 4 [con_mark="m4"] focus
+    bindsym 5 [con_mark="m5"] focus
+    bindsym a [con_mark="ma"] focus
+    bindsym b [con_mark="mb"] focus
+    bindsym c [con_mark="mc"] focus
+    bindsym d [con_mark="md"] focus
+    bindsym e [con_mark="me"] focus
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+g mode "go_to_window"
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
