@@ -188,7 +188,7 @@ for_window [class="^crx_knipolnnllmklapflnccelgolnpehhp$"] floating enable
 workspace_auto_back_and_forth yes
 
 bindsym $mod+z workspace back_and_forth
-bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
+jindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
 
 # Multimedia bindings
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
@@ -199,8 +199,8 @@ bindsym XF86AudioStop exec ncmpcpp stop
 bindsym XF86AudioPrev exec ncmpcpp prev
 bindsym XF86AudioNext exec ncmpcpp next
 
-# reload the configuration file
-bindsym $mod+Control+l exec i3lock -d
+# lock screen, black background
+bindsym $mod+Control+l exec "sudo xset +dpms && xset s on; i3lock -c 000000"
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
