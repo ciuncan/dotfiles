@@ -123,13 +123,16 @@ bindsym $mod+Shift+braceright move container to workspace next, workspace next
 
 
 # workspace assignment (use "xprop")
-assign [class="^Google-chrome$"] 1:web
+assign [class="^Google-chrome (/home/ciuncan/.config/google-chrome-unstable$"] 1:web
 assign [class="^jetbrains-webstorm$"] 3:dev
 assign [class="^jetbrains-idea-ce$"] 3:dev
 assign [class="^[gG]vim$"] 3:dev
 assign [class="^[gG]it-gui$"] 3:dev
 assign [class="^[pP]gadmin3$"] 4:db
 #assign [class="^URxvt$" instance="^mail$"] 4
+assign [class="^crx_knipolnnllmklapflnccelgolnpehhpl$"] 5:comm  # hangouts
+assign [instance="^(?i)Hangouts$"] 5:comm
+assign [title="^(?i)Hangouts$"] 5:comm
 assign [class="^Xchat$"] 5:comm
 assign [class="^quasselclient$"] 5:comm
 assign [title="^Quassel IRC"] 5:comm
@@ -146,7 +149,7 @@ assign [class="World-of-Warcraft"] 6:fun
 assign [class="(?i)wow"] 6:fun
 assign [class="(?i)battle.net"] 6:fun
 assign [class="^(?i)explorer.exe$"] 6:fun
-assign [name="^Wine System Tray$"] 6:fun
+assign [title="^Wine System Tray$"] 6:fun
 assign [class="^Video$"] 7:vid
 assign [class="^[Vv]lc$"] 7:vid
 assign [class="^[tT]ransmission-gtk$"] 8:torr
@@ -155,7 +158,7 @@ assign [class="^[gG]imp$"] 9:img
 # custom window settings
 for_window [class="^XCalc$"] floating enable
 for_window [class="^URxvt$" instance="scratchpad"] border 1pixel; move scratchpad
-for_window [class="^Google-chrome$"] border none #1pixel
+for_window [class="^Google-chrome (/home/ciuncan/.config/google-chrome-unstable$"] border none
 for_window [title="Lingea Lexicon 5$"] border none
 for_window [class="^GVim$"] split v, layout stacking
 for_window [class="^Xsane$"] floating enable
@@ -177,7 +180,10 @@ for_window [class="^Sflphone$"] floating enable
 for_window [class="^Workrave$"] floating enable
 for_window [class="^[gG]it-gui$"] floating enable
 for_window [class="(?i)battle.net"] floating enable
-#
+for_window [class="^crx_knipolnnllmklapflnccelgolnpehhp$"] floating enable
+# for_window [instance="^(?i)Hangouts$"] border none; fullscreen;
+# for_window [title="^(?i)Hangouts$"] border none; fullscreen;
+
 workspace_auto_back_and_forth yes
 
 # Multimedia bindings
