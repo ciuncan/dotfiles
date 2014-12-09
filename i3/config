@@ -322,7 +322,8 @@ exec --no-startup-id i3-msg 'workspace 2:term; exec gnome-terminal; workspace 1:
 #exec --no-startup-id transmission-gtk
 exec --no-startup-id redshift
 exec --no-startup-id nm-applet
-exec --no-startup-id feh --bg-fill /home/ciuncan/Pictures/wallpaper/sphinx__s_day_off_by_sandara-d2ytq3z.jpg
+#exec --no-startup-id ibus-daemon --xim -d -r
+exec --no-startup-id feh --bg-fill --recursive --randomize /home/ciuncan/Pictures/wallpaper/*
 # exec --no-startup-id exec mpd
 exec gsettings set org.gnome.desktop.background show-desktop-icons false
 
