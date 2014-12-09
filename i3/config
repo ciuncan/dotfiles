@@ -104,8 +104,9 @@ bindsym $mod+7 workspace 7:vid
 bindsym $mod+8 workspace 8:torr
 bindsym $mod+9 workspace 9:img
 bindsym $mod+0 workspace 10
-bindsym $mod+bracketleft workspace prev
+bindsym $mod+bracketleft  workspace prev
 bindsym $mod+bracketright workspace next
+bindsym $mod+grave        workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1:web,   workspace 1:web
@@ -118,8 +119,9 @@ bindsym $mod+Shift+7 move container to workspace 7:vid,   workspace 7:vid
 bindsym $mod+Shift+8 move container to workspace 8:torr,  workspace 8:torr
 bindsym $mod+Shift+9 move container to workspace 9:img,   workspace 9:img
 bindsym $mod+Shift+0 move container to workspace 10,      workspace 10
-bindsym $mod+Shift+braceleft move container to workspace prev, workspace prev
+bindsym $mod+Shift+braceleft move container to workspace prev,  workspace prev
 bindsym $mod+Shift+braceright move container to workspace next, workspace next
+bindsym $mod+Shift+grave move container to workspace next,      workspace next
 
 
 # workspace assignment (use "xprop")
@@ -129,6 +131,7 @@ assign [class="jetbrains-webstorm$"] 3:dev
 assign [class="(?i)jetbrains"] 3:dev
 assign [class="^[gG]vim$"] 3:dev
 assign [class="^[gG]it-gui$"] 3:dev
+
 assign [class="^[pP]gadmin3$"] 4:db
 #assign [class="^URxvt$" instance="^mail$"] 4
 
@@ -149,8 +152,10 @@ assign [class="(?i)wow"] 6:fun
 assign [class="(?i)battle.net"] 6:fun
 assign [class="^(?i)explorer.exe$"] 6:fun
 assign [title="^Wine System Tray$"] 6:fun
+
 assign [class="^Video$"] 7:vid
 assign [class="^[Vv]lc$"] 7:vid
+
 assign [class="^[tT]ransmission-gtk$"] 8:torr
 assign [class="^[gG]imp$"] 9:img
 
@@ -184,7 +189,7 @@ for_window [class="^crx_knipolnnllmklapflnccelgolnpehhp$"] floating enable
 workspace_auto_back_and_forth yes
 
 bindsym $mod+z workspace back_and_forth
-jindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
+bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
 
 # Multimedia bindings
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
