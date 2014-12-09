@@ -200,6 +200,8 @@ bindsym XF86AudioStop exec ncmpcpp stop
 bindsym XF86AudioPrev exec ncmpcpp prev
 bindsym XF86AudioNext exec ncmpcpp next
 
+bindsym XF86HomePage exec nautilus
+
 # lock screen, black background
 bindsym $mod+Control+l exec "sudo xset +dpms && xset s on; i3lock -c 000000"
 # reload the configuration file
