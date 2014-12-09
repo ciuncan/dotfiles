@@ -318,12 +318,14 @@ client.unfocused        #333333 #93a1a1 #fdf6e3 #292d2e
 # Startup
 #exec --no-startup-id pasystray
 exec --no-startup-id google-chrome
-exec --no-startup-id transmission-gtk
+#exec --no-startup-id transmission-gtk
 exec --no-startup-id redshift
 exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-fill /home/ciuncan/Pictures/wallpaper/sphinx__s_day_off_by_sandara-d2ytq3z.jpg
 # exec --no-startup-id exec mpd
-# exec --no-startup-id sh ~/.fehbg
 exec gsettings set org.gnome.desktop.background show-desktop-icons false
+
+#exec --no-startup-id battlenet
+#exec --no-startup-id steam
 
 exec --no-startup-id ~/.i3/autostart
