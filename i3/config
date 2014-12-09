@@ -96,10 +96,10 @@ bindsym $mod+d focus child
 # switch to workspace
 bindsym $mod+1 workspace 1:web
 bindsym $mod+2 workspace 2:term
-bindsym $mod+3 workspace 3:dev
+bindsym $mod+3 workspace 3:dev; layout tabbed
 bindsym $mod+4 workspace 4:db
 bindsym $mod+5 workspace 5:comm
-bindsym $mod+6 workspace 6:fun
+bindsym $mod+6 workspace 6:fun; layout tabbed
 bindsym $mod+7 workspace 7:vid
 bindsym $mod+8 workspace 8:torr
 bindsym $mod+9 workspace 9:img
