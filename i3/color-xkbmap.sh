@@ -6,7 +6,7 @@ OTHER_LAYOUT="tr"
 CURRENT=`$HOME/dotfiles/i3/current-xkbmap.sh`
 
 if [ "$CURRENT" = "us" ] ; then
-  setxkbmap -layout $OTHER_LAYOUT -option ctrl:nocaps
+  echo \#2E8B57
 else
-  setxkbmap -layout us -option ctrl:nocaps
+  echo \#8b0000
 fi
