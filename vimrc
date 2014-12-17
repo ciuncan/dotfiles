@@ -176,6 +176,7 @@ noremap <Leader>n :NERDTreeToggle<CR>
 noremap <Leader>r :NERDTreeFind<CR>
 noremap <Leader>ff :silent !firefox %<CR>
 noremap <Leader>ch :silent !google-chrome % &<CR>
+noremap <Leader>g  :silent !git gui<CR>
 "List buffers
 noremap <Leader>b :buffers<CR>
 "cd to directory of current file
