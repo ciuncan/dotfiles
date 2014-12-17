@@ -8,30 +8,31 @@ pad_percents 3
 # Network interface must have an ip address to be considered up
 if_up_strictness address
 
-# Battery
-
-#  {"name": "battery", "color": "\#808080", \
-#    "full_text": " ϟ ${battery_short BAT1}% "},  \
-
 TEXT
-,[{"name": "uptime", "icon":"~/.i3/xbmicons/mail.xbm", "color": "\#808080", "full_text": " ⇅ up ${uptime_short} "},\
+,[{"name": "uptime", "icon":"~/.i3/xbmicons/mail.xbm", "color": "\#808080", "full_text": "⇅ up${uptime_short}"},\
   {"name": "cpu", "color": "\#808080", "full_text": \
-   " ⌘ cpu [${cpu cpu1}%,${cpu cpu2}%,${cpu cpu3}%,${cpu cpu4}%] "},  \
-  {"name": "memory", "color": "\#808080", "full_text": " ⇆ mem ${memperc}% ${mem} "},  \
-  {"name": "disk", "color": "\#808080", "full_text": " ⽊ ${fs_used_perc /}% ${fs_free /} ⌂ ${fs_used_perc /home}% ${fs_free /home} "},  \
+   "⌘ cpu[${cpu cpu1}%,${cpu cpu2}%,${cpu cpu3}%,${cpu cpu4}%]"},  \
+  {"name": "memory", "color": "\#808080", "full_text": "⇆ mem${memperc}% ${mem}"},  \
+  {"name": "disk", "color": "\#808080", "full_text": "⽊${fs_used_perc /}% ${fs_free /} ⌂${fs_used_perc /home}% ${fs_free /home}"},  \
   ${if_up eth0} \
-	{"name":"eth0", "color": "\#339966", \
-	 "full_text": " ⌁ eth ${addr eth0} + Wan IP:${execi 600 ~/.i3/public_ip.sh} ⇃ ${downspeed eth0} ↾ ${upspeed eth0} "}, \
+    {"name":"eth0", "color": "\#339966", \
+     "full_text": "⌁ eth ${execi 600 ~/.i3/public_ip.sh} ⇃${downspeed eth0}↾${upspeed eth0}"}, \
+  ${else} ${if_up eth1}\
+    {"name":"eth1", "color": "\#339966", \
+     "full_text": "⌁ eth ${execi 600 ~/.i3/public_ip.sh} ⇃${downspeed eth1}↾${upspeed eth1}"}, \
   ${else} ${if_up wlan0}\
-	{"name":"wifi", "color": "\#339966", "full_text": " ▲ wlan ${addrs wlan0} + Wan IP:${execi 600 ~/.i3/public_ip.sh} ⇃ ${downspeed wlan0} ↾ ${upspeed wlan0} "}, \
-	${else}
-	{"name":"nonet", "color": "\#EE6633", "full_text": " ☠ no net :( "}, \
-	${endif}\
-  ${endif}  \
-  {"name": "language", "color": "${exec $HOME/dotfiles/i3/color-xkbmap.sh }", "full_text": \
-   " ⚑ ${exec $HOME/dotfiles/i3/current-xkbmap.sh } "},  \
+    {"name":"wifi", "color": "\#339966", "full_text": "▲ wlan ${execi 600 ~/.i3/public_ip.sh} ⇃${downspeed wlan0}↾${upspeed wlan0}"}, \
+  ${else} ${if_up wlan1}\
+    {"name":"wifi", "color": "\#339966", "full_text": "▲ wlan ${execi 600 ~/.i3/public_ip.sh} ⇃${downspeed wlan1}↾${upspeed wlan1}"}, \
+  ${else}
+    {"name":"nonet", "color": "\#EE6633", "full_text": " ☠ no net :( "}, \
+  ${endif}\
+  {"name": "language", "color": "${exec $HOME/dotfiles/i3/color-xkbmap.sh}", "full_text": \
+   "⚑ ${exec $HOME/dotfiles/i3/current-xkbmap.sh }"},  \
   {"name": "volume", "color": "\#808080", "full_text": \
-   " ♬ ${exec amixer sget Master | grep Mono: | sed -e 's/[ \t]*Mono: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'} "},  \
+   "♬ ${exec amixer sget Master | grep Mono: | sed -e 's/[ \t]*Mono: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'}"},  \
+  {"name": "battery", "color": "\#808080", \
+    "full_text": "ϟ ${battery} ${battery_time}"},  \
   {"name": "time", "color": "\#CFCFCF", "full_text":  \
-   " ⌚ ${time %d/%m/%y} ${time %H:%M}"}\
+   "⌚ ${time %d/%m/%y} ${time %H:%M}"}\
 ]
