@@ -104,7 +104,7 @@ bindsym $mod+6 workspace 6:fun; layout tabbed
 bindsym $mod+7 workspace 7:vid
 bindsym $mod+8 workspace 8:torr
 bindsym $mod+9 workspace 9:img
-bindsym $mod+0 workspace 10
+bindsym $mod+0 workspace 10:aud
 bindsym $mod+bracketleft  workspace prev
 bindsym $mod+bracketright workspace next
 bindsym $mod+grave        workspace next
@@ -119,7 +119,7 @@ bindsym $mod+Shift+6 move container to workspace 6:fun,   workspace 6:fun
 bindsym $mod+Shift+7 move container to workspace 7:vid,   workspace 7:vid
 bindsym $mod+Shift+8 move container to workspace 8:torr,  workspace 8:torr
 bindsym $mod+Shift+9 move container to workspace 9:img,   workspace 9:img
-bindsym $mod+Shift+0 move container to workspace 10,      workspace 10
+bindsym $mod+Shift+0 move container to workspace 10:aud,  workspace 10:aud
 bindsym $mod+Shift+braceleft move container to workspace prev,  workspace prev
 bindsym $mod+Shift+braceright move container to workspace next, workspace next
 bindsym $mod+Shift+grave move container to workspace next,      workspace next
@@ -148,7 +148,6 @@ assign [title="- TeamViewer -"] 5:comm
 assign [class="^Steam$"] 6:fun
 assign [title="^Steam$"] 6:fun
 assign [class="World of Warcraft"] 6:fun
-assign [class="World-of-Warcraft"] 6:fun
 assign [class="(?i)wow"] 6:fun
 assign [class="(?i)battle.net"] 6:fun
 assign [class="^(?i)explorer.exe$"] 6:fun
@@ -185,6 +184,7 @@ for_window [class="^[gG]it-gui$"] floating enable
 for_window [class="^crx_knipolnnllmklapflnccelgolnpehhp$"] floating enable
 # for_window [instance="^(?i)Hangouts$"] border none; fullscreen;
 # for_window [title="^(?i)Hangouts$"] border none; fullscreen;
+for_window [window_role="pop-up"] floating enable
 
 # Back and forth
 workspace_auto_back_and_forth yes
