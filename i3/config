@@ -128,6 +128,8 @@ bindsym $mod+Shift+grave move container to workspace next,      workspace next
 # workspace assignment (use "xprop")
 assign [class="(?i)google-chrome" window_role="browser"] 1:web
 
+assign [class="(?f)ilezilla"] 2:term
+
 assign [class="jetbrains-webstorm$"] 3:dev
 assign [class="(?i)jetbrains"] 3:dev
 assign [class="^[gG]vim$"] 3:dev
@@ -163,22 +165,16 @@ assign [class="^[gG]imp$"] 9:img
 for_window [class="^XCalc$"] floating enable
 for_window [class="^URxvt$" instance="scratchpad"] border 1pixel; move scratchpad
 for_window [class="^Google-chrome (/home/ciuncan/.config/google-chrome-unstable$"] border none
-for_window [title="Lingea Lexicon 5$"] border none
 for_window [class="^GVim$"] split v, layout stacking
-for_window [class="^Xsane$"] floating enable
-for_window [class="^SFLphone"] floating enable
 for_window [class="^TeamViewer.exe$"] floating enable
 for_window [title="^TeamViewer$"] floating enable
 for_window [title="^Computers & Contacts$"] floating enable
 for_window [title="- TeamViewer -"] floating enable
-for_window [title="^Počítače a kontakty$"] floating enable
 for_window [class="^Steam$"] floating enable; border none
 for_window [class="^feh$"] fullscreen
 for_window [class="^Meld$"] fullscreen
 for_window [class="^MPlayer$"] border none; fullscreen
 for_window [class="^Vlc$"] border none; fullscreen
-for_window [class="^Sflphone$"] floating enable
-for_window [class="^Workrave$"] floating enable
 for_window [class="^[gG]it-gui$"] floating enable
 ## for_window [class="(?i)battle.net"] floating enable
 for_window [class="^crx_knipolnnllmklapflnccelgolnpehhp$"] floating enable

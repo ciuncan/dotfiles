@@ -9,7 +9,7 @@ pad_percents 3
 if_up_strictness address
 
 TEXT
-,[{"name": "uptime", "icon":"~/.i3/xbmicons/mail.xbm", "color": "\#808080", "full_text": "⇅ up${uptime_short}"},\
+,[{"name": "uptime", "icon":"~/.i3/xbmicons/mail.xbm", "color": "\#808080", "full_text": "⇅ up ${uptime_short}"},\
   {"name": "cpu", "color": "\#808080", "full_text": \
    "⌘ cpu[${cpu cpu1}%,${cpu cpu2}%,${cpu cpu3}%,${cpu cpu4}%]"},  \
   {"name": "memory", "color": "\#808080", "full_text": "⇆ mem${memperc}% ${mem}"},  \
