@@ -167,9 +167,9 @@ source $ZSH/oh-my-zsh.sh
 
 export COPY="/media/data/backup/Copy"
 export DROPB="$HOME/Dropbox"
-export DPROJ="$COPY/Projects"
+export DPROJ="$DROPB/Projects"
 
-export DART_SDK="$HOME/Apps/dev/dart/dart-sdk"
+#export DART_SDK="$HOME/Apps/dev/dart/dart-sdk"
 #export SBT_HOME=$HOME/Apps/sbt
 #export SCALA_HOME=$HOME/Apps/scala-2.9.2
 #export SCALDING_HOME=$HOME/Apps/scalding
@@ -179,7 +179,8 @@ export DART_SDK="$HOME/Apps/dev/dart/dart-sdk"
 
 # Customize to your needs...
 # /usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HADOOP_PREFIX/bin:$HIVE_HOME/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$HOME/.cabal/bin
-export PATH=$PATH:$HOME/bin:$DPROJ/scripts/bash:$DART_SDK/bin
+export PATH=$PATH:$HOME/bin:$DPROJ/scripts/bash
+#:$DART_SDK/bin
 
 alias apt=aptitude
 alias gvim='gvim -p --remote-tab-silent'

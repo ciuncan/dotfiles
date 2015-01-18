@@ -132,6 +132,7 @@ alias cdrsm="cd $DPROJ/doctoral/codes/RS_matlab"
 PATH=$PATH:$HOME/Applications/julia/usr/bin
 PATH=$PATH:$DPROJ/scripts/bash
 PATH=$PATH:$HOME/Applications/Sublime\ Text\ 2
+PATH=$PATH:$HOME/bin
 
 export ftp_loc=/run/user/ceyhun/gvfs/ftp:host=akademik.bahcesehir.edu.tr/public_html
 set -o vi
