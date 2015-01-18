@@ -146,6 +146,7 @@ assign [class="^TeamViewer.exe$"] 5:comm
 assign [title="^TeamViewer$"] 5:comm
 assign [title="^Computers & Contacts$"] 5:comm
 assign [title="- TeamViewer -"] 5:comm
+assign [class="^ts3client_linux_amd64$"] 5:comm
 
 assign [class="^Steam$"] 6:fun
 assign [title="^Steam$"] 6:fun
@@ -189,8 +190,10 @@ bindsym $mod+z workspace back_and_forth
 bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
 
 # Multimedia bindings
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -- -5%
+bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume  exec pactl set-sink-volume 0 -- -5%
+bindsym XF86MonBrightnessUp   exec xbacklight +5%
+bindsym XF86MonBrightnessDown exec xbacklight -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 bindsym XF86AudioPlay exec ncmpcpp toggle
 bindsym XF86AudioStop exec ncmpcpp stop
@@ -205,9 +208,9 @@ bindsym $mod+Control+l exec "sudo xset +dpms && xset s on; i3lock -c 000000"
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-#bindsym $mod+Control+Shift+x exit
+bindsym $mod+Control+Shift+x exit
 # exit i3 (logs you out of your X session)
-bindsym $mod+Control+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Control+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 mode  "(s)leep (h)ybernate (p)owersave (r)estart shut(d)own" {
 
