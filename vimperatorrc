@@ -12,3 +12,28 @@ map <Esc> :stop<CR>
 map <S-Esc> :stopall<CR>
 
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
+set complete=sl
+
+" Find
+"" perform incremental searching
+set incsearch
+"" highlight search results
+set hlsearch
+"" typically (see below) ignore case
+set ignorecase
+"" only consider case if an upper case char is used
+set smartcase
+
+" Display
+"" show only the tab bar
+set gui=tabs
+"" show numbers on each tab
+set tabnumbers
+"" see http://code.google.com/p/vimperator-labs/issues/detail?id=311
+set popups=tab,resized
+
+""" Firefox Dialogs
+"""" Downloads
+noremap  <C-j> <C-t>:downloads<CR>
+inoremap <C-j> <Esc><C-t>:downloads<CR>
+cnoremap <C-j> <C-t>:downloads<CR>
