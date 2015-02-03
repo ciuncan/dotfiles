@@ -5,6 +5,7 @@ call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Bundle 'msanders/snipmate.vim'
+Bundle 'moll/vim-bbye'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'JuliaLang/julia-vim'
 Bundle 'scrooloose/syntastic.git'
@@ -157,6 +158,12 @@ set list
 " Highlight problematic whitespace
 set lcs=tab:▸\ ,eol:¬,trail:.,extends:#,nbsp:_
 
+" Code folding mode indent, nests maximum 10
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
 "leader key is comma
 let mapleader = ","
 
@@ -164,7 +171,8 @@ let mapleader = ","
 noremap <Leader>W :w !sudo tee % > /dev/null
 noremap <Leader>w :w<CR>
 noremap <Leader>x :x<CR>
-noremap <Leader>q :q<CR>
+noremap <Leader>q :Bdelete<CR>
+noremap <Leader>Q :q!<CR>
 noremap <Leader>e :e 
 noremap <Leader>h :h 
 noremap <Leader>so :so %<cr>
@@ -214,9 +222,14 @@ function! Uncomment()
     silent s:^\"::g
   endif
 endfunction
+
+function! ClearEmptyLines()
+  silent %s/^\s*$//g
+endfunction
  
 noremap <A-/> :call Comment()<CR>
 noremap <A-?> :call Uncomment()<CR>
+noremap <A-c> :call ClearEmptyLines()<CR>
 
 function! RelativeNumberToggle()
   if(&relativenumber == 1)

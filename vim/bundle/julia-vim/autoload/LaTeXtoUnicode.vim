@@ -67,7 +67,11 @@ function! s:L2U_SetupGlobal()
 
   " A hack to forcibly get out of completion mode: feed
   " this string with feedkeys()
-  let s:l2u_esc_sequence = "\u0091\<BS>"
+  if has("win32") || has("win64")
+    let s:l2u_esc_sequence = "\u0006\b"
+  else
+    let s:l2u_esc_sequence = "\u0091\b"
+  end
 
   " Trigger for the previous mapping of <Tab>
   let s:l2u_fallback_trigger = "\u0091L2UFallbackTab"
@@ -210,7 +214,7 @@ function! s:L2U_longest_common_prefix(partmatches)
   for i in range(1, len(a:partmatches)-1)
     let p = a:partmatches[i]
     if len(p) < len(common)
-      common = common[0 : len(p)-1]
+      let common = common[0 : len(p)-1]
     endif
     for j in range(1, len(common)-1)
       if p[j] != common[j]
@@ -354,6 +358,8 @@ function! LaTeXtoUnicode#Tab()
     call feedkeys(s:l2u_fallback_trigger)
     return ''
   endif
+  " reset the in_fallback info
+  let b:l2u_in_fallback = 0
   " temporary change to completeopt to use the `longest` setting, which is
   " probably the only one which makes sense given that the goal of the
   " completion is to substitute the final string
