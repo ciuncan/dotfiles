@@ -17,13 +17,8 @@ TEXT
   ${if_up eth0} \
     {"name":"eth0", "color": "\#339966", \
      "full_text": "⌁ eth ${execi 600 ~/.i3/public_ip.sh} ⇃${downspeed eth0}↾${upspeed eth0}"}, \
-  ${else} ${if_up eth1}\
-    {"name":"eth1", "color": "\#339966", \
-     "full_text": "⌁ eth ${execi 600 ~/.i3/public_ip.sh} ⇃${downspeed eth1}↾${upspeed eth1}"}, \
   ${else} ${if_up wlan0}\
     {"name":"wifi", "color": "\#339966", "full_text": "▲ wlan ${execi 600 ~/.i3/public_ip.sh} ⇃${downspeed wlan0}↾${upspeed wlan0}"}, \
-  ${else} ${if_up wlan1}\
-    {"name":"wifi", "color": "\#339966", "full_text": "▲ wlan ${execi 600 ~/.i3/public_ip.sh} ⇃${downspeed wlan1}↾${upspeed wlan1}"}, \
   ${else}
     {"name":"nonet", "color": "\#EE6633", "full_text": " ☠ no net :( "}, \
   ${endif}\
