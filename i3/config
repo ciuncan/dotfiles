@@ -210,7 +210,7 @@ bindsym XF86AudioNext exec ncmpcpp next
 bindsym XF86HomePage exec nautilus
 
 # lock screen, black background
-bindsym $mod+Control+l exec "sudo xset +dpms && xset s on; i3lock -c 000000"
+bindsym $mod+Control+l exec "i3lock -c 000000 -d -n"
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -338,6 +338,7 @@ exec --no-startup-id feh --bg-fill --recursive --randomize $HOME/Pictures/wallpa
 exec gsettings set org.gnome.desktop.background show-desktop-icons false
 # disable touchpad on keyboard activity
 exec --no-startup-id syndaemon -i 2 -d -t -K
+exec --no-startup-id xautolock -time 5 -locker "i3lock -c 000000 -d -n" 
 
 #exec --no-startup-id battlenet
 #exec --no-startup-id steam
