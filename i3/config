@@ -130,10 +130,10 @@ bindsym $mod+Shift+grave move container to workspace next,      workspace next
 
 # workspace assignment (use "xprop")
 assign [class="(?i)google-chrome" window_role="browser"] 1:web
+assign [class="(?i)firefox"] 1:web
 
 assign [class="(?f)ilezilla"] 2:term
 
-assign [class="jetbrains-webstorm$"] 3:dev
 assign [class="(?i)jetbrains"] 3:dev
 assign [class="^[gG]vim$"] 3:dev
 assign [class="^[gG]it-gui$"] 3:dev
@@ -141,6 +141,7 @@ assign [class="^[gG]it-gui$"] 3:dev
 assign [class="^[pP]gadmin3$"] 4:db
 #assign [class="^URxvt$" instance="^mail$"] 4
 
+assign [class="(?i)thunderbird"] 5:comm
 assign [class="(?i)google-chrome" window_role="app"] 5:comm
 #assign [class="^crx_knipolnnllmklapflnccelgolnpehhpl$"] 5:comm 
 assign [instance="^(?i)Hangouts$"] 5:comm
@@ -320,7 +321,8 @@ client.unfocused        #333333 #93a1a1 #fdf6e3 #292d2e
 
 # Startup
 #exec --no-startup-id pasystray
-exec --no-startup-id google-chrome
+exec --no-startup-id firefox #google-chrome
+exec --no-startup-id thunderbird #google-chrome
 exec --no-startup-id i3-msg 'workspace 2:term; exec gnome-terminal; exec nautilus; workspace 1:web'
 #exec --no-startup-id transmission-gtk
 exec --no-startup-id redshift
