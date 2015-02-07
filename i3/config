@@ -168,8 +168,11 @@ assign [class="^[gG]imp$"] 9:img
 
 # custom window settings
 for_window [class="^XCalc$"] floating enable
-for_window [class="^URxvt$" instance="scratchpad"] border 1pixel; move scratchpad
-for_window [class="^Google-chrome (/home/ciuncan/.config/google-chrome-unstable$"] border none
+for_window [class="^URxvt$" instance="scratchpad"] border pixel 2; move scratchpad
+for_window [class="(?i)google-chrome"] border pixel 2
+for_window [class="(?i)firefox"] border pixel 2
+for_window [class="(?i)thunderbird"] border pixel 2
+for_window [class="(?i)jetbrains"] border pixel 2
 for_window [class="^GVim$"] split v, layout stacking
 for_window [class="^TeamViewer.exe$"] floating enable
 for_window [title="^TeamViewer$"] floating enable
