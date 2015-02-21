@@ -209,6 +209,8 @@ bindsym XF86AudioNext exec ncmpcpp next
 
 bindsym XF86HomePage exec nautilus
 
+bindsym Print exec gnome-screenshot -w
+
 # lock screen, black background
 bindsym $mod+Control+l exec "i3lock -c 000000 -d -n"
 # reload the configuration file
