@@ -1,3 +1,10 @@
+" Vim syntax file
+" Language:             Scala
+" Maintainer:           Derek Wyatt
+" URL:                  https://github.com/derekwyatt/vim-scala
+" License:              Apache 2
+" ----------------------------------------------------------------------------
+
 if !exists('main_syntax')
   if version < 600
     syntax clear
@@ -48,7 +55,9 @@ syn match scalaSymbol /'[_A-Za-z0-9$]\+/
 hi link scalaSymbol Number
 
 syn match scalaChar /'.'/
-syn match scalaEscapedChar /\\[\\"ntbrf]/
+syn match scalaChar /'\\[\\"'ntbrf]'/ contains=scalaEscapedChar
+syn match scalaChar /'\\u[A-Fa-f0-9]\{4}'/ contains=scalaUnicodeChar
+syn match scalaEscapedChar /\\[\\"'ntbrf]/
 syn match scalaUnicodeChar /\\u[A-Fa-f0-9]\{4}/
 hi link scalaChar Character
 hi link scalaEscapedChar Function
@@ -201,3 +210,5 @@ let b:current_syntax = 'scala'
 if main_syntax ==# 'scala'
   unlet main_syntax
 endif
+
+" vim:set sw=2 sts=2 ts=8 et:
