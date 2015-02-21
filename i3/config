@@ -65,10 +65,10 @@ bindsym $mod+Shift+Up     move up
 bindsym $mod+Shift+Right  move right
 
 # split in horizontal orientation
-bindsym $mod+s split h
+bindsym $mod+v split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+s split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -100,7 +100,7 @@ bindsym $mod+d focus child
 # switch to workspace
 bindsym $mod+1 workspace 1:web
 bindsym $mod+2 workspace 2:term
-bindsym $mod+3 workspace 3:dev; layout tabbed
+bindsym $mod+3 workspace 3:dev
 bindsym $mod+4 workspace 4:db
 bindsym $mod+5 workspace 5:comm
 bindsym $mod+6 workspace 6:fun; layout tabbed
@@ -137,6 +137,7 @@ assign [class="(?f)ilezilla"] 2:term
 assign [class="(?i)jetbrains"] 3:dev
 assign [class="^[gG]vim$"] 3:dev
 assign [class="^[gG]it-gui$"] 3:dev
+assign [class="^(?i)gitk$"] 3:dev
 
 assign [class="^[pP]gadmin3$"] 4:db
 #assign [class="^URxvt$" instance="^mail$"] 4
@@ -173,6 +174,8 @@ for_window [class="(?i)google-chrome"] border pixel 2
 for_window [class="(?i)firefox"] border pixel 2
 for_window [class="(?i)thunderbird"] border pixel 2
 for_window [class="(?i)jetbrains"] border pixel 2
+for_window [class="(?i)intellij"] border pixel 2
+
 for_window [class="^GVim$"] split v, layout stacking
 for_window [class="^TeamViewer.exe$"] floating enable
 for_window [title="^TeamViewer$"] floating enable
@@ -184,11 +187,14 @@ for_window [class="^Meld$"] fullscreen
 for_window [class="^MPlayer$"] border none; fullscreen
 for_window [class="^Vlc$"] border none; fullscreen
 for_window [class="^[gG]it-gui$"] floating enable
+for_window [class="^(?i)gitk$"] floating enable
 ## for_window [class="(?i)battle.net"] floating enable
 for_window [class="^crx_knipolnnllmklapflnccelgolnpehhp$"] floating enable
 # for_window [instance="^(?i)Hangouts$"] border none; fullscreen;
 # for_window [title="^(?i)Hangouts$"] border none; fullscreen;
 for_window [window_role="pop-up"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="About"] floating enable
 
 # Back and forth
 workspace_auto_back_and_forth yes
