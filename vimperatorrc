@@ -37,3 +37,7 @@ set popups=tab,resized
 noremap  <C-j> <C-t>:downloads<CR>
 inoremap <C-j> <Esc><C-t>:downloads<CR>
 cnoremap <C-j> <C-t>:downloads<CR>
+
+""" Window attach/detach
+noremap W :tabdetach<CR>
+noremap E :tabattach 1<CR>
