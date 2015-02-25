@@ -4,6 +4,7 @@ call vundle#begin()
 
 Bundle 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
+Plugin 'kien/ctrlp.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'moll/vim-bbye'
 Bundle 'kien/rainbow_parentheses.vim'
@@ -30,6 +31,7 @@ Bundle 'othree/html5.vim.git'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 Bundle 'gregsexton/MatchTag'
 Bundle 'mhinz/vim-signify'
+Plugin 'airblade/vim-rooter'
 " 'airblade/vim-gitgutter'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'eagletmt/ghcmod-vim'
@@ -88,6 +90,8 @@ set nocompatible
 
 "TAB autocompletion will show the list of all matching completions
 set wildmode=longest,list,full
+"ignore case while matching filenames
+set wildignorecase
 
 "Set tab width to 2
 set tabstop=2
@@ -174,8 +178,8 @@ noremap <Leader>w :w<CR>
 noremap <Leader>x :x<CR>
 noremap <Leader>q :Bdelete<CR>
 noremap <Leader>Q :q!<CR>
-noremap <Leader>e :e 
-noremap <Leader>h :h 
+noremap <Leader>e :e
+noremap <Leader>h :h
 noremap <Leader>so :so %<cr>
 noremap <Leader>v :vs 
 "noremap <Leader>t :set ignorecase!<CR>
@@ -189,11 +193,12 @@ noremap <Leader>g  :silent !git gui<CR>
 "List buffers
 noremap <Leader>b :buffers<CR>
 "cd to directory of current file
-map <Leader>cd <ESC>:CD
+map <Leader>CD <ESC>:CD
 "execute last command mode command.
 map <Leader>, <ESC><ESC>:<Up><CR>
 "split line at cursor.
 map <Leader>o i<CR><ESC>
+map <Leader>m <ESC>:make<CR>
 "manipulate clipboard
 map <Leader>y "+y
 map <Leader>d "+d
@@ -206,18 +211,18 @@ function! Comment()
   let ext = tolower(expand('%:e'))
   if ext == 'php' || ext == 'rb' || ext == 'sh' || ext == 'py'
     silent s/^/\#/
-  elseif ext == 'js' || ext == 'scala'
+  elseif ext == 'js' || ext == 'scala' || ext == 'sbt'
     silent s:^:\/\/:g
   elseif ext == 'vim'
     silent s:^:\":g
   endif
 endfunction
- 
+
 function! Uncomment()
   let ext = tolower(expand('%:e'))
   if ext == 'php' || ext == 'rb' || ext == 'sh' || ext == 'py'
     silent s/^\#//
-  elseif ext == 'js' || ext == 'scala'
+  elseif ext == 'js' || ext == 'scala' || ext == 'sbt'
     silent s:^\/\/::g
   elseif ext == 'vim'
     silent s:^\"::g
@@ -225,9 +230,12 @@ function! Uncomment()
 endfunction
 
 function! ClearEmptyLines()
+  "Clear whitespace only line:
   silent %s/^\s*$//g
+  "Clear whitespace at the end of lines
+  silent %s/\s*$//g
 endfunction
- 
+
 noremap <A-/> :call Comment()<CR>
 noremap <A-?> :call Uncomment()<CR>
 noremap <A-c> :call ClearEmptyLines()<CR>
@@ -276,7 +284,7 @@ au Bufenter *.{,l}hs map <F6> :!runhaskell "%"<CR>
 "Set complier for haskell files
 au Bufenter *.{,l}hs compiler ghc
 
-"Enable spell-check when opening html files. 
+"Enable spell-check when opening html files.
 au Bufenter *.html  set spell
 
 "Enable spell-check when opening LaTeX files
@@ -284,6 +292,7 @@ au Bufenter *.tex set spell
 
 "Set syntax for scala
 au Bufenter *.scala set ft=scala
+au Bufenter *.sbt set ft=scala
 
 "Map F1 key when opening a LaTeX file to compile all it when pressed.
 "au Bufenter *.tex map <F1> <ESC><c-s>:silent !make<CR>
@@ -313,7 +322,7 @@ map <M-Right> :bnext<CR>
 map <A-J> :bprevious<CR>
 map <A-K> :bnext<CR>
 
-"Ctrl-backspace/delete deletes previous/next word. Can be used faster than db. 
+"Ctrl-backspace/delete deletes previous/next word. Can be used faster than db.
 "TODO find a better way for insert/command mode deletion
 noremap <C-Backspace> db
 noremap! <C-Backspace> <ESC>ldbi
@@ -326,7 +335,7 @@ map <c-a> ggVG
 "Undo in insert mode.
 imap <c-z> <c-o>u
 
-"Let's be reasonable, shall we? 
+"Let's be reasonable, shall we?
 "up-down works when lines are wrapped.
 nmap k gk
 nmap j gj
@@ -362,7 +371,7 @@ cmap wQ wq
 cmap Q q
 
 "paste clipboard into command mode
-cmap ;p <C-r>" 
+cmap ;p <C-r>"
 
 "From http://vimregex.com/ {
 "Tip 2: Easy shortcurts for replacing
