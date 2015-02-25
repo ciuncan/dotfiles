@@ -184,6 +184,7 @@ export PATH=$PATH:$HOME/bin:$DPROJ/scripts/bash
 
 alias apt=aptitude
 alias gvim='gvim -p --remote-tab-silent'
+alias clip='xclip -selection clipboard'
 
 #set vi mode
 #bindkey -v
