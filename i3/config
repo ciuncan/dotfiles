@@ -140,6 +140,7 @@ assign [class="^[gG]it-gui$"] 3:dev
 assign [class="^(?i)gitk$"] 3:dev
 
 assign [class="^[pP]gadmin3$"] 4:db
+assign [class="^(?i)virt-manager$"] 4:db
 #assign [class="^URxvt$" instance="^mail$"] 4
 
 assign [class="(?i)thunderbird"] 5:comm
@@ -188,6 +189,7 @@ for_window [class="^MPlayer$"] border none; fullscreen
 for_window [class="^Vlc$"] border none; fullscreen
 for_window [class="^[gG]it-gui$"] floating enable
 for_window [class="^(?i)gitk$"] floating enable
+for_window [class="^(?i)virt-manager$"] floating enable
 ## for_window [class="(?i)battle.net"] floating enable
 for_window [class="^crx_knipolnnllmklapflnccelgolnpehhp$"] floating enable
 # for_window [instance="^(?i)Hangouts$"] border none; fullscreen;
