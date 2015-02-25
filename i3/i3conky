@@ -25,7 +25,7 @@ TEXT
   {"name": "language", "color": "${exec $HOME/dotfiles/i3/color-xkbmap.sh}", "full_text": \
    "⚑ ${exec $HOME/dotfiles/i3/current-xkbmap.sh }"},  \
   {"name": "volume", "color": "\#808080", "full_text": \
-   "♬ ${exec amixer sget Master | grep Mono: | sed -e 's/[ \t]*Mono: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'}"},  \
+   "${exec $HOME/dotfiles/i3/volume_info.sh}"},  \
   {"name": "battery", "color": "\#808080", \
     "full_text": "ϟ ${battery} ${battery_time}"},  \
   {"name": "time", "color": "\#CFCFCF", "full_text":  \

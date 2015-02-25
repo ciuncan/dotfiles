@@ -37,6 +37,7 @@ Bundle 'cloudhead/shady.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'groenewege/vim-less'
 Bundle 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM'
+Plugin 'ryanss/vim-hackernews'
 
 "following plugins looks nice, but will enable them when I feel I need them:
 "
