@@ -178,7 +178,7 @@ noremap <Leader>w :w<CR>
 noremap <Leader>x :x<CR>
 noremap <Leader>q :Bdelete<CR>
 noremap <Leader>Q :q!<CR>
-noremap <Leader>e :e
+noremap <Leader>e :e 
 noremap <Leader>h :h
 noremap <Leader>so :so %<cr>
 noremap <Leader>v :vs 
@@ -206,6 +206,11 @@ map <Leader>p "+p
 map <Leader>Y "+Y
 map <Leader>D "+D
 map <Leader>P "+P
+
+"Open the definition in a new tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+"Open the definiton in a vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 function! Comment()
   let ext = tolower(expand('%:e'))
