@@ -82,4 +82,8 @@ mkdir -p "$z_loc" && cd "$z_loc"
 git clone https://github.com/rupa/z "$z_loc"
 chmod +x "$z_loc/z.sh"
 
+s_loc=~/.oh-my-zsh/s
+mkdir -p "$s_loc" && cd "$s_loc"
+git clone https://github.com/haosdent/s "$s_loc"
+chmod +x "$s_loc/s.sh"
 
