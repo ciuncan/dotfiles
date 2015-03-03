@@ -23,16 +23,17 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
 Bundle 'vim-scripts/jQuery'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/closetag.vim.git'
 Bundle 'othree/html5.vim.git'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
+" Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 Bundle 'gregsexton/MatchTag'
 Bundle 'mhinz/vim-signify'
 Plugin 'airblade/vim-rooter'
-" 'airblade/vim-gitgutter'
+" Bundle 'airblade/vim-gitgutter'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'cloudhead/shady.vim'
@@ -43,15 +44,12 @@ Plugin 'ryanss/vim-hackernews'
 
 "following plugins looks nice, but will enable them when I feel I need them:
 "
-"Bundle 'majutsushi/tagbar'
 "Bundle 'Shougo/neocomplcache'
 "Bundle 'godlygeek/tabular'
 "Bundle 'jgdavey/vim-blockle'
 "Bundle 'kana/vim-textobj-user'
-"Bundle 'kien/ctrlp.vim'
 "Bundle 'nelstrom/vim-textobj-rubyblock'
 "Bundle 'tpope/vim-haml'
-"Bundle 'tpope/vim-rails'
 "Bundle 'tpope/vim-repeat'
 "Bundle 'tsaleh/vim-matchit'
 "Bundle 'tsaleh/vim-shoulda'
@@ -59,22 +57,19 @@ Plugin 'ryanss/vim-hackernews'
 "Bundle 'vim-ruby/vim-ruby'
 "Bundle 'vim-scripts/Gist.vim'
 "Bundle 'vim-scripts/IndexedSearch'
-"Bundle 'Lokaltog/vim-powerline'
 "Bundle 'sickill/vim-pasta'
 "Bundle 'timcharper/textile.vim'
 "Bundle 'tomtom/tcomment_vim'
 "Bundle 'tpope/vim-cucumber'
 "Bundle 'tpope/vim-endwise'
-"Bundle 'tpope/vim-fugitive'
 call vundle#end()
 
 "Set font Monaco 9
 if has("gui_running")
-  color solarized "vividchalk
   if has("gui_gtk2")
-    set guifont=Inconsolata\ 12 "Meslo\ LG\ S\ Regular
+    set guifont=Inconsolata\ Bold\ 12 "Meslo\ LG\ S\ Regular
   elseif has("gui_win32")
-    set guifont=Inconsolata:h12:cTURKISH "Meslo\ LG\ S\ Regular
+    set guifont=Inconsolata:h12:b:cTURKISH "Meslo\ LG\ S\ Regular
   endif
 else
 endif
@@ -275,7 +270,8 @@ syntax on
 set t_Co=256
 set background=dark
 let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme base16-bespin
+"solarized
 
 "Enable filetype dependent plugins
 filetype plugin on
