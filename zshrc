@@ -134,7 +134,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bira"
+ZSH_THEME="avit"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -161,7 +161,18 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git npm vi-mode syntax-highlighting history-substring-search web-search)
+plugins=(git
+         git-flow
+         gitignore
+         npm
+         vi-mode
+         syntax-highlighting
+         history-substring-search
+         web-search
+         debian
+         scala
+         sbt
+        )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -182,7 +193,6 @@ export LC_IDENTIFICATION=en_US.utf8
 export LC_ALL=
 
 
-export COPY="/media/data/backup/Copy"
 export DROPB="$HOME/Dropbox"
 export DPROJ="$DROPB/Projects"
 
@@ -195,11 +205,8 @@ export DPROJ="$DROPB/Projects"
 #export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 # Customize to your needs...
-# /usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HADOOP_PREFIX/bin:$HIVE_HOME/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$HOME/.cabal/bin
 export PATH=$PATH:$HOME/bin:$DPROJ/scripts/bash
-#:$DART_SDK/bin
 
-alias apt=aptitude
 alias gvim='gvim -p --remote-tab-silent'
 alias clip='xclip -selection clipboard'
 
