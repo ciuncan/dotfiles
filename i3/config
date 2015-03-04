@@ -335,7 +335,7 @@ client.focused_inactive #268bd2 #268bd2 #fdf6e3 #484e50
 client.unfocused        #333333 #93a1a1 #fdf6e3 #292d2e
 
 # Startup
-#exec --no-startup-id pasystray
+exec --no-startup-id compton -bc
 exec --no-startup-id firefox #google-chrome
 exec --no-startup-id thunderbird
 exec --no-startup-id pidgin
