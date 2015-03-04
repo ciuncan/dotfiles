@@ -63,10 +63,9 @@ Plugin 'ryanss/vim-hackernews'
 "Bundle 'tpope/vim-endwise'
 call vundle#end()
 
-"Set font Monaco 9
 if has("gui_running")
   if has("gui_gtk2")
-    set guifont=Inconsolata\ Bold\ 11 "Meslo\ LG\ S\ Regular
+    set guifont=Fantasque\ Sans\ Mono\ Bold\ 11
   elseif has("gui_win32")
     set guifont=Inconsolata:h11:b:cTURKISH "Meslo\ LG\ S\ Regular
   endif
