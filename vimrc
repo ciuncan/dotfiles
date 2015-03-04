@@ -22,7 +22,6 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-vividchalk'
-Bundle 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
 Bundle 'vim-scripts/jQuery'
 Bundle 'scrooloose/nerdtree'
@@ -67,9 +66,9 @@ call vundle#end()
 "Set font Monaco 9
 if has("gui_running")
   if has("gui_gtk2")
-    set guifont=Inconsolata\ Bold\ 12 "Meslo\ LG\ S\ Regular
+    set guifont=Inconsolata\ Bold\ 11 "Meslo\ LG\ S\ Regular
   elseif has("gui_win32")
-    set guifont=Inconsolata:h12:b:cTURKISH "Meslo\ LG\ S\ Regular
+    set guifont=Inconsolata:h11:b:cTURKISH "Meslo\ LG\ S\ Regular
   endif
 else
 endif
