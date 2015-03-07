@@ -326,6 +326,13 @@ map <M-Right> :bnext<CR>
 map <A-J> :bprevious<CR>
 map <A-K> :bnext<CR>
 
+"Window navigtion
+map <c-h> <c-w><Left>
+map <c-l> <c-w><Right>
+map <c-j> <c-w><Down>
+map <c-k> <c-w><Up>
+
+
 "Ctrl-backspace/delete deletes previous/next word. Can be used faster than db.
 "TODO find a better way for insert/command mode deletion
 noremap <C-Backspace> db
@@ -346,8 +353,8 @@ nmap j gj
 "same behaviour in visual mode too, but when in linewise visual use normal line
 "movement (according to line numbers)
 "TODO when a number is specified for movement, use normal jk
-vmap <expr> j mode()==#"V" ? "j" : "gj"
-vmap <expr> k mode()==#"V" ? "k" : "gk"
+" vmap <expr> j mode()==#"V" ? "j" : "gj"
+" vmap <expr> k mode()==#"V" ? "k" : "gk"
 "Navigation in insert mode.
 imap <c-j> <esc>ja
 imap <c-k> <esc>ka
