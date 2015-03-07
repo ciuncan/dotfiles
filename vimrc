@@ -85,6 +85,8 @@ set nocompatible
 set wildmode=longest,list,full
 "ignore case while matching filenames
 set wildignorecase
+"ignore temp files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 "Set tab width to 2
 set tabstop=2
@@ -161,6 +163,9 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
+
+"CtrlP settings
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 "leader key is comma
 let mapleader = ","
