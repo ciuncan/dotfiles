@@ -175,6 +175,7 @@ noremap <Leader>W :w !sudo tee % > /dev/null
 noremap <Leader>w :w<CR>
 noremap <Leader>x :x<CR>
 noremap <Leader>q :Bdelete<CR>
+noremap <Leader>c <c-w><c-c>
 noremap <Leader>Q :q!<CR>
 noremap <Leader>e :e 
 noremap <Leader>h :h
