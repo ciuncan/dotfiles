@@ -13,6 +13,7 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'vim-scripts/matlab.vim'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'mpollmeier/vim-scalaConceal'
+Bundle 'leafgarland/typescript-vim'
 Bundle 'regedarek/ZoomWin'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'majutsushi/tagbar'
@@ -28,11 +29,9 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/closetag.vim.git'
 Bundle 'othree/html5.vim.git'
-" Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 Bundle 'gregsexton/MatchTag'
 Bundle 'mhinz/vim-signify'
 Plugin 'airblade/vim-rooter'
-" Bundle 'airblade/vim-gitgutter'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'cloudhead/shady.vim'
@@ -40,9 +39,12 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'groenewege/vim-less'
 Bundle 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM'
 Plugin 'ryanss/vim-hackernews'
-
+Bundle 'clausreinke/typescript-tools.vim', {'rtp': 'vim'}
+"
 "following plugins looks nice, but will enable them when I feel I need them:
 "
+" Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
+" Bundle 'airblade/vim-gitgutter'
 "Bundle 'Shougo/neocomplcache'
 "Bundle 'godlygeek/tabular'
 "Bundle 'jgdavey/vim-blockle'
@@ -206,6 +208,9 @@ map <Leader>Y "+Y
 map <Leader>D "+D
 map <Leader>P "+P
 
+"Open file using xdg-open
+map <C-o> <ESC><ESC>:!xdg-open "%"<CR>
+
 "Open the definition in a new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 "Open the definiton in a vertical split
@@ -298,6 +303,9 @@ au Bufenter *.tex set spell
 "Set syntax for scala
 au Bufenter *.scala set ft=scala
 au Bufenter *.sbt set ft=scala
+
+"Set syntax for typescript
+au BufRead,BufNewFile *.ts setlocal filetype=typescript
 
 "Map F1 key when opening a LaTeX file to compile all it when pressed.
 "au Bufenter *.tex map <F1> <ESC><c-s>:silent !make<CR>
