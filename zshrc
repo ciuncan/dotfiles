@@ -225,6 +225,19 @@ function mkc () {
     mkdir -p "$@" && cd "$@"
 }
 
+function ssh-fingerprints () {
+  keys=$1
+  if [ -f $keys ]; then
+    keys=`cat $keys`
+  fi
+  while read -r line; do                                                                              23:00:06 
+    file=`mktemp`
+    echo $line >| $file
+    ssh-keygen -lf $file
+    rm $file
+  done <<< "$keys"
+}
+
 
 # function Extract for common file formats
 # see: https://github.com/xvoland/Extract
