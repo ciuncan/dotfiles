@@ -197,16 +197,17 @@ export LC_ALL=
 export DROPB="$HOME/Dropbox"
 export DPROJ="$DROPB/Projects"
 
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export SPARK_HOME=$HOME/Apps/dev/spark-1.3.0-bin-hadoop2.4
 #export DART_SDK="$HOME/Apps/dev/dart/dart-sdk"
 #export SBT_HOME=$HOME/Apps/sbt
 #export SCALA_HOME=$HOME/Apps/scala-2.9.2
 #export SCALDING_HOME=$HOME/Apps/scalding
 #export HADOOP_PREFIX=$HOME/Apps/hadoop
 #export HIVE_HOME=$HOME/apps/hive
-#export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 # Customize to your needs...
-export PATH=$PATH:$HOME/bin:$DPROJ/scripts/bash
+export PATH=$PATH:$HOME/bin:$DPROJ/scripts/bash:$SPARK_HOME/bin
 
 alias gvim='gvim -p --remote-tab-silent'
 alias clip='xclip -selection clipboard'
