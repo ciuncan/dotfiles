@@ -236,11 +236,11 @@ bindsym $mod+Control+Shift+x exit
 
 mode  "(s)leep (h)ybernate (p)owersave (r)estart shut(d)own" {
 
-    bindsym s exec sudo pm-suspend; mode "default"
-    bindsym h exec sudo pm-hibernate; mode "default"
+    bindsym s exec dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend; mode "default"
+    bindsym h exec dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate; mode "default"
     bindsym p exec sudo pm-powersave; mode "default"
-    bindsym d exec sudo 'shutdown -h now'; mode "default"
-    bindsym r exec sudo 'shutdown -r now'; mode "default"
+    bindsym d exec dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop; mode "default"
+    bindsym r exec dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
