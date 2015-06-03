@@ -279,6 +279,18 @@ function rand-word {
   shuf -n $count /usr/share/dict/words
 }
 
+function fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
+
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(~/.oh-my-zsh/zsh-completions/src $fpath)
 rm -f ~/.zcompdump; compinit
