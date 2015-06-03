@@ -210,6 +210,15 @@ map <Leader>Y "+Y
 map <Leader>D "+D
 map <Leader>P "+P
 
+"Automatically jump to end of text you pasted:
+"I can paste multiple lines multiple times with simple ppppp.
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+"Quickly select text you just pasted:
+noremap gV `[v`]
+
 "in visual mode, use v to expand selection, ctrl+v to shrink selection.
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
