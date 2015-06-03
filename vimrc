@@ -170,8 +170,9 @@ set foldlevel=2
 "CtrlP settings
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
-"leader key is comma
-let mapleader = ","
+"leader key is space
+"let mapleader = ","
+let mapleader = "\<Space>"
 
 "Save a file as root (,W)
 noremap <Leader>W :w !sudo tee % > /dev/null
