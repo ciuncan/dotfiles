@@ -41,6 +41,11 @@ Bundle 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM'
 Plugin 'ryanss/vim-hackernews'
 Bundle 'clausreinke/typescript-tools.vim', {'rtp': 'vim'}
 Plugin 'terryma/vim-expand-region'
+Plugin 'vim-scripts/gitignore'
+Plugin 'tpope/vim-endwise.git'
+Bundle 'tpope/vim-repeat'
+
+
 "
 "following plugins looks nice, but will enable them when I feel I need them:
 "
@@ -52,7 +57,6 @@ Plugin 'terryma/vim-expand-region'
 "Bundle 'kana/vim-textobj-user'
 "Bundle 'nelstrom/vim-textobj-rubyblock'
 "Bundle 'tpope/vim-haml'
-"Bundle 'tpope/vim-repeat'
 "Bundle 'tsaleh/vim-matchit'
 "Bundle 'tsaleh/vim-shoulda'
 "Bundle 'tsaleh/vim-tmux'
@@ -63,7 +67,6 @@ Plugin 'terryma/vim-expand-region'
 "Bundle 'timcharper/textile.vim'
 "Bundle 'tomtom/tcomment_vim'
 "Bundle 'tpope/vim-cucumber'
-"Bundle 'tpope/vim-endwise'
 call vundle#end()
 
 if has("gui_running")
@@ -169,6 +172,18 @@ set foldlevel=2
 
 "CtrlP settings
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"Make Ctrl-P plugin a lot faster for Git projects
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+  let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+    \ }
+endif
 
 "leader key is space
 "let mapleader = ","
@@ -181,13 +196,13 @@ noremap <Leader>x :x<CR>
 noremap <Leader>q :Bdelete<CR>
 noremap <Leader>c <c-w><c-c>
 noremap <Leader>Q :q!<CR>
-noremap <Leader>e :e 
+noremap <Leader>e :e
 noremap <Leader>h :h
 noremap <Leader>so :so %<cr>
-noremap <Leader>v :vs 
+noremap <Leader>v :vs
 "noremap <Leader>t :set ignorecase!<CR>
 noremap <Leader>t :TagbarToggle<CR>
-noremap <Leader>s :split 
+noremap <Leader>s :split
 noremap <Leader>n :NERDTreeToggle<CR>
 noremap <Leader>r :NERDTreeFind<CR>
 noremap <Leader>ff :silent !firefox %<CR>
@@ -222,7 +237,7 @@ noremap gV `[v`]
 "Stop that stupid window from popping up:
 map q: :q
 
-"Enter visual line mode 
+"Enter visual line mode
 nmap <Leader><Leader> V
 
 "in visual mode, use v to expand selection, ctrl+v to shrink selection.
@@ -499,4 +514,3 @@ while c <= 'z'
 endw
 
 set timeout ttimeoutlen=50
-
