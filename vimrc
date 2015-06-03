@@ -219,6 +219,12 @@ nnoremap <silent> p p`]
 "Quickly select text you just pasted:
 noremap gV `[v`]
 
+"Stop that stupid window from popping up:
+map q: :q
+
+"Enter visual line mode 
+nmap <Leader><Leader> V
+
 "in visual mode, use v to expand selection, ctrl+v to shrink selection.
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -403,7 +409,7 @@ cmap <c-k> <Up>
 cmap W w
 cmap WQ wq
 cmap wQ wq
-cmap Q q
+"cmap Q q
 
 "paste clipboard into command mode
 cmap ;p <C-r>"
