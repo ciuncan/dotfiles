@@ -363,6 +363,12 @@ map <c-j> <c-w><Down>
 map <c-k> <c-w><Up>
 
 
+"Type 12<Enter> to go to line 12
+"Hit Enter to go to end of file.
+"Hit Backspace to go to beginning of file.
+nnoremap <CR> G
+nnoremap <BS> gg
+
 "Ctrl-backspace/delete deletes previous/next word. Can be used faster than db.
 "TODO find a better way for insert/command mode deletion
 noremap <C-Backspace> db
