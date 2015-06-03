@@ -40,6 +40,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM'
 Plugin 'ryanss/vim-hackernews'
 Bundle 'clausreinke/typescript-tools.vim', {'rtp': 'vim'}
+Plugin 'terryma/vim-expand-region'
 "
 "following plugins looks nice, but will enable them when I feel I need them:
 "
@@ -207,6 +208,10 @@ map <Leader>p "+p
 map <Leader>Y "+Y
 map <Leader>D "+D
 map <Leader>P "+P
+
+"in visual mode, use v to expand selection, ctrl+v to shrink selection.
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 "Open file using xdg-open
 map <C-o> <ESC><ESC>:!xdg-open "%"<CR>
