@@ -198,7 +198,8 @@ export DROPB="$HOME/Dropbox"
 export DPROJ="$DROPB/Projects"
 
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-export SPARK_HOME=$HOME/Apps/dev/spark-1.3.0-bin-hadoop2.4
+export SPARK_HOME=$HOME/Apps/dev/spark
+export MAVEN_OPTS='-Xmx3g -XX:MaxPermSize=1g -XX:ReservedCodeCacheSize=1g'
 #export DART_SDK="$HOME/Apps/dev/dart/dart-sdk"
 #export SBT_HOME=$HOME/Apps/sbt
 #export SCALA_HOME=$HOME/Apps/scala-2.9.2
