@@ -81,12 +81,6 @@ zstyle ':completion:*' expand prefix suffix
 ## another different completer setting: expand shell aliases
 zstyle ':completion:*' completer _expand_alias _complete _approximate
 
-## to have more convenient account completion, specify your logins:
-my_accounts=(
- ceyhuncanu@gmail.com
- ceyhuncan.ulker@stu.bahcesehir.edu.tr
- can.ulker@bahcesehir.edu.tr
-)
 #other_accounts=(
 # {fred,root}@foo.invalid
 # vera@bar.invalid
@@ -166,11 +160,13 @@ plugins=(git
          git-flow
          gitignore
          npm
+         docker
          vi-mode
          syntax-highlighting
          history-substring-search
          web-search
          debian
+         golang
          scala
          sbt
         )
@@ -197,6 +193,8 @@ export LC_ALL=
 export DROPB="$HOME/Dropbox"
 export DPROJ="$DROPB/Projects"
 
+export GOROOT=$HOME/Apps/dev/go/root
+export GOPATH=$HOME/Apps/dev/go/path
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export SPARK_HOME=$HOME/Apps/dev/spark
 export MAVEN_OPTS='-Xmx3g -XX:MaxPermSize=1g -XX:ReservedCodeCacheSize=1g'
@@ -208,7 +206,10 @@ export MAVEN_OPTS='-Xmx3g -XX:MaxPermSize=1g -XX:ReservedCodeCacheSize=1g'
 #export HIVE_HOME=$HOME/apps/hive
 
 # Customize to your needs...
-export PATH=$PATH:$HOME/bin:$DPROJ/scripts/bash:$SPARK_HOME/bin
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$DPROJ/scripts/bash
+export PATH=$PATH:$SPARK_HOME/bin
 
 alias gvim='gvim -p --remote-tab-silent'
 alias clip='xclip -selection clipboard'
@@ -231,7 +232,7 @@ function ssh-fingerprints () {
   if [ -f $keys ]; then
     keys=`cat $keys`
   fi
-  while read -r line; do                                                                              23:00:06 
+  while read -r line; do                                                                              23:00:06
     file=`mktemp`
     echo $line >| $file
     ssh-keygen -lf $file
