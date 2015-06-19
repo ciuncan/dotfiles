@@ -210,6 +210,7 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:$DPROJ/scripts/bash
 export PATH=$PATH:$SPARK_HOME/bin
+export PATH=$PATH:$HOME/Apps/dev/FlameGraph
 
 alias gvim='gvim -p --remote-tab-silent'
 alias clip='xclip -selection clipboard'
