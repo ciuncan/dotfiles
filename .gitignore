@@ -1,3 +1,5 @@
 config/fish/generated_completions/
+vim/bundle/
+oh-my-zsh/
 *.swp
 *~
