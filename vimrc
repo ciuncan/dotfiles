@@ -41,6 +41,7 @@ Plugin 'vim-scripts/gitignore'
 Plugin 'tpope/vim-endwise.git'
 Bundle 'tpope/vim-repeat'
 Plugin 'fatih/vim-go'
+Plugin 'Shougo/neocomplete.vim'
 
 
 "
@@ -237,6 +238,9 @@ map q: :q
 ""Enter visual line mode
 "nmap <Leader><Leader> V
 
+"neocomplete configuration
+let g:neocomplete#enable_at_startup = 1
+
 "Easymotion configuration
 
 " Bi-directional find motion
@@ -361,7 +365,7 @@ au BufRead,BufNewFile *.ts setlocal filetype=typescript
 "<leader>c.
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
+"au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
 "By default the mapping gd is enabled which opens the target identifier in 
@@ -389,6 +393,35 @@ au FileType go nmap <Leader>i <Plug>(go-info)
 
 "Rename the identifier under the cursor to a new name
 au FileType go nmap <Leader>e <Plug>(go-rename)
+
+"Go tagbar configuration
+let g:tagbar_type_go = {  
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 "More <Plug> mappings can be seen with :he go-mappings. Also these are just 
 "recommendations, you are free to create more advanced mappings or 
