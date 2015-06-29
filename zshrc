@@ -159,6 +159,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git
          gitignore
          npm
+         aws
          docker
          vi-mode
          syntax-highlighting
