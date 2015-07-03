@@ -5,7 +5,8 @@
 	default = simple
 [diff]
   tool = gvimdiff
- #tool = meld
+[merge]
+  tool = meld
 [difftool]
   prompt = false
 [url "git@github.com:"]
