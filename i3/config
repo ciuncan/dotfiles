@@ -15,7 +15,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Audimat Mono 10
+font pango:M+ 1m medium 10
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -318,13 +318,14 @@ bindsym $mod+g mode "go_to_window"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+    position top
     #tray_output primary
     #status_command ~/.i3/status_command.sh #i3status
     status_command ~/.i3/conky-i3bar-wrapper.sh
     colors {
         # solarized
-        background #073642
-        statusline #eee8d5
+        background #232323
+        statusline #DCDCDC
         focused_workspace   #cb4b16 #cb4b16 #eee8d5
         active_workspace    #cb4b16 #cb4b16 #eee8d5
         inactive_workspace  #b58900 #b58900 #eee8d5
@@ -333,9 +334,10 @@ bar {
 
 
 # class                 border  backgr. text    indicator
-client.focused          #859900 #859900 #fdf6e3 #2e9ef4
-client.focused_inactive #268bd2 #268bd2 #fdf6e3 #484e50
-client.unfocused        #333333 #93a1a1 #fdf6e3 #292d2e
+client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
+client.focused_inactive #333333 #5F676A #ffffff #484e50
+client.unfocused        #333333 #424242 #888888 #292d2e
+client.urgent           #C10004 #900000 #ffffff #900000
 
 # Startup
 exec --no-startup-id compton -bc -i 0.8 -e 0.6 -m 0.8
