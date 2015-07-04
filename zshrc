@@ -159,8 +159,11 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git
          gitignore
          npm
+         mvn
          aws
          docker
+         docker-compose-zsh-completion
+         vagrant
          vi-mode
          syntax-highlighting
          history-substring-search
@@ -169,6 +172,7 @@ plugins=(git
          golang
          scala
          sbt
+         z
         )
 
 source $ZSH/oh-my-zsh.sh

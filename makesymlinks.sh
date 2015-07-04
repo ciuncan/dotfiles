@@ -10,7 +10,7 @@ dir=$HOME/dotfiles                    # dotfiles directory
 
 olddir=$HOME/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc i3 ctags gitconfig psqlrc vimperatorrc vimrc ideavimrc vim zshrc oh-my-zsh private Xresources gtkrc-2.0 i3status.conf config/gtk-3.0/settings.ini " # oh-my-fish config/fish config/dunst/dunstrc
+files="bashrc i3 ctags gitconfig psqlrc vimperatorrc vimrc ideavimrc vim zsh zshrc oh-my-zsh private Xresources gtkrc-2.0 i3status.conf config/gtk-3.0/settings.ini " # oh-my-fish config/fish config/dunst/dunstrc
 ##########
 
 #mkdir -p $HOME/.config/dunst
@@ -77,13 +77,14 @@ cd ~/.oh-my-zsh && git clone git://github.com/zsh-users/zsh-syntax-highlighting.
 git clone git://github.com/zsh-users/zsh-completions.git
 
 
-z_loc=~/.oh-my-zsh/z
-mkdir -p "$z_loc" && cd "$z_loc"
-git clone https://github.com/rupa/z "$z_loc"
-chmod +x "$z_loc/z.sh"
-
 s_loc=~/.oh-my-zsh/s
 mkdir -p "$s_loc" && cd "$s_loc"
 git clone https://github.com/haosdent/s "$s_loc"
 chmod +x "$s_loc/s.sh"
 
+mkdir -p ~/.zsh/completion
+curl -L
+https://raw.githubusercontent.com/sdurrheimer/docker-compose-zsh-completion/master/_docker-compose >| ~/.zsh/completion/_docker-compose
+
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
