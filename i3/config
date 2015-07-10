@@ -211,7 +211,7 @@ bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_
 
 # Multimedia bindings
 bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume 1 +5%
-bindsym XF86AudioLowerVolume  exec pactl set-sink-volume 1 -- -5%
+bindsym XF86AudioLowerVolume  exec pactl set-sink-volume 1 -5%
 bindsym XF86MonBrightnessUp   exec xbacklight +5%
 bindsym XF86MonBrightnessDown exec xbacklight -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle

@@ -6,6 +6,6 @@ else
   icon="🔊"
 fi
 
-volume_level=$(pactl list sinks | grep "Volume: 0:"| awk '{print $3}' | tail -1 -)
+volume_level=$( pactl list sinks | grep "Volume:" | awk '{print $5}' | head -3 | tail -1 )
 
 echo "$icon $volume_level"
