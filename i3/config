@@ -148,6 +148,7 @@ assign [class="^(?i)virt-manager$"] 4:db
 
 assign [class="(?i)thunderbird"] 5:comm
 assign [class="(?i)pidgin"] 5:comm
+assign [class="(?i)skype"] 5:comm
 assign [class="(?i)google-chrome" window_role="app"] 5:comm
 #assign [class="^crx_knipolnnllmklapflnccelgolnpehhpl$"] 5:comm 
 assign [instance="^(?i)Hangouts$"] 5:comm
