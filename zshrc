@@ -237,12 +237,17 @@ function ssh-fingerprints () {
   if [ -f $keys ]; then
     keys=`cat $keys`
   fi
-  while read -r line; do                                                                              23:00:06
+  while read -r line; do
     file=`mktemp`
     echo $line >| $file
     ssh-keygen -lf $file
     rm $file
   done <<< "$keys"
+}
+
+# see: https://gist.github.com/earthgecko/3089509
+function random-string() {
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1
 }
 
 
