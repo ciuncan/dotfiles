@@ -224,6 +224,7 @@ alias clip='xclip -selection clipboard'
 alias top="htop"
 alias du="ncdu"
 alias df="pydf"
+alias lsf="less +F"
 
 #set vi mode
 #bindkey -v
