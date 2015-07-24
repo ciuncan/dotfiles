@@ -197,24 +197,27 @@ export LC_ALL=
 export DROPB="$HOME/Dropbox"
 export DPROJ="$DROPB/Projects"
 
-export GOROOT=$HOME/Apps/dev/go/root
-export GOPATH=$HOME/Apps/dev/go/path
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-export SPARK_HOME=$HOME/Apps/dev/spark
+
+dev_folder=$HOME/Apps/dev
+export GOROOT=$dev_folder/go/root
+export GOPATH=$dev_folder/go/path
+export SPARK_HOME=$dev_folder/spark
+
 export MAVEN_OPTS='-Xmx3g -XX:MaxPermSize=1g -XX:ReservedCodeCacheSize=1g'
-#export DART_SDK="$HOME/Apps/dev/dart/dart-sdk"
-#export SBT_HOME=$HOME/Apps/sbt
-#export SCALA_HOME=$HOME/Apps/scala-2.9.2
-#export SCALDING_HOME=$HOME/Apps/scalding
-#export HADOOP_PREFIX=$HOME/Apps/hadoop
-#export HIVE_HOME=$HOME/apps/hive
+#export DART_SDK="$dev_folder/dart/dart-sdk"
+#export SBT_HOME=$dev_folder/sbt
+#export SCALA_HOME=$dev_folder/scala-2.9.2
+#export SCALDING_HOME=dev_folder/scalding
+#export HADOOP_PREFIX=$dev_folder/hadoop
+#export HIVE_HOME=$dev_folder/hive
 
 # Customize to your needs...
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:$DPROJ/scripts/bash
 export PATH=$PATH:$SPARK_HOME/bin
-export PATH=$PATH:$HOME/Apps/dev/FlameGraph
+export PATH=$PATH:$dev_folder/FlameGraph
 
 alias gvim='gvim -p --remote-tab-silent'
 alias clip='xclip -selection clipboard'
