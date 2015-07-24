@@ -147,6 +147,7 @@ assign [class="^(?i)virt-manager$"] 4:db
 #assign [class="^URxvt$" instance="^mail$"] 4
 
 assign [class="(?i)thunderbird"] 5:comm
+assign [class="(?i)telegram"] 5:comm
 assign [class="(?i)pidgin"] 5:comm
 assign [class="(?i)skype"] 5:comm
 assign [class="(?i)google-chrome" window_role="app"] 5:comm
@@ -345,6 +346,7 @@ exec --no-startup-id compton -bc -e 0.6 -m 0.8
 exec --no-startup-id firefox #google-chrome
 exec --no-startup-id thunderbird
 exec --no-startup-id pidgin
+exec --no-startup-id telegram
 exec --no-startup-id i3-msg 'workspace 2:term; exec gnome-terminal; exec nautilus; workspace 1:web'
 #exec --no-startup-id transmission-gtk
 #exec --no-startup-id deluge
