@@ -11,7 +11,7 @@ if_up_strictness address
 TEXT
 ,[{"name": "uptime", "icon":"~/.i3/xbmicons/mail.xbm", "color": "\#808080", "full_text": "⇅ up ${uptime_short}"},\
   {"name": "cpu", "color": "\#808080", "full_text": \
-   "⌘ cpu[${cpu cpu1}%,${cpu cpu2}%,${cpu cpu3}%,${cpu cpu4}%]"},  \
+   "⌘ cpu[${cpu cpu1}%,${cpu cpu2}%,${cpu cpu3}%,${cpu cpu4}%] ${execi 5 sensors | head -n 3 | tail -1 | tr -s ' ' | cut -d ' ' -f 2}"},  \
   {"name": "memory", "color": "\#808080", "full_text": "⇆ mem${memperc}% ${mem}"},  \
   {"name": "disk", "color": "\#808080", "full_text": "⽊${fs_used_perc /}% ${fs_free /} ⌂${fs_used_perc /home}% ${fs_free /home}"},  \
   ${if_up eth0} \
