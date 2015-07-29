@@ -224,7 +224,7 @@ bindsym XF86AudioNext exec ncmpcpp next
 
 bindsym XF86HomePage exec nautilus
 
-bindsym Print exec gnome-screenshot -w
+bindsym Print exec gnome-screenshot -i -a
 
 # lock screen, black background
 bindsym $mod+Control+l exec "i3lock -c 000000 -d -n"
