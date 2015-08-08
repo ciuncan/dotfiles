@@ -138,6 +138,7 @@ assign [class="(?i)firefox"] 1:web
 assign [class="(?f)ilezilla"] 2:term
 
 assign [class="(?i)jetbrains"] 3:dev
+assign [class="(?i)atom"] 3:dev
 assign [class="^[gG]vim$"] 3:dev
 assign [class="^[gG]it-gui$"] 3:dev
 assign [class="^(?i)gitk$"] 3:dev
