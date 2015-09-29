@@ -83,8 +83,11 @@ git clone https://github.com/haosdent/s "$s_loc"
 chmod +x "$s_loc/s.sh"
 
 mkdir -p ~/.zsh/completion
-curl -L
-https://raw.githubusercontent.com/sdurrheimer/docker-compose-zsh-completion/master/_docker-compose >| ~/.zsh/completion/_docker-compose
+curl -L https://raw.githubusercontent.com/sdurrheimer/docker-compose-zsh-completion/master/_docker-compose >| ~/.zsh/completion/_docker-compose
+
+mkdir -p ~/bin
+mkdir ~/.ammonite; curl -L -o ~/.ammonite/predef.scala http://git.io/vnnBy
+curl -L -o ~/bin/amm http://git.io/vnnBX; chmod +x ~/bin/amm
 
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
