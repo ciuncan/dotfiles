@@ -2,7 +2,7 @@
 \set HISTFILE ~/.psql_history- :HOST - :DBNAME
 \set HISTSIZE 2000
 \set COMP_KEYWORD_CASE upper
-\x
+\x auto
 \pset linestyle unicode
 \pset border 2
 \pset null '[NULL]'
