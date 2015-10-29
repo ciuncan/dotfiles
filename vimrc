@@ -42,6 +42,7 @@ Plugin 'tpope/vim-endwise.git'
 Bundle 'tpope/vim-repeat'
 Plugin 'fatih/vim-go'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'exu/pgsql.vim'
 
 
 "
