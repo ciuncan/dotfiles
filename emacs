@@ -10,20 +10,26 @@
 
 (when (not package-archive-contents)
   (package-refresh-contents))
+(defvar my-packages
+  '(projectile
+    evil
+    slime
+    paredit
+    evil-paredit
+    cider
+    cider-eval-sexp-fu
+    clojure-mode
+    clojure-mode-extra-font-locking
+    rainbow-delimiters
+    ace-jump-mode
+    auto-complete
+    ido-ubiquitous
+    ppd-sr-speedbar
+    ac-cider
+    ac-slime
+    white-sand-theme))
 
-(dolist (pack '(projectile
-		evil
-		slime
-		paredit
-		evil-paredit
-		cider
-		cider-eval-sexp-fu
-		ace-jump-mode
-		auto-complete
-		ppd-sr-speedbar
-		ac-cider
-		ac-slime
-		white-sand-theme))
+(dolist (pack my-packages)
   (unless (package-installed-p pack)
     (package-install pack)))
 
@@ -37,9 +43,41 @@
 (load-theme 'white-sand t)
 
 ; editing
+;; Key binding to use "hippie expand" for text autocompletion
+;; http://www.emacswiki.org/emacs/HippieExpand
+(global-set-key (kbd "M-/") 'hippie-expand)
+;; Lisp-friendly hippie expand
+(setq hippie-expand-try-functions-list
+      '(try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+        try-complete-lisp-symbol-partially
+        try-complete-lisp-symbol))
+;; Highlights matching parenthesis
 (show-paren-mode 1)
+;; Highlight current line
+(global-hl-line-mode 1)
 (setq show-paren-delay 0)
 (electric-pair-mode t)
+;; Changes all yes/no questions to y/n type
+(fset 'yes-or-no-p 'y-or-n-p)
+;; No need for ~ files when editing
+(setq create-lockfiles nil)
+;; Go straight to scratch buffer on startup
+(setq inhibit-startup-message t)
+;; Turn off the menu bar at the top of each frame because it's distracting
+(menu-bar-mode -1)
+;; Show line numbers
+(global-linum-mode)
+;; Don't show native OS scroll bars for buffers because they're redundant
+(when (fboundp 'scroll-bar-mode)
+  (scroll-bar-mode -1))
+;; comments
+(defun toggle-comment-on-line ()
+  "comment or uncomment current line"
+  (interactive)
+  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+(global-set-key (kbd "C-;") 'toggle-comment-on-line)
 
 (global-set-key [f1] 'apropos-command)
 (global-set-key [S-f1] 'describe-key)
@@ -61,6 +99,9 @@
 ;; switch to current buffer's ns    => C-c M-n
 ;; run tests                        => C-c ,
 
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
 (require 'projectile)
 (projectile-global-mode)
 
@@ -69,9 +110,12 @@
 (global-set-key [f4] 'helm-mini)
 
 (require 'ido)
+(require 'ido-ubiquitous)
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)
+(setq ido-use-virtual-buffers t)
+(ido-ubiquitous-mode 1)
 
 (require 'magit)
 (global-set-key [f5] 'magit-status)
@@ -104,6 +148,9 @@
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 (add-hook 'clojure-mode-hook          #'enable-paredit-mode)
 (add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+(add-hook 'lisp-interaction-mode-hook 'eldoc-mode)
+(add-hook 'ielm-mode-hook 'eldoc-mode)
 (slime-setup)
 ; Scala
 ;; (require 'ensime)
@@ -126,6 +173,7 @@
 ; (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
 (add-hook 'cider-mode-hook 'ac-cider-setup)
 (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
 (eval-after-load "auto-complete"
   '(progn
      (add-to-list 'ac-modes 'cider-mode)
@@ -134,11 +182,26 @@
 ;; (evil-make-override-map cider-mode-map 'normal)
 (require 'clojure-mode)
 (require 'cider-mode)
+(require 'clojure-mode-extra-font-locking)
 (add-hook 'clojure-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'clojure-mode-hook 'subword-mode)
+;; Use clojure mode for other extensions
+(add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
 (eval-after-load "cider-mode"
   '(progn
-    (define-key evil-normal-state-map (kbd "M-.") 'cider-find-var)
-    (define-key evil-normal-state-map (kbd "M-,") 'cider-pop-back)))
+     (define-key evil-normal-state-map (kbd "M-.")   'cider-find-var)
+     (define-key evil-normal-state-map (kbd "M-,")   'cider-pop-back)
+     (define-key clojure-mode-map      (kbd "C-M-r") 'cider-refresh)
+     (define-key clojure-mode-map      (kbd "C-c u") 'cider-user-ns)
+     (define-key cider-mode-map        (kbd "C-c u") 'cider-user-ns)))
+(defun cider-refresh ()
+  (interactive)
+  (cider-interactive-eval (format "(user/reset)")))
+(defun cider-user-ns ()
+  (interactive)
+  (cider-repl-set-ns "user"))
 
 ; ClojureScript
 (defun cider-figwheel-repl ()
