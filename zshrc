@@ -225,6 +225,8 @@ alias top="htop"
 alias du="ncdu"
 alias df="pydf"
 alias lsf="less +F --follow-name"
+alias sbcl="rlwrap sbcl"
+alias lein="rlwrap lein"
 
 #set vi mode
 #bindkey -v
