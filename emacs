@@ -1,5 +1,7 @@
-; advices from:
+; compiled/inspired/stolen from:
 ; https://github.com/svaiter/emacs.d/blob/master/my-emacs.org
+; http://juanjoalvarez.net/es/detail/2014/sep/19/vim-emacsevil-chaotic-migration-guide/
+; https://github.com/aaronbieber/dotfiles/blob/master/configs/emacs.d/lisp/init-evil.el
 (require 'package)
 (add-to-list 'package-archives
              '("melpa"     . "https://melpa.org/packages/"))
@@ -13,6 +15,10 @@
 (defvar my-packages
   '(projectile
     evil
+    evil-leader
+    relative-line-numbers
+    powerline
+    powerline-evil
     slime
     paredit
     evil-paredit
@@ -23,6 +29,8 @@
     rainbow-delimiters
     ace-jump-mode
     auto-complete
+    helm
+    helm-projectile
     ido-ubiquitous
     ppd-sr-speedbar
     ac-cider
@@ -39,6 +47,9 @@
   (set-face-font 'fixed-pitch "Iosevka-12"))
 
 (setq visible-bell 1)
+(setq scroll-margin 5
+      scroll-conservatively 9999
+      scroll-step 1)
 
 (load-theme 'white-sand t)
 
@@ -107,7 +118,8 @@
 
 (require 'helm)
 (helm-mode)
-(global-set-key [f4] 'helm-mini)
+(global-set-key [f4]        'helm-mini)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 (require 'ido)
 (require 'ido-ubiquitous)
@@ -123,6 +135,51 @@
 ;;(push "~/.emacs.d/evil" 'load-path)
 (require 'evil)
 (evil-mode 1)
+(setq evil-move-cursor-back nil)
+(require 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
+(evil-leader/set-key
+  "e" 'eval-last-sexp
+  "w" 'save-buffer
+  "k" 'kill-buffer
+  "f" 'find-file
+  "x" 'helm-M-x)
+(setq evil-emacs-state-cursor    '("red" box))
+(setq evil-normal-state-cursor   '("green" box))
+(setq evil-visual-state-cursor   '("orange" box))
+(setq evil-insert-state-cursor   '("red" bar))
+(setq evil-replace-state-cursor  '("red" bar))
+(setq evil-operator-state-cursor '("red" hollow))
+(require 'relative-line-numbers)
+(add-hook 'prog-mode-hook 'relative-line-numbers-mode t)
+(add-hook 'prog-mode-hook 'line-number-mode t)
+(add-hook 'prog-mode-hook 'column-number-mode t)
+
+(defun minibuffer-keyboard-quit ()
+  "Abort recursive edit.
+In Delete Selection mode, if the mark is active, just deactivate it;
+then it takes a second \\[keyboard-quit] to abort the minibuffer."
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
+;; Make escape quit everything, whenever possible.
+(define-key evil-normal-state-map           [escape]      'keyboard-quit)
+(define-key evil-visual-state-map           [escape]      'keyboard-quit)
+(define-key minibuffer-local-map            [escape]      'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map         [escape]      'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape]      'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape]      'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map    [escape]      'minibuffer-keyboard-quit)
+(define-key evil-normal-state-map           (kbd "C-S-P") 'helm-projectile-switch-project)
+(define-key evil-normal-state-map           (kbd "C-p")   'helm-projectile)
+(define-key evil-normal-state-map           (kbd "-")     'helm-find-files)
+
+(require 'powerline)
+(powerline-evil-vim-color-theme)
+(display-time-mode t)
 
 (require 'ace-jump-mode)
 (autoload 'ace-jump-mode-pop-mark "ace-jump-mode" "Ace jump back:-)" t)
@@ -134,6 +191,13 @@
 
 (require 'auto-complete-config)
 (ac-config-default)
+
+(require 'diminish)
+(diminish 'visual-line-mode)
+(eval-after-load 'undo-tree       '(diminish 'undo-tree-mode))
+(eval-after-load 'projectile      '(diminish 'projectile-mode))
+(eval-after-load 'eldoc           '(diminish 'eldoc-mode))
+(eval-after-load 'elisp-slime-nav '(diminish 'elisp-slime-nav-mode))
 
 ; Lisp
 (setq inferior-lisp-program (executable-find "sbcl"))

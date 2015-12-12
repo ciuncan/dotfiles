@@ -164,6 +164,11 @@ set whichwrap+=<,>,[,],b,s,h,l
 "Maximum text width to automatic linebreak
 set tw=80
 
+"Don't move back the cursor one position when exiting insert mode
+autocmd InsertEnter * let CursorColumnI = col('.')
+autocmd CursorMovedI * let CursorColumnI = col('.')
+autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
+
 "Show "invisible" characters
 set list
 " Highlight problematic whitespace
