@@ -255,11 +255,13 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
 (eval-after-load "cider-mode"
   '(progn
-     (define-key evil-normal-state-map (kbd "M-.")   'cider-find-var)
-     (define-key evil-normal-state-map (kbd "M-,")   'cider-pop-back)
-     (define-key clojure-mode-map      (kbd "C-M-r") 'cider-refresh)
-     (define-key clojure-mode-map      (kbd "C-c u") 'cider-user-ns)
-     (define-key cider-mode-map        (kbd "C-c u") 'cider-user-ns)))
+     (define-key evil-normal-state-map (kbd "M-.")     'cider-find-var)
+     (define-key evil-normal-state-map (kbd "M-,")     'cider-pop-back)
+     (define-key clojure-mode-map      (kbd "C-M-r")   'cider-refresh)
+     (define-key clojure-mode-map      (kbd "C-c u")   'cider-user-ns)
+     (define-key cider-mode-map        (kbd "C-c u")   'cider-user-ns)
+     (global-set-key                   (kbd "C-c C-f") 'cider-figwheel-repl)))
+
 (defun cider-refresh ()
   (interactive)
   (cider-interactive-eval (format "(user/reset)")))
@@ -273,11 +275,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (save-some-buffers)
   (with-current-buffer (cider-current-repl-buffer)
     (goto-char (point-max))
-    (insert "(require 'figwheel-sidecar.repl-api)
-             (figwheel-sidecar.repl-api/start-figwheel!) ; idempotent
-             (figwheel-sidecar.repl-api/cljs-repl)")
+    ;; (insert "(require 'figwheel-sidecar.repl-api)
+    ;;          (figwheel-sidecar.repl-api/start-figwheel!) ; idempotent
+    ;;          (figwheel-sidecar.repl-api/cljs-repl)")
+    (insert "(load-file \"script/figwheel.clj\")")
     (cider-repl-return)))
-(global-set-key (kbd "C-c C-f") 'cider-figwheel-repl)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
