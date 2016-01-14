@@ -4,8 +4,8 @@
 
 # style "vimfix" { bg[NORMAL] = "#333333" }
 # widget "vim-main-window.*GtkForm" style "vimfix"
-include "/usr/share/themes/Ambiance/gtk-2.0/gtkrc"
+# include "/usr/share/themes/Ambiance/gtk-2.0/gtkrc"
 
-gtk-theme-name = "Ambiance"
-gtk-font-name = "Ubuntu 10"
-gtk-icon-theme-name = "Ubuntu-Mono-Dark"
+# gtk-theme-name = "Ambiance"
+# gtk-font-name = "Ubuntu 10"
+# gtk-icon-theme-name = "Ubuntu-Mono-Dark"
