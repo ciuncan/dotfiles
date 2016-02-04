@@ -1,15 +1,21 @@
 [user]
-	email = ceyhuncanu@gmail.com
-	name = ciuncan
+  email = ceyhuncanu@gmail.com
+  name = ciuncan
 [push]
-	default = simple
+  default = simple
 [diff]
-  tool = gvimdiff
+  tool = meld
 [merge]
   tool = meld
 [difftool]
   prompt = false
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
 [url "git@bitbucket.org:"]
-	insteadOf = https://bitbucket.org/
+  insteadOf = https://bitbucket.org/
+[transfer] 
+  fsckobjects = true 
+[fetch] 
+  fsckobjects = true 
+[receive] 
+  fsckObjects = true
