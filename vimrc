@@ -12,7 +12,6 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'vim-scripts/matlab.vim'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'mpollmeier/vim-scalaConceal'
-Plugin 'ensime/ensime-vim'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'regedarek/ZoomWin'
 Bundle 'jlanzarotta/bufexplorer'
@@ -49,11 +48,12 @@ Plugin 'tpope/vim-salve.git'
 Plugin 'tpope/vim-projectionist.git'
 Plugin 'tpope/vim-dispatch.git'
 Plugin 'tpope/vim-fireplace'
-
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
 
 "
 "following plugins looks nice, but will enable them when I feel I need them:
-"
+" Plugin 'ensime/ensime-vim'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 " Bundle 'airblade/vim-gitgutter'
 "Bundle 'Shougo/neocomplcache'
@@ -367,6 +367,17 @@ au Bufenter *.tex set spell
 au Bufenter *.scala set ft=scala
 au Bufenter *.sbt set ft=scala
 
+au Bufenter,BufNewFile *.rs set ft=rust
+au Bufenter,BufNewFile *.rs set hidden
+autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
+au Bufenter Cargo.toml,Cargo.lock,*.rs map <F5> :make run<CR>
+au Bufenter Cargo.toml,Cargo.lock,*.rs map <F6> :make build<CR>
+
+
+let g:rustfmt_autosave = 1
+let g:racer_cmd = "/home/ciuncan/.cargo/bin/racer"
+let $RUST_SRC_PATH = "/home/ciuncan/Apps/dev/rustc-1.8.0/src"
+
 "Set syntax for typescript
 au BufRead,BufNewFile *.ts setlocal filetype=typescript
 
@@ -440,13 +451,13 @@ let g:tagbar_type_go = {
 "functions based on :he go-commands.
 
 "Map F1 key when opening a LaTeX file to compile all it when pressed.
-"au Bufenter *.tex map <F1> <ESC><c-s>:silent !make<CR>
+au Bufenter *.tex map <F1> <ESC>:silent !xdg-open %<.pdf<CR>
 "Map F2 key when opening a LaTeX file to compile it when pressed.
-"au Bufenter *.tex map <F2> <ESC><c-s>:silent !latex "%:p"<CR>
+au Bufenter *.tex map <F2> <ESC><Leader>w:silent !latex "%:p"<CR>
 "Map F3 key when opening a LaTeX file to view dvi when pressed.
-"au Bufenter *.tex map <F3> <ESC>:silent !yap "%:p:h/%:t:r"<CR>
+au Bufenter *.tex map <F3> <ESC>:silent !xdvi %<.dvi <CR>i<CR>
 "Map F4 key when opening a LaTeX file to make and view pdf when pressed.
-"au Bufenter *.tex map <F4> <ESC>:silent !viewpdf<CR>
+au Bufenter *.tex map <F4> <ESC><Leader>w:silent !pdflatex %<CR>
 
 "Pressing < or > will let you indent/unident selected lines
 vnoremap < <gv
