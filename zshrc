@@ -223,6 +223,7 @@ export PATH=$PATH:$SPARK_HOME/bin
 export PATH=$PATH:$dev_folder/FlameGraph
 export PATH=$PATH:$ANDROID_HOME/tools
 
+alias gdd='git difftool --dir-diff'
 alias gvim='gvim -p --remote-tab-silent'
 alias clip='xclip -selection clipboard'
 alias top="htop"
