@@ -197,12 +197,14 @@ export LC_ALL=
 export DROPB="$HOME/Dropbox"
 export DPROJ="$DROPB/Projects"
 
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 dev_folder=$HOME/Apps/dev
 export GOROOT=$dev_folder/go/root
 export GOPATH=$dev_folder/go/path
+export RUST_SRC_PATH=$dev_folder/rustc-1.8.0/src
 export SPARK_HOME=$dev_folder/spark
+export ANDROID_HOME="$dev_folder/android-sdk-linux"
 
 export MAVEN_OPTS='-Xmx3g -XX:MaxPermSize=1g -XX:ReservedCodeCacheSize=1g'
 #export DART_SDK="$dev_folder/dart/dart-sdk"
@@ -215,9 +217,11 @@ export MAVEN_OPTS='-Xmx3g -XX:MaxPermSize=1g -XX:ReservedCodeCacheSize=1g'
 # Customize to your needs...
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$DPROJ/scripts/bash
 export PATH=$PATH:$SPARK_HOME/bin
 export PATH=$PATH:$dev_folder/FlameGraph
+export PATH=$PATH:$ANDROID_HOME/tools
 
 alias gvim='gvim -p --remote-tab-silent'
 alias clip='xclip -selection clipboard'
