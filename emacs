@@ -16,6 +16,7 @@
   '(projectile
     evil
     evil-leader
+    magit
     relative-line-numbers
     powerline
     powerline-evil
@@ -32,6 +33,7 @@
     helm
     helm-projectile
     ido-ubiquitous
+    diminish
     ppd-sr-speedbar
     ac-cider
     ac-slime
@@ -140,9 +142,13 @@
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
 (evil-leader/set-key
+  "a" 'helm-apropos
   "e" 'eval-last-sexp
   "w" 'save-buffer
   "k" 'kill-buffer
+  "q" 'kill-buffer-and-window
+  "b" 'switch-to-buffer
+  "B" 'helm-buffers-list
   "f" 'find-file
   "x" 'helm-M-x)
 (setq evil-emacs-state-cursor    '("red" box))
@@ -191,6 +197,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (require 'auto-complete-config)
 (ac-config-default)
+(global-set-key (kbd "M-\\") 'ac-start)
 
 (require 'diminish)
 (diminish 'visual-line-mode)
@@ -247,12 +254,13 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (require 'clojure-mode)
 (require 'cider-mode)
 (require 'clojure-mode-extra-font-locking)
-(add-hook 'clojure-mode-hook 'cider-turn-on-eldoc-mode)
+; (add-hook 'clojure-mode-hook 'cider-turn-on-eldoc-mode)
 (add-hook 'clojure-mode-hook 'subword-mode)
 ;; Use clojure mode for other extensions
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.clj.*$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojurescript-mode))
 (eval-after-load "cider-mode"
   '(progn
      (define-key evil-normal-state-map (kbd "M-.")     'cider-find-var)
@@ -279,7 +287,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     ;;          (figwheel-sidecar.repl-api/start-figwheel!) ; idempotent
     ;;          (figwheel-sidecar.repl-api/cljs-repl)")
     (insert "(load-file \"script/figwheel.clj\")")
-    (cider-repl-return)))
+    ;;(cider-repl-return)
+    ))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
