@@ -193,6 +193,10 @@ export LC_MEASUREMENT=en_US.utf8
 export LC_IDENTIFICATION=en_US.utf8
 export LC_ALL=
 
+mkdir -p $HOME/.logs
+export PROMPT_COMMAND='[ $(id -u) -ne 0 \] && echo $(date +%Y-%m-%d.%H:%M:%S) $(pwd) $(fc -ln -1) >>| ~/.logs/shell-history-$(date +%Y-%m-%d).log'
+prmptcmd() { eval $PROMPT_COMMAND }
+precmd_functions=(prmptcmd)
 
 export DROPB="$HOME/Dropbox"
 export DPROJ="$DROPB/Projects"
