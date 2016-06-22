@@ -11,6 +11,25 @@
 
 set $mod Mod4
 
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white       color15 #000000
+# Use custom colors for black
+set $black       #282828
+set $darkblack   #1d2021
+set $transparent #00000000
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -375,25 +394,30 @@ bar {
     i3bar_command i3bar -t
     status_command i3blocks # ~/.i3/conky-i3bar-wrapper.sh
     colors {
-        # solarized
-        background #232323
-        statusline #DCDCDC
-        focused_workspace   #cb4b16 #cb4b16 #eee8d5
-        active_workspace    #cb4b16 #cb4b16 #eee8d5
-        inactive_workspace  #b58900 #b58900 #eee8d5
+        statusline         $white
+        background         $transparent
+        separator          $transparent
+
+#                          BORDER       BACKGROUND   TEXT
+        focused_workspace  $transparent $transparent $darkwhite
+        inactive_workspace $transparent $transparent $white
+        active_workspace   $transparent $transparent $white
+        urgent_workspace   $darkred     $darkred     $transparent
+binding_mode $darkred $darkred $transparent
     }
 }
 
 
-# class                 border  backgr. text    indicator
-client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
-client.focused_inactive #333333 #5F676A #ffffff #484e50
-client.unfocused        #333333 #424242 #888888 #292d2e
-client.urgent           #C10004 #900000 #ffffff #900000
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
+client.unfocused        $black      $black      $white      $darkblack  $darkblack
+client.focused_inactive $black      $black      $white      $darkblack  $darkblack
+client.urgent           $darkred    $darkred    $black      $darkred    $darkred
+client.background       $black
 
 # Startup
 exec --no-startup-id compton -bc -e 0.6 -m 0.8
-exec --no-startup-id firefox #google-chrome
+exec --no-startup-id firefox-trunk #google-chrome
 exec --no-startup-id thunderbird
 # exec --no-startup-id pidgin
 exec --no-startup-id telegram
