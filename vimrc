@@ -128,6 +128,12 @@ set autoread
 "Enable line numbers
 set number
 
+"Higlights current line
+set cursorline
+
+"Higlights current column
+set cursorcolumn
+
 "Always show current position
 set ruler
 
@@ -324,12 +330,20 @@ endfunc
 noremap <C-n> :call RelativeNumberToggle()<cr>
 call RelativeNumberToggle()
 
+"Set colorscheme to 'vividchalk'
+"set t_Co=256
+set background=dark
+"let g:solarized_termcolors=256
+colorscheme torte "base16-bespin
+"solarized
+highlight Normal guifg=white guibg=#2A2A32
+
 "Higlight column indicating maximum text width
 set colorcolumn=+1
-hi ColorColumn guibg=#2d2d2d ctermbg=246
+highlight ColorColumn guibg=#2d2d2d ctermbg=246
 
 "Highlight line with overlength
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight OverLength ctermbg=100 ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
 "Status line (file information, etc...)
@@ -337,13 +351,6 @@ set statusline=%n:\ %f%m%r%w\ [%Y,%{&fileencoding},%{&fileformat}]\ [%{getcwd()}
 
 "Enable syntax highlighting
 syntax on
-
-"Set colorscheme to 'vividchalk'
-set t_Co=256
-set background=dark
-let g:solarized_termcolors=256
-colorscheme base16-bespin
-"solarized
 
 "Enable filetype dependent plugins
 filetype plugin on
