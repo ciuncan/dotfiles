@@ -15,7 +15,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:M+ 1m medium 8
+font pango:Iosevka, FontAwesome medium 8
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -33,12 +33,12 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec dmenu_run
+bindsym $mod+p exec --no-startup-id rofi -show run
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+Shift+p exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+p exec --no-startup-id synapse
 
 # start file manager nautilus
 bindsym $mod+o exec nautilus
@@ -208,6 +208,9 @@ for_window [window_role="About"] floating enable
 
 # Back and forth
 workspace_auto_back_and_forth yes
+force_display_urgency_hint 0 ms
+focus_on_window_activation urgent
+smart_borders no_gaps
 
 bindsym $mod+z workspace back_and_forth
 bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
@@ -249,6 +252,51 @@ mode  "(s)leep (h)ybernate (p)owersave (r)estart shut(d)own" {
     bindsym Escape mode "default"
 }
 bindsym $mod+n mode "(s)leep (h)ybernate (p)owersave (r)estart shut(d)own"
+
+set $mode_gaps gaps
+set $mode_gaps_outer outer gaps
+set $mode_gaps_inner inner gaps
+bindsym $mod+Shift+g mode "$mode_gaps"
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+
+    bindsym 0      mode "default", exec --no-startup-id i3-msg "gaps inner current set 0" && i3-msg "gaps outer current set 0"
+    bindsym d      mode "default", exec --no-startup-id i3-msg "gaps inner current set $default_gaps_inner" && i3-msg "gaps outer current set $default_gaps_outer"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     mode "default", gaps inner current set 0
+    bindsym d     mode "default", gaps inner current set $default_gaps_inner
+
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     mode "default", gaps inner all set 0
+    bindsym Shift+d     mode "default", gaps inner all set $default_gaps_inner
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     mode "default", gaps outer current set 0
+    bindsym d     mode "default", gaps outer current set $default_gaps_outer
+
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     mode "default", gaps outer all set 0
+    bindsym Shift+d     mode "default", gaps outer all set $default_gaps_outer
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -324,7 +372,8 @@ bar {
     position top
     #tray_output primary
     #status_command ~/.i3/status_command.sh #i3status
-    status_command ~/.i3/conky-i3bar-wrapper.sh
+    i3bar_command i3bar -t
+    status_command i3blocks # ~/.i3/conky-i3bar-wrapper.sh
     colors {
         # solarized
         background #232323
@@ -346,7 +395,7 @@ client.urgent           #C10004 #900000 #ffffff #900000
 exec --no-startup-id compton -bc -e 0.6 -m 0.8
 exec --no-startup-id firefox #google-chrome
 exec --no-startup-id thunderbird
-exec --no-startup-id pidgin
+# exec --no-startup-id pidgin
 exec --no-startup-id telegram
 exec --no-startup-id i3-msg 'workspace 2:term; exec gnome-terminal; exec nautilus; workspace 1:web'
 #exec --no-startup-id transmission-gtk
