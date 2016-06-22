@@ -226,6 +226,9 @@ export PATH=$PATH:$DPROJ/scripts/bash
 export PATH=$PATH:$SPARK_HOME/bin
 export PATH=$PATH:$dev_folder/FlameGraph
 export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$HOME/.local/bin
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 alias gdd='git difftool --dir-diff'
 alias gvim='gvim -p --remote-tab-silent'
@@ -325,6 +328,3 @@ source ~/.oh-my-zsh/s/s.sh
 
 # Make Zsh use command-not-found package suggestions:
 source /etc/zsh_command_not_found
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
