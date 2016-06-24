@@ -198,11 +198,14 @@ assign [class="^(?i)gimp$"] 9:img
 # custom window settings
 for_window [class="^XCalc$"] floating enable
 for_window [class="^URxvt$" instance="scratchpad"] border pixel 2; move scratchpad
+# for_window [class="(?i)terminal"] border pixel 2; move scratchpad
 for_window [class="(?i)google-chrome"] border pixel 2
-for_window [class="(?i)firefox"] border pixel 2
+for_window [class="(?i)firefox"] border pixel 1
+for_window [class="(?i)telegram"] border pixel 1
 for_window [class="(?i)thunderbird"] border pixel 2
 for_window [class="(?i)jetbrains"] border pixel 2
 for_window [class="(?i)intellij"] border pixel 2
+for_window [class="(?i)atom"] border pixel 2
 
 for_window [class="^GVim$"] split v, layout stacking
 for_window [class="^TeamViewer.exe$"] floating enable
@@ -416,8 +419,8 @@ client.urgent           $darkred    $darkred    $black      $darkred    $darkred
 client.background       $black
 
 # Startup
-exec --no-startup-id compton -bc -e 0.6 -m 0.8
-exec --no-startup-id firefox-trunk #google-chrome
+exec --no-startup-id compton -b #c -e 0.6 -m 0.8
+exec --no-startup-id google-chrome #firefox-trunk
 exec --no-startup-id thunderbird
 # exec --no-startup-id pidgin
 exec --no-startup-id telegram
