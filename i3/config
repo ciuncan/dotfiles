@@ -28,7 +28,9 @@ set_from_resource $white       color15 #000000
 # Use custom colors for black
 set $black       #282828
 set $darkblack   #1d2021
-set $transparent #00000000
+set $transparent #00000055
+
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -406,20 +408,19 @@ bar {
         inactive_workspace $transparent $transparent $white
         active_workspace   $transparent $transparent $white
         urgent_workspace   $darkred     $darkred     $transparent
-binding_mode $darkred $darkred $transparent
+        binding_mode       $darkred     $darkred     $transparent
     }
 }
 
-
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
-client.focused          $darkgreen   $green   $white      $darkgreen  $darkgreen
+client.focused          $darkgreen  $green      $white      $darkgreen  $darkgreen
 client.unfocused        $black      $black      $white      $darkblack  $darkblack
 client.focused_inactive $black      $black      $white      $darkblack  $darkblack
 client.urgent           $darkred    $darkred    $black      $darkred    $darkred
 client.background       $black
 
 # Startup
-exec --no-startup-id compton -b #c -e 0.6 -m 0.8
+exec --no-startup-id compton -b -m 0.8
 exec --no-startup-id google-chrome #firefox-trunk
 exec --no-startup-id thunderbird
 # exec --no-startup-id pidgin
@@ -429,6 +430,7 @@ exec --no-startup-id i3-msg 'workspace 2:term; exec gnome-terminal; exec nautilu
 #exec --no-startup-id deluge
 exec --no-startup-id redshift
 exec --no-startup-id nm-applet
+# exec --no-startup-id i3-msg 'workspace 4:db; exec keepassx; workspace 1:web'
 exec --no-startup-id keepassx
 exec --no-startup-id dropbox start
 #exec --no-startup-id ibus-daemon --xim -d -r
