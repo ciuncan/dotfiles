@@ -399,6 +399,8 @@ bar {
     #status_command ~/.i3/status_command.sh #i3status
     i3bar_command i3bar -t
     status_command i3blocks # ~/.i3/conky-i3bar-wrapper.sh
+    # check out: https://github.com/vivien/i3blocks
+    #
     colors {
         statusline         $white
         background         $transparent
@@ -440,6 +442,7 @@ exec --no-startup-id feh --bg-fill --recursive --randomize $HOME/Pictures/wallpa
 exec gsettings set org.gnome.desktop.background show-desktop-icons false
 # disable touchpad on keyboard activity
 exec --no-startup-id syndaemon -i 2 -d -t -K
+exec --no-startup-id classicmenu-indicator
 exec --no-startup-id xautolock -time 5 -locker "i3lock -c 000000 -d -n" 
 exec --no-startup-id synapse
 
