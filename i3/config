@@ -166,6 +166,7 @@ assign [class="(?i)gitk"] 3:dev
 
 assign [class="^(?i)pgadmin"] 4:db
 assign [class="^(?i)virt-manager$"] 4:db
+assign [class="^(?i)virtualbox$"] 4:db
 #assign [class="^URxvt$" instance="^mail$"] 4
 
 assign [class="(?i)thunderbird"] 5:comm
@@ -210,6 +211,7 @@ for_window [class="(?i)jetbrains"] border pixel 2
 for_window [class="(?i)intellij"] border pixel 2
 for_window [class="(?i)atom"] border pixel 2
 
+for_window [class="^(?i)virtualbox$"] floating enable
 for_window [class="^GVim$"] split v, layout stacking
 for_window [class="^TeamViewer.exe$"] floating enable
 for_window [title="^TeamViewer$"] floating enable
@@ -239,6 +241,9 @@ focus_on_window_activation urgent
 
 bindsym $mod+z workspace back_and_forth
 bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
+
+bindsym $mod+b move scratchpad
+bindsym $mod+Shift+b scratchpad show
 
 # Multimedia bindings
 bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume 1 +5%
@@ -426,17 +431,15 @@ client.background       $black
 exec --no-startup-id compton -b -m 0.8
 exec --no-startup-id google-chrome #firefox-trunk
 exec --no-startup-id thunderbird
-# exec --no-startup-id pidgin
 exec --no-startup-id telegram
 exec --no-startup-id i3-msg 'workspace 2:term; exec gnome-terminal; exec nautilus; workspace 1:web'
 #exec --no-startup-id transmission-gtk
 #exec --no-startup-id deluge
 exec --no-startup-id redshift
 exec --no-startup-id nm-applet
-# exec --no-startup-id i3-msg 'workspace 4:db; exec keepassx; workspace 1:web'
 exec --no-startup-id keepassx
+exec --no-startup-id  "sleep 2;  i3-msg '[class=(?i)keepassx] move scratchpad'"
 exec --no-startup-id dropbox start
-#exec --no-startup-id ibus-daemon --xim -d -r
 exec --no-startup-id feh --bg-fill --recursive --randomize $HOME/Pictures/wallpaper/*
 # exec --no-startup-id exec mpd
 exec gsettings set org.gnome.desktop.background show-desktop-icons false
