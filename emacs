@@ -10,10 +10,12 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) ;; You might already have this line
 
+
 (when (not package-archive-contents)
   (package-refresh-contents))
 (defvar my-packages
   '(projectile
+    package-utils
     evil
     evil-leader
     magit
@@ -27,6 +29,7 @@
     cider-eval-sexp-fu
     clojure-mode
     clojure-mode-extra-font-locking
+    ensime
     rainbow-delimiters
     ace-jump-mode
     auto-complete
@@ -37,23 +40,23 @@
     ppd-sr-speedbar
     ac-cider
     ac-slime
-    white-sand-theme))
+    kooten-theme))
 
 (dolist (pack my-packages)
   (unless (package-installed-p pack)
     (package-install pack)))
-
-(when (display-graphic-p)
-  (set-face-font 'default "Iosevka-12")
-  (set-face-font 'variable-pitch "Iosevka-12")
-  (set-face-font 'fixed-pitch "Iosevka-12"))
 
 (setq visible-bell 1)
 (setq scroll-margin 5
       scroll-conservatively 9999
       scroll-step 1)
 
-(load-theme 'white-sand t)
+(load-theme 'kooten t)
+
+(when (display-graphic-p)
+  (set-face-font 'default "Iosevka-12")
+  (set-face-font 'variable-pitch "Iosevka-12")
+  (set-face-font 'fixed-pitch "Iosevka-12"))
 
 ; editing
 ;; Key binding to use "hippie expand" for text autocompletion
@@ -77,7 +80,7 @@
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
 ;; Go straight to scratch buffer on startup
-(setq inhibit-startup-message t)
+(setq inhibit-startup-screen t)
 ;; Turn off the menu bar at the top of each frame because it's distracting
 (menu-bar-mode -1)
 ;; Show line numbers
@@ -94,6 +97,8 @@
 
 (global-set-key [f1] 'apropos-command)
 (global-set-key [S-f1] 'describe-key)
+(global-set-key (kbd "M-]") 'next-buffer)
+(global-set-key (kbd "M-[") 'previous-buffer)
 
 ;; useful shortcuts:
 
