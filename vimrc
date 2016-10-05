@@ -250,6 +250,9 @@ nnoremap <silent> p p`]
 "Quickly select text you just pasted:
 noremap gV `[v`]
 
+"Leave insert mode by  combination `jj`
+inoremap jj <Esc>
+
 "Stop that stupid window from popping up:
 map q: :q
 
