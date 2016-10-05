@@ -204,8 +204,8 @@ export DPROJ="$DROPB/Projects"
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 dev_folder=$HOME/Apps/dev
-export GOROOT=$dev_folder/go/root
-export GOPATH=$dev_folder/go/path
+export GOROOT=$dev_folder/go
+export GOPATH=$dev_folder/go-path
 export RUST_SRC_PATH=$dev_folder/rustc-1.8.0/src
 export SPARK_HOME=$dev_folder/spark
 export ANDROID_HOME="$dev_folder/android-sdk-linux"
