@@ -242,8 +242,8 @@ focus_on_window_activation urgent
 bindsym $mod+z workspace back_and_forth
 bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
 
-bindsym $mod+b move scratchpad
-bindsym $mod+Shift+b scratchpad show
+bindsym $mod+b scratchpad show
+bindsym $mod+Shift+b move scratchpad
 
 # Multimedia bindings
 bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume 1 +5%
