@@ -115,6 +115,9 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Control+space exec /bin/sh ~/.i3/toggle-xkbmap.sh
 bindsym XF86Mail           exec /bin/sh ~/.i3/toggle-xkbmap.sh
 
+# Rhythmbox shortcuts
+bindsym XF86Reload         exec rhythmbox-client --next
+
 # focus the parent container
 bindsym $mod+a focus parent
 
