@@ -6,14 +6,12 @@
 
 ########## Variables
 
-dir=$HOME/dotfiles                    # dotfiles directory
+dir=$(pwd)                            # dotfiles directory
 
 olddir=$HOME/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc i3 ctags gitconfig psqlrc vimperatorrc vimrc inputrc ideavimrc vim zsh zshrc emacs oh-my-zsh private Xresources gtkrc-2.0 i3status.conf config/gtk-3.0/settings.ini " # oh-my-fish config/fish config/dunst/dunstrc
+files="bashrc gitconfig psqlrc vimperatorrc vimrc inputrc ideavimrc vim zsh zshrc emacs oh-my-zsh config/regolith config/compton.conf config/flashfocus"
 ##########
-
-#mkdir -p $HOME/.config/dunst
 
 # create dotfiles_old in homedir
 echo -n "Creating $olddir for backup of any existing dotfiles in $HOME ..."
@@ -83,11 +81,6 @@ git clone https://github.com/haosdent/s "$s_loc"
 chmod +x "$s_loc/s.sh"
 
 mkdir -p ~/.zsh/completion
-curl -L https://raw.githubusercontent.com/sdurrheimer/docker-compose-zsh-completion/master/_docker-compose >| ~/.zsh/completion/_docker-compose
-
-mkdir -p ~/bin
-mkdir ~/.ammonite; curl -L -o ~/.ammonite/predef.scala http://git.io/vnnBy
-curl -L -o ~/bin/amm http://git.io/vnnBX; chmod +x ~/bin/amm
 
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i

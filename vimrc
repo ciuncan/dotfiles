@@ -9,22 +9,18 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'moll/vim-bbye'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'scrooloose/syntastic.git'
-Bundle 'vim-scripts/matlab.vim'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'mpollmeier/vim-scalaConceal'
 Bundle 'leafgarland/typescript-vim'
-Bundle 'regedarek/ZoomWin'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'majutsushi/tagbar'
 Bundle 'elzr/vim-json'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Plugin 'chriskempson/base16-vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/closetag.vim.git'
 Bundle 'othree/html5.vim.git'
 Bundle 'gregsexton/MatchTag'
 Bundle 'mhinz/vim-signify'
@@ -34,7 +30,6 @@ Bundle 'eagletmt/ghcmod-vim'
 Bundle 'cloudhead/shady.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'groenewege/vim-less'
-Plugin 'ryanss/vim-hackernews'
 Bundle 'clausreinke/typescript-tools.vim', {'rtp': 'vim'}
 Plugin 'terryma/vim-expand-region'
 Plugin 'vim-scripts/gitignore'
@@ -51,27 +46,6 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
 
-"
-"following plugins looks nice, but will enable them when I feel I need them:
-" Plugin 'ensime/ensime-vim'
-" Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
-" Bundle 'airblade/vim-gitgutter'
-"Bundle 'Shougo/neocomplcache'
-"Bundle 'godlygeek/tabular'
-"Bundle 'jgdavey/vim-blockle'
-"Bundle 'kana/vim-textobj-user'
-"Bundle 'nelstrom/vim-textobj-rubyblock'
-"Bundle 'tpope/vim-haml'
-"Bundle 'tsaleh/vim-matchit'
-"Bundle 'tsaleh/vim-shoulda'
-"Bundle 'tsaleh/vim-tmux'
-"Bundle 'vim-ruby/vim-ruby'
-"Bundle 'vim-scripts/Gist.vim'
-"Bundle 'vim-scripts/IndexedSearch'
-"Bundle 'sickill/vim-pasta'
-"Bundle 'timcharper/textile.vim'
-"Bundle 'tomtom/tcomment_vim'
-"Bundle 'tpope/vim-cucumber'
 call vundle#end()
 
 if has("gui_running")
@@ -132,7 +106,7 @@ set number
 set cursorline
 
 "Higlights current column
-set cursorcolumn
+"set cursorcolumn
 
 "Always show current position
 set ruler
@@ -342,8 +316,8 @@ colorscheme torte "base16-bespin
 highlight Normal guifg=white guibg=#2A2A32
 
 "Higlight column indicating maximum text width
-set colorcolumn=+1
-highlight ColorColumn guibg=#2d2d2d ctermbg=246
+"set colorcolumn=+1
+"highlight ColorColumn guibg=#2d2d2d ctermbg=246
 
 "Highlight line with overlength
 highlight OverLength ctermbg=100 ctermfg=white guibg=#592929

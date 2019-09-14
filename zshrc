@@ -162,10 +162,8 @@ plugins=(git
          mvn
          aws
          docker
-         docker-compose-zsh-completion
          vagrant
          vi-mode
-         syntax-highlighting
          history-substring-search
          web-search
          debian
@@ -323,6 +321,7 @@ bindkey '^Z' fancy-ctrl-z
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(~/.oh-my-zsh/zsh-completions/src $fpath)
+source <(kubectl completion zsh)
 rm -f ~/.zcompdump; compinit
 source ~/.oh-my-zsh/s/s.sh
 
