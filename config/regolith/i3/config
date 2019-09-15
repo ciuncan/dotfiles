@@ -125,8 +125,8 @@ bindsym $mod+Ctrl+8 workspace $ws18
 bindsym $mod+Ctrl+9 workspace $ws19
 
 # cycle across workspaces
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+braceright workspace next
+bindsym $mod+braceleft workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -174,13 +174,13 @@ bindsym $mod+$alt+Ctrl+9 move container to workspace $ws19; workspace $ws19
 bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+#bindsym $mod+Shift+r restart
 
 # Logout of session
-bindsym $mod+Ctrl+Shift+e exec /usr/bin/gnome-session-quit --logout
+#bindsym $mod+Ctrl+Shift+e exec /usr/bin/gnome-session-quit --logout
 
 # Reboot computer
-bindsym $mod+Ctrl+Shift+b exec /usr/bin/gnome-session-quit --reboot
+#bindsym $mod+Ctrl+Shift+b exec /usr/bin/gnome-session-quit --reboot
 
 # Power off computer
 bindsym $mod+Ctrl+Shift+p exec /usr/bin/gnome-session-quit --power-off
@@ -189,16 +189,15 @@ bindsym $mod+Ctrl+Shift+p exec /usr/bin/gnome-session-quit --power-off
 bindsym $mod+Escape exec gnome-screensaver-command --lock
 
 # put the system to sleep
-bindsym $mod+Ctrl+Shift+s exec systemctl suspend
+#bindsym $mod+Ctrl+Shift+s exec systemctl suspend
 
 # shortcuts for common system configuration tasks
 bindsym $mod+c exec gnome-control-center
-bindsym $mod+w exec gnome-control-center wifi
-bindsym $mod+b exec gnome-control-center bluetooth
-bindsym $mod+d exec gnome-control-center display
-bindsym $mod+n exec gnome-control-center network
-bindsym $mod+p exec gnome-control-center power
-bindsym $mod+s exec gnome-control-center sound
+bindsym $mod+Shift+w exec gnome-control-center wifi
+bindsym $mod+Shift+b exec gnome-control-center bluetooth
+bindsym $mod+Shift+d exec gnome-control-center display
+bindsym $mod+Shift+n exec gnome-control-center network
+bindsym $mod+Shift+s exec gnome-control-center sound
 
 # resize window (you can also use the mouse for that)
 mode "Resize Mode" {
@@ -340,42 +339,43 @@ exec --no-startup-id /usr/bin/xeventbind resolution /usr/bin/wallpaper-refresh
 
 
 #---- CUSTOMIZED PART ----
+# use "xmodmap -pke" to see how to write key codes
 
 # workspace assignment (use "xprop")
-assign [class="(?i)google-chrome" window_role="browser"] 1:web
-assign [class="(?i)firefox"] 1:web
+assign [class="(?i)google-chrome" window_role="browser"] $ws1
+assign [class="(?i)firefox"] $ws1
 
-assign [class="(?i)jetbrains"] 3:dev
-assign [class="(?i)vscode"] 3:dev
+assign [class="(?i)jetbrains"] $ws3
+assign [class="(?i)code"] $ws3
 
-assign [class="^(?i)pgadmin"] 4:db
-assign [class="^(?i)virt-manager$"] 4:db
-assign [class="^(?i)virtualbox$"] 4:db
+assign [class="^(?i)pgadmin"] $ws4
+assign [class="^(?i)virt-manager$"] $ws4
+assign [class="^(?i)virtualbox$"] $ws4
 
-assign [class="(?i)thunderbird"] 5:comm
-assign [class="(?i)telegram"] 5:comm
-assign [class="(?i)skype"] 5:comm
-assign [class="(?i)google-chrome" window_role="app"] 5:comm
-assign [instance="^(?i)Hangouts$"] 5:comm
+assign [class="(?i)thunderbird"] $ws5
+assign [class="(?i)telegram"] $ws5
+assign [class="(?i)skype"] $ws5
+assign [class="(?i)google-chrome" window_role="app"] $ws5
+assign [instance="^(?i)Hangouts$"] $ws5
 
-assign [class="^Steam$"] 6:fun
-assign [title="^Steam$"] 6:fun
-assign [class="(?i)dolphin-emu"] 6:fun
-assign [class="World of Warcraft"] 6:fun
-assign [class="(?i)wow"] 6:fun
-assign [class="(?i)battle.net"] 6:fun
-assign [class="^(?i)explorer.exe$"] 6:fun
-assign [title="^Wine System Tray$"] 6:fun
+assign [class="^Steam$"] $ws6
+assign [title="^Steam$"] $ws6
+assign [class="(?i)dolphin-emu"] $ws6
+assign [class="World of Warcraft"] $ws6
+assign [class="(?i)wow"] $ws6
+assign [class="(?i)battle.net"] $ws6
+assign [class="^(?i)explorer.exe$"] $ws6
+assign [title="^Wine System Tray$"] $ws6
 
-assign [class="^(?i)video$"] 7:vid
-assign [class="^(?i)vlc$"] 7:vid
+assign [class="^(?i)video$"] $ws7
+assign [class="^(?i)vlc$"] $ws7
 
-assign [class="^(?i)deluge$"] 8:torr
+assign [class="^(?i)deluge$"] $ws8
 
 # custom window settings
 #for_window [class="^XCalc$"] floating enable
 #for_window [class="^URxvt$" instance="scratchpad"] border pixel 2; move scratchpad
-# for_window [class="(?i)terminal"] border pixel 2; move scratchpad
+#for_window [class="(?i)terminal"] border pixel 2; move scratchpad
 #for_window [class="(?i)google-chrome"] border pixel 2
 #for_window [class="(?i)firefox"] border pixel 1
 #for_window [class="(?i)telegram"] border pixel 1
@@ -390,51 +390,37 @@ assign [class="^(?i)deluge$"] 8:torr
 #for_window [class="^(?i)virt-manager$"] floating enable
 #for_window [class="(?i)battle.net"] floating enable
 #for_window [class="^crx_knipolnnllmklapflnccelgolnpehhp$"] floating enable
-# for_window [instance="^(?i)Hangouts$"] border none; fullscreen;
-# for_window [title="^(?i)Hangouts$"] border none; fullscreen;
+#for_window [instance="^(?i)Hangouts$"] border none; fullscreen;
+#for_window [title="^(?i)Hangouts$"] border none; fullscreen;
+for_window [class=(?i)keepassx] move scratchpad
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_role="About"] floating enable
 
 # Back and forth
-#workspace_auto_back_and_forth yes
-#force_display_urgency_hint 0 ms
-#focus_on_window_activation urgent
-# smart_borders no_gaps
+workspace_auto_back_and_forth yes
+force_display_urgency_hint 0 ms
+focus_on_window_activation urgent
+#smart_borders no_gaps
 
-#bindsym $mod+z workspace back_and_forth
-#bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
+bindsym $mod+z workspace back_and_forth
+bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
 
-#bindsym $mod+b scratchpad show
-#bindsym $mod+Shift+b move scratchpad
+bindsym $mod+b scratchpad show
+bindsym $mod+Ctrl+b move scratchpad
 
-# Multimedia bindings
-#bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume 1 +5%
-#bindsym XF86AudioLowerVolume  exec pactl set-sink-volume 1 -5%
-#bindsym XF86MonBrightnessUp   exec xbacklight +5%
-#bindsym XF86MonBrightnessDown exec xbacklight -5%
-#bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle
-#bindsym XF86AudioPlay exec ncmpcpp toggle
-#bindsym XF86AudioStop exec ncmpcpp stop
-#bindsym XF86AudioPrev exec ncmpcpp prev
-#bindsym XF86AudioNext exec ncmpcpp next
-#
-#bindsym XF86HomePage exec nautilus
-#
-#bindsym Print exec gnome-screenshot -i -a
-
-#bindsym $mod+g mode "go_to_window"
+#copy whole screenshot to clipboard
+bindsym $mod+Print exec gnome-screenshot -c
+#interactive screenshot dialog for area
+bindsym $mod+Shift+Print exec gnome-screenshot -i -a
 
 # Startup
 exec --no-startup-id firefox
 exec --no-startup-id telegram
-exec --no-startup-id i3-msg 'workspace 2:term; exec /usr/bin/st; exec nautilus; workspace 1:web'
+exec --no-startup-id i3-msg 'workspace $ws2; exec $terminal_path; exec nautilus; workspace $ws1'
 #exec --no-startup-id deluge
 exec --no-startup-id keepassx
-exec --no-startup-id  "sleep 2;  i3-msg '[class=(?i)keepassx] move scratchpad'"
-#exec gsettings set org.gnome.desktop.background show-desktop-icons false
 # disable touchpad on keyboard activity
 #exec --no-startup-id syndaemon -i 2 -d -t -K
 #exec --no-startup-id steam
 
-exec_always --no-startup-id flashfocus
