@@ -416,7 +416,7 @@ bindsym $mod+Shift+Print exec gnome-screenshot -i -a
 
 # Startup
 exec --no-startup-id firefox
-exec --no-startup-id telegram
+exec --no-startup-id telegram-desktop
 exec --no-startup-id i3-msg 'workspace $ws2; exec $terminal_path; exec nautilus; workspace $ws1'
 #exec --no-startup-id deluge
 exec --no-startup-id keepassx
