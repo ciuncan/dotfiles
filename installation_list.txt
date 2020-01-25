@@ -1,0 +1,20 @@
+sudo apt update
+sudo apt install \
+  dirmngr \
+  apt-transport-https \
+  lsb-release \
+  ca-certificates \
+  vim \
+  git \
+  gcc \
+  g++ \
+  make \
+  xclip \
+  curl \
+  ripgrep \
+  deluge \
+  flatpak \
+  keepassx
+
+sudo apt install nodejs
+sudo npm i -g diff-so-fancy
