@@ -199,7 +199,7 @@ precmd_functions=(prmptcmd)
 export DROPB="$HOME/Dropbox"
 export DPROJ="$DROPB/Projects"
 
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
 dev_folder=$HOME/Apps/dev
 export GOROOT=$dev_folder/go
@@ -239,6 +239,8 @@ alias df="pydf"
 alias lsf="less +F --follow-name"
 alias sbcl="rlwrap sbcl"
 alias lein="rlwrap lein"
+alias jql="jq . -C | less"
+command -v exa >/dev/null 2>&1 && alias ls="exa"
 
 #set vi mode
 #bindkey -v
