@@ -216,6 +216,8 @@ export MAVEN_OPTS='-Xmx3g -XX:MaxPermSize=1g -XX:ReservedCodeCacheSize=1g'
 #export HADOOP_PREFIX=$dev_folder/hadoop
 #export HIVE_HOME=$dev_folder/hive
 
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+
 # Customize to your needs...
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
@@ -321,9 +323,7 @@ bindkey '^Z' fancy-ctrl-z
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(~/.oh-my-zsh/zsh-completions/src $fpath)
-source <(kubectl completion zsh)
 rm -f ~/.zcompdump; compinit
-source ~/.oh-my-zsh/s/s.sh
 
 # Make Zsh use command-not-found package suggestions:
 source /etc/zsh_command_not_found
