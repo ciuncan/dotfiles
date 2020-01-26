@@ -55,7 +55,7 @@ bindsym $mod+Shift+q kill
 set_from_resource $rofiTheme rofi.theme "regolith-theme"
 
 # rofi app and window launchers  -theme $rofiTheme
-bindsym $mod+space exec rofi -modi drun -show drun
+bindsym $mod+space exec rofi -show drun
 bindsym $mod+Shift+space exec rofi -show run
 bindsym $mod+Ctrl+space exec rofi -show window
 
@@ -177,7 +177,7 @@ bindsym $mod+Shift+c reload
 #bindsym $mod+Shift+r restart
 
 # Logout of session
-#bindsym $mod+Ctrl+Shift+e exec /usr/bin/gnome-session-quit --logout
+bindsym $mod+Ctrl+Shift+e exec /usr/bin/gnome-session-quit --logout
 
 # Reboot computer
 #bindsym $mod+Ctrl+Shift+b exec /usr/bin/gnome-session-quit --reboot
