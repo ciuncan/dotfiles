@@ -2,6 +2,7 @@
 
 sudo apt update
 sudo apt install \
+  regolith-desktop
   dirmngr \
   apt-transport-https \
   lsb-release \
