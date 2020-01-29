@@ -10,7 +10,7 @@ dir=$(pwd)                            # dotfiles directory
 
 olddir=$HOME/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc gitconfig psqlrc vimperatorrc vimrc inputrc ideavimrc vim zshrc emacs oh-my-zsh config/regolith config/compton.conf config/flashfocus"
+files="bashrc gitconfig psqlrc vimperatorrc vimrc inputrc ideavimrc vim zshrc emacs oh-my-zsh config/regolith config/compton.conf config/flashfocus Xresources Xresources-regolith"
 ##########
 
 # create dotfiles_old in homedir

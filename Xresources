@@ -7,7 +7,7 @@ Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 
 ! rofi
-rofi.modi: run
+rofi.modi: run,drun,window,ssh
 rofi.font: Iosevka 12
 rofi.width: 100
 rofi.lines: 5
