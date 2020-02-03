@@ -38,9 +38,9 @@ bindsym $mod+d exec --no-startup-id dmenu_recency
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
 
-bindsym $mod+space exec --no-startup rofi -show drun
-bindsym $mod+Shift+space exec --no-startup rofi -show run
-bindsym $mod+Ctrl+space exec --no-startup rofi -show window
+bindsym $mod+space exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+space exec --no-startup-id rofi -show run
+bindsym $mod+Ctrl+space exec --no-startup-id rofi -show window
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -75,6 +75,7 @@ bindsym $mod+Ctrl+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
+focus_wrapping no
 
 # change focus
 bindsym $mod+h focus left

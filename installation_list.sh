@@ -32,6 +32,7 @@ code --install-extension humao.rest-client
 code --install-extension mechatroner.rainbow-csv
 code --install-extension 2gua.rainbow-brackets
 code --install-extension oderwat.indent-rainbow
+code --install-extension timonwong.shellcheck
 
 
 # Install Telegram

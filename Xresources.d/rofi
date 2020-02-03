@@ -1,0 +1,9 @@
+rofi.modi: run,drun,window,ssh
+rofi.width: 100
+rofi.lines: 10
+rofi.columns: 1
+rofi.opacity: 80
+rofi.bw: 0
+rofi.padding: 100
+rofi.fuzzy: false
+rofi.show-icons: true
