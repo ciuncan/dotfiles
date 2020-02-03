@@ -2,33 +2,15 @@
 
 sudo apt update
 sudo apt install \
-  regolith-desktop
-  dirmngr \
-  apt-transport-https \
-  lsb-release \
-  ca-certificates \
-  vim \
-  git \
-  gcc \
-  g++ \
-  make \
-  htop \
   xclip \
-  curl \
   ripgrep \
   fzf \
   deluge \
-  flatpak \
-  openjdk-14-jdk \
-  keepassx
+  openjdk-11-jdk \
+  keepassxc \
+  sbt \
+  nodejs
 
-# Install sbt
-echo "deb https://dl.bintray.com/sbt/debian /" | \
-  sudo tee -a /etc/apt/sources.list.d/sbt.list
-curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | \
-  sudo apt-key add
-sudo apt update
-sudo apt install sbt
 
 # Install nodejs
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -

@@ -10,7 +10,7 @@ dir=$(pwd)                            # dotfiles directory
 
 olddir=$HOME/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc gitconfig psqlrc vimperatorrc vimrc inputrc ideavimrc vim zshrc emacs oh-my-zsh config/regolith config/compton.conf config/flashfocus Xresources Xresources-regolith"
+files="bashrc gitconfig psqlrc vimperatorrc vimrc inputrc ideavimrc zshrc emacs oh-my-zsh"
 ##########
 
 # create dotfiles_old in homedir
@@ -35,50 +35,19 @@ for file in $files; do
     ln -s $dir/$file $HOME/.$file
 done
 
-function install_zsh {
-# Test to see if zshell is installed.  If it is:
-if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
-    # Clone my oh-my-zsh repository from GitHub only if it isn't already present
-    if [[ ! -d $dir/oh-my-zsh/ ]]; then
-        git clone http://github.com/michaeljsmalley/oh-my-zsh.git
-    fi
-    # Set the default shell to zsh if it isn't currently set to zsh
-    if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-        chsh -s $(which zsh)
-    fi
-else
-    # If zsh isn't installed, get the platform of the current machine
-    platform=$(uname);
-    # If the platform is Linux, try an apt-get to install zsh and then recurse
-    if [[ $platform == 'Linux' ]]; then
-        sudo apt-get install zsh
-        install_zsh
-    # If the platform is OS X, tell the user to install zsh :)
-    elif [[ $platform == 'Darwin' ]]; then
-        echo "Please install zsh, then re-run this script!"
-        exit
-    fi
-fi
-}
-
-install_zsh
-
 #install vundle for vim:
 rm -rf ~/.vim/bundle
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
+cd ~/.oh-my-zsh
+
 #install zsh-syntax-highlighting
-cd ~/.oh-my-zsh && git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
 
 #zsh-completions
 git clone git://github.com/zsh-users/zsh-completions.git
 
-
-s_loc=~/.oh-my-zsh/s
-mkdir -p "$s_loc" && cd "$s_loc"
-git clone https://github.com/haosdent/s "$s_loc"
-chmod +x "$s_loc/s.sh"
 
 mkdir -p ~/.zsh/completion
 

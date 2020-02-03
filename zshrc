@@ -35,14 +35,14 @@ WORDCHARS='${WORDCHARS:s@/@}'
 
 # just type '...' to get '../..'
 rationalise-dot() {
-local MATCH
-if [[ $LBUFFER =~ '(^|/| |	|'$'\n''|\||;|&)\.\.$' ]]; then
-  LBUFFER+=/
-  zle self-insert
-  zle self-insert
-else
-  zle self-insert
-fi
+  local MATCH
+  if [[ $LBUFFER =~ '(^|/| |	|'$'\n''|\||;|&)\.\.$' ]]; then
+    LBUFFER+=/
+    zle self-insert
+    zle self-insert
+  else
+    zle self-insert
+  fi
 }
 zle -N rationalise-dot
 bindkey . rationalise-dot
@@ -128,8 +128,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# favorites: agnoster, avit, bira, bureau, mortalscumbag, wedisagree, ys
-ZSH_THEME="wedisagree"
+# favorites=(3den crunch jonathan)
+ZSH_THEME="eastwood"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -158,15 +158,14 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git
          gitignore
+         archlinux
+         docker
+         vi-mode
+         history-substring-search
+         colored-man-pages
          npm
          mvn
          aws
-         docker
-         vagrant
-         vi-mode
-         history-substring-search
-         web-search
-         debian
          golang
          scala
          sbt
@@ -175,60 +174,17 @@ plugins=(git
 
 source $ZSH/oh-my-zsh.sh
 
-export LANG=en_US.utf8
-export LANGUAGE=en
-export LC_CTYPE=en_US.UTF-8
-export LC_NUMERIC=en_US.utf8
-export LC_TIME=en_US.utf8
-export LC_COLLATE="en_US.utf8"
-export LC_MONETARY=en_US.utf8
-export LC_MESSAGES="en_US.utf8"
-export LC_PAPER=en_US.utf8
-export LC_NAME=en_US.utf8
-export LC_ADDRESS=en_US.utf8
-export LC_TELEPHONE=en_US.utf8
-export LC_MEASUREMENT=en_US.utf8
-export LC_IDENTIFICATION=en_US.utf8
-export LC_ALL=en_US.UTF-8
-
 mkdir -p $HOME/.logs
 export PROMPT_COMMAND='[ $(id -u) -ne 0 \] && echo $(date +%Y-%m-%d.%H:%M:%S) $(pwd) $(fc -ln -1) >>| ~/.logs/shell-history-$(date +%Y-%m-%d).log'
 prmptcmd() { eval $PROMPT_COMMAND }
 precmd_functions=(prmptcmd)
 
-export DROPB="$HOME/Dropbox"
-export DPROJ="$DROPB/Projects"
-
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-
-dev_folder=$HOME/Apps/dev
-export GOROOT=$dev_folder/go
-export GOPATH=$dev_folder/go-path
-export RUST_SRC_PATH=$dev_folder/rustc-1.8.0/src
-export SPARK_HOME=$dev_folder/spark
-export ANDROID_HOME="$dev_folder/android-sdk-linux"
-
-export MAVEN_OPTS='-Xmx3g -XX:MaxPermSize=1g -XX:ReservedCodeCacheSize=1g'
-#export DART_SDK="$dev_folder/dart/dart-sdk"
-#export SBT_HOME=$dev_folder/sbt
-#export SCALA_HOME=$dev_folder/scala-2.9.2
-#export SCALDING_HOME=dev_folder/scalding
-#export HADOOP_PREFIX=$dev_folder/hadoop
-#export HIVE_HOME=$dev_folder/hive
-
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
 
 # Customize to your needs...
 export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$DPROJ/scripts/bash
-export PATH=$PATH:$SPARK_HOME/bin
-export PATH=$PATH:$dev_folder/FlameGraph
-export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$HOME/.local/bin
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 alias gdd='git difftool --dir-diff'
 alias gvim='gvim -p --remote-tab-silent'
@@ -237,22 +193,30 @@ alias top="htop"
 alias du="ncdu"
 alias df="pydf"
 alias lsf="less +F --follow-name"
-alias sbcl="rlwrap sbcl"
-alias lein="rlwrap lein"
 alias jql="jq . -C | less"
-command -v exa >/dev/null 2>&1 && alias ls="exa"
 
-#set vi mode
+command -v exa >/dev/null 2>&1 && alias ls="exa" && alias ll="exa -laF"
+
+alias cp="cp -i"                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+alias np='nano -w PKGBUILD'
+
+alias more=less
+alias vi=vim
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+set vi mode
 #bindkey -v
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 
-function mkc () {
+function mkc {
     mkdir -p "$@" && cd "$@"
 }
 
-function ssh-fingerprints () {
+function ssh-fingerprints {
   keys=$1
   if [ -f $keys ]; then
     keys=`cat $keys`
@@ -266,49 +230,13 @@ function ssh-fingerprints () {
 }
 
 # see: https://gist.github.com/earthgecko/3089509
-function random-string() {
+function rand-string {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1
-}
-
-
-# function Extract for common file formats
-# see: https://github.com/xvoland/Extract
-
-function extract {
-  if [ -z "$1" ]; then
-    # display usage if no parameters given
-    echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
-  else
-    if [ -f "$1" ] ; then
-      NAME=${1%.*}
-      mkdir $NAME && cd $NAME
-      case "$1" in
-        *.tar.bz2)   tar xvjf ../"$1"    ;;
-        *.tar.gz)    tar xvzf ../"$1"    ;;
-        *.tar.xz)    tar xvJf ../"$1"    ;;
-        *.lzma)      unlzma ../"$1"      ;;
-        *.bz2)       bunzip2 ../"$1"     ;;
-        *.rar)       unrar x -ad ../"$1" ;;
-        *.gz)        gunzip ../"$1"      ;;
-        *.tar)       tar xvf ../"$1"     ;;
-        *.tbz2)      tar xvjf ../"$1"    ;;
-        *.tgz)       tar xvzf ../"$1"    ;;
-        *.zip)       unzip ../"$1"       ;;
-        *.Z)         uncompress ../"$1"  ;;
-        *.7z)        7z x ../"$1"        ;;
-        *.xz)        unxz ../"$1"        ;;
-        *.exe)       cabextract ../"$1"  ;;
-        *)           echo "extract: '$1' - unknown archive method" ;;
-      esac
-    else
-      echo "'$1' - file does not exist"
-    fi
-  fi
 }
 
 function rand-word {
   local count=${1:-4}
-  shuf -n $count /usr/share/dict/words
+  shuf -n $count /usr/share/dict/cracklib-small
 }
 
 function fancy-ctrl-z () {
@@ -325,7 +253,12 @@ bindkey '^Z' fancy-ctrl-z
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(~/.oh-my-zsh/zsh-completions/src $fpath)
-rm -f ~/.zcompdump; compinit
+autoload -Uz compinit
+compinit
 
-# Make Zsh use command-not-found package suggestions:
-source /etc/zsh_command_not_found
+export LC_ALL=en_US.UTF-8
+
+export JAVA_HOME="/usr/lib/jvm/default"
+export JDK_HOME="/usr/lib/jvm/default"
+
+export EDITOR="vim"

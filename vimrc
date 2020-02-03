@@ -5,32 +5,23 @@ call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
-Bundle 'msanders/snipmate.vim'
-Bundle 'moll/vim-bbye'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'derekwyatt/vim-scala'
-Bundle 'mpollmeier/vim-scalaConceal'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'majutsushi/tagbar'
 Bundle 'elzr/vim-json'
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-surround'
-Plugin 'chriskempson/base16-vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
-Bundle 'othree/html5.vim.git'
 Bundle 'gregsexton/MatchTag'
 Bundle 'mhinz/vim-signify'
 Plugin 'airblade/vim-rooter'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'eagletmt/ghcmod-vim'
-Bundle 'cloudhead/shady.vim'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'groenewege/vim-less'
-Bundle 'clausreinke/typescript-tools.vim', {'rtp': 'vim'}
 Plugin 'terryma/vim-expand-region'
 Plugin 'vim-scripts/gitignore'
 Plugin 'tpope/vim-endwise.git'
@@ -39,23 +30,11 @@ Plugin 'fatih/vim-go'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'exu/pgsql.vim'
 Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-salve.git'
-Plugin 'tpope/vim-projectionist.git'
 Plugin 'tpope/vim-dispatch.git'
-Plugin 'tpope/vim-fireplace'
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
 
 call vundle#end()
-
-if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Iosevka\ medium\ 12 "Fantasque\ Sans\ Mono\ Bold\ 11
-  elseif has("gui_win32")
-    set guifont=Iosevka:h11:b:cTURKISH "Meslo\ LG\ S\ Regular
-  endif
-else
-endif
 
 "Enough with the dinging!
 set visualbell
@@ -99,11 +78,8 @@ set smartindent
 " Set to auto read when a file is changed from the outside
 set autoread
 
-"Enable line numbers
-set number
-
 "Higlights current line
-set cursorline
+"set cursorline
 
 "Higlights current column
 "set cursorcolumn
@@ -142,7 +118,7 @@ set noswapfile
 set whichwrap+=<,>,[,],b,s,h,l
 
 "Maximum text width to automatic linebreak
-set tw=80
+"set tw=80
 
 "Don't move back the cursor one position when exiting insert mode
 autocmd InsertEnter * let CursorColumnI = col('.')
@@ -150,9 +126,9 @@ autocmd CursorMovedI * let CursorColumnI = col('.')
 autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
 
 "Show "invisible" characters
-set list
+"set list
 " Highlight problematic whitespace
-set lcs=tab:▸\ ,eol:¬,trail:.,extends:#,nbsp:_
+"set lcs=tab:▸\ ,eol:¬,trail:.,extends:#,nbsp:_
 
 " Code folding mode indent, nests maximum 10
 set foldmethod=indent
@@ -295,6 +271,18 @@ noremap <A-/> :call Comment()<CR>
 noremap <A-?> :call Uncomment()<CR>
 noremap <A-c> :call ClearEmptyLines()<CR>
 
+function! LineNumberToggle()
+  if(&number == 1)
+    set nonumber
+  else
+    set number
+  endif
+endfunc
+
+" Toggle relative numbers
+noremap <C-n> :call LineNumberToggle()<cr>
+call LineNumberToggle()
+
 function! RelativeNumberToggle()
   if(&relativenumber == 1)
     set norelativenumber
@@ -303,25 +291,26 @@ function! RelativeNumberToggle()
   endif
 endfunc
 
-"Toggle relative numbers
-noremap <C-n> :call RelativeNumberToggle()<cr>
+" Toggle relative numbers
+noremap <A-n> :call RelativeNumberToggle()<cr>
 call RelativeNumberToggle()
 
 "Set colorscheme to 'vividchalk'
 "set t_Co=256
 set background=dark
 "let g:solarized_termcolors=256
-colorscheme torte "base16-bespin
+"colorscheme torte "base16-bespin
 "solarized
-highlight Normal guifg=white guibg=#2A2A32
+"highlight Normal guifg=white guibg=#2A2A32
+colorscheme default
 
 "Higlight column indicating maximum text width
 "set colorcolumn=+1
 "highlight ColorColumn guibg=#2d2d2d ctermbg=246
 
 "Highlight line with overlength
-highlight OverLength ctermbg=100 ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+"highlight OverLength ctermbg=100 ctermfg=white guibg=#592929
+"match OverLength /\%81v.\+/
 
 "Status line (file information, etc...)
 set statusline=%n:\ %f%m%r%w\ [%Y,%{&fileencoding},%{&fileformat}]\ [%{getcwd()}]%=\ [%l-%L,%v][%p%%]
@@ -344,12 +333,10 @@ au Bufenter *.{,l}hs compiler ghc
 "Enable spell-check when opening html files.
 au Bufenter *.html  set spell
 
-"Enable spell-check when opening LaTeX files
-au Bufenter *.tex set spell
-
 "Set syntax for scala
 au Bufenter *.scala set ft=scala
 au Bufenter *.sbt set ft=scala
+au Bufenter *.sc set ft=scala
 
 au Bufenter,BufNewFile *.rs set ft=rust
 au Bufenter,BufNewFile *.rs set hidden
@@ -434,15 +421,6 @@ let g:tagbar_type_go = {
 "recommendations, you are free to create more advanced mappings or 
 "functions based on :he go-commands.
 
-"Map F1 key when opening a LaTeX file to compile all it when pressed.
-au Bufenter *.tex map <F1> <ESC>:silent !xdg-open %<.pdf<CR>
-"Map F2 key when opening a LaTeX file to compile it when pressed.
-au Bufenter *.tex map <F2> <ESC><Leader>w:silent !latex "%:p"<CR>
-"Map F3 key when opening a LaTeX file to view dvi when pressed.
-au Bufenter *.tex map <F3> <ESC>:silent !xdvi %<.dvi <CR>i<CR>
-"Map F4 key when opening a LaTeX file to make and view pdf when pressed.
-au Bufenter *.tex map <F4> <ESC><Leader>w:silent !pdflatex %<CR>
-
 "Pressing < or > will let you indent/unident selected lines
 vnoremap < <gv
 vnoremap > >gv
@@ -518,9 +496,9 @@ cmap <c-j> <Down>
 cmap <c-k> <Up>
 
 " Stupid shift key fixes
-cmap W w
-cmap WQ wq
-cmap wQ wq
+"cmap W w
+"cmap WQ wq
+"cmap wQ wq
 "cmap Q q
 
 "paste clipboard into command mode
