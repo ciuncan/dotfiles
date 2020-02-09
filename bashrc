@@ -119,21 +119,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export SCALA_HOME="$HOME/Applications/scala-2.10.0" 
-export SCALALAB_HOME="$HOME/Applications/ScalaLab210"
-PATH=$PATH:$SCALA_HOME/bin:$SCALALAB_HOME
-
-export DPROJ="$HOME/Dropbox/Projects"
-alias cdmahx="cd $DPROJ/NetBeansProjects/MahoutX"
-alias cddoct="cd $DPROJ/doctoral"
-alias cdml10m="cd $DPROJ/doctoral/dataset/MovieLens/10M100K"
-alias cdrsm="cd $DPROJ/doctoral/codes/RS_matlab"
-
-PATH=$PATH:$HOME/Applications/julia/usr/bin
-PATH=$PATH:$DPROJ/scripts/bash
-PATH=$PATH:$HOME/Applications/Sublime\ Text\ 2
 PATH=$PATH:$HOME/bin
 
 set -o vi
 
 export LC_ALL=en_US.UTF-8
+export JAVA_HOME=/usr/lib/jvm/default
