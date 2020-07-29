@@ -1,14 +1,15 @@
 #! /bin/bash
 
 sudo pacman -Sy \
-  jdk-openjdk
+  jdk-openjdk \
   xclip \
   ripgrep \
   fzf \
   deluge \
   keepassxc \
   sbt \
-  nodejs \
+  nodejs-lts-erbium \
+  npm \
   rustup \
   telegram-desktop \
   shellcheck \
