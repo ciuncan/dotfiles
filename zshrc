@@ -287,3 +287,4 @@ export JAVA_HOME="/usr/lib/jvm/default"
 export JDK_HOME="/usr/lib/jvm/default"
 
 export EDITOR="vim"
+export BROWSER=`which firefox`

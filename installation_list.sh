@@ -1,12 +1,11 @@
 #! /bin/bash
 
 sudo pacman -Sy \
-  jdk11-openjdk
+  jdk-openjdk
   xclip \
   ripgrep \
   fzf \
   deluge \
-  openjdk-11-jdk \
   keepassxc \
   sbt \
   nodejs \
@@ -15,8 +14,15 @@ sudo pacman -Sy \
   shellcheck \
   remmina \
   libvncserver \
-  freerdp
+  freerdp \
+  ttf-jetbrains-mono \
+  yay \
+  pacui \
 
+# Install aur packages
+sudo yay -S bloop github-cli
+
+# Install global npm packages
 sudo npm i -g diff-so-fancy tldr
 
 # Install rust
@@ -25,14 +31,22 @@ cargo install exa
 
 # Install vscode
 sudo snap install code --classic
-code --install-extension scalameta.metals
-code --install-extension eamodio.gitlens
-code --install-extension rust-lang.rust
-code --install-extension vscodevim.vim
-code --install-extension humao.rest-client
-code --install-extension mechatroner.rainbow-csv
+code --install-extension 13xforever.language-x86-64-assembly
 code --install-extension 2gua.rainbow-brackets
+code --install-extension bungcip.better-toml
+code --install-extension eamodio.gitlens
+code --install-extension formulahendry.code-runner
+code --install-extension humao.rest-client
+code --install-extension james-yu.latex-workshop
+code --install-extension mechatroner.rainbow-csv
+code --install-extension ms-vscode-remote.remote-containers
 code --install-extension oderwat.indent-rainbow
+code --install-extension rreverser.llvm
+code --install-extension rust-lang.rust
+code --install-extension scalameta.metals
+code --install-extension serayuzgur.crates
+code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension timonwong.shellcheck
+code --install-extension vscodevim.vim
 
 # install [ammonite-repl](ammonite.io)

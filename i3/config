@@ -160,6 +160,8 @@ set $ws6 6:6:game
 set $ws7 7:7:vid
 set $ws8 8:8:torr
 
+workspace $ws6 output HDMI-1
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
