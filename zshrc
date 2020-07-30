@@ -288,3 +288,11 @@ export JDK_HOME="/usr/lib/jvm/default"
 
 export EDITOR="vim"
 export BROWSER=`which firefox`
+
+host_if_remote=$([ -n "$SSH_CLIENT" ] && echo "$HOST" || echo "")
+export PS1="$host_if_remote $PS1"
+
+function wake_at {
+  mac_address='e0:d5:5e:a0:1e:77'
+  wol "$mac_address"
+}
