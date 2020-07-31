@@ -15,10 +15,14 @@ sudo pacman -Sy \
   helm \
   rustup \
   telegram-desktop \
+  ghc \
+  cabal-install \
+  happy \
+  alex \
+  haskell-haddock-library \
   shellcheck \
   remmina \
   libvncserver \
-  freerdp \
   ttf-jetbrains-mono \
   yay \
   pacui \
@@ -52,5 +56,3 @@ code --install-extension serayuzgur.crates
 code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension timonwong.shellcheck
 code --install-extension vscodevim.vim
-
-# install [ammonite-repl](ammonite.io)
