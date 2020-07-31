@@ -290,7 +290,7 @@ export JAVA_HOME="/usr/lib/jvm/default"
 export JDK_HOME="/usr/lib/jvm/default"
 
 export EDITOR="vim"
-export BROWSER=`which firefox`
+export BROWSER=`which firefox-developer-edition`
 
 host_if_remote=$([ -n "$SSH_CLIENT" ] && echo "$HOST " || echo "")
 export PS1="$host_if_remote$PS1"

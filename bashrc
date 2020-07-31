@@ -152,3 +152,4 @@ set -o vi
 export LC_ALL=en_US.UTF-8
 export JAVA_HOME=/usr/lib/jvm/default
 export EDITOR=vim
+export BROWSER=firefox-developer-edition
