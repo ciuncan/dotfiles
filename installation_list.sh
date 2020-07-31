@@ -10,6 +10,9 @@ sudo pacman -Sy \
   sbt \
   nodejs-lts-erbium \
   npm \
+  jq \
+  kubectl \
+  helm \
   rustup \
   telegram-desktop \
   shellcheck \
@@ -21,7 +24,7 @@ sudo pacman -Sy \
   pacui \
 
 # Install aur packages
-sudo yay -S bloop github-cli
+sudo yay -S bloop ammonite
 
 # Install global npm packages
 sudo npm i -g diff-so-fancy tldr
