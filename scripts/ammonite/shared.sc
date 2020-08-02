@@ -1,6 +1,7 @@
 @annotation.tailrec
 def ask[T](prompt: String, convert: PartialFunction[String, T]): T = {
   println(prompt)
+  println()
   val input = scala.io.StdIn.readLine.trim
   convert.lift(input) match {
     case Some(value) => value
@@ -11,6 +12,10 @@ def ask[T](prompt: String, convert: PartialFunction[String, T]): T = {
 }
 
 def ask(prompt: String): String = ask(prompt, { case s: String => s })
+def askOpt(prompt: String): Option[String] = ask(prompt + " (Optional)", {
+  case s if s.trim.isEmpty  => None
+  case s                    => Some(s)
+})
 
 def askYesNoExit(prompt: String): Boolean = ask(prompt + "\n[y]es [n]o e[x]it", {
   case "Y" | "y" => true
