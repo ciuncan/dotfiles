@@ -27,6 +27,9 @@ sudo pacman -Sy \
   yay \
   pacui \
 
+sudo pacman -Sy \
+  jdk8-openjdk
+
 # Install aur packages
 sudo yay -S bloop ammonite
 
@@ -40,6 +43,7 @@ cargo install exa
 # Install vscode
 code --install-extension 13xforever.language-x86-64-assembly
 code --install-extension 2gua.rainbow-brackets
+code --install-extension bmuskalla.vscode-tldr
 code --install-extension bungcip.better-toml
 code --install-extension eamodio.gitlens
 code --install-extension formulahendry.code-runner
