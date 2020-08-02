@@ -95,8 +95,12 @@
             },
             "_urls": [
                 {
-                    "params": [],
-                    "rels": [],
+                    "params": [
+                        
+                    ],
+                    "rels": [
+                        
+                    ],
                     "resultDomain": "search.maven.org",
                     "template": "https://search.maven.org/search?q={searchTerms}"
                 }
@@ -119,8 +123,12 @@
             },
             "_urls": [
                 {
-                    "params": [],
-                    "rels": [],
+                    "params": [
+                        
+                    ],
+                    "rels": [
+                        
+                    ],
                     "resultDomain": "www.scala-lang.org",
                     "template": "https://www.scala-lang.org/api/current/index.html?search={searchTerms}"
                 }
@@ -144,8 +152,12 @@
             },
             "_urls": [
                 {
-                    "params": [],
-                    "rels": [],
+                    "params": [
+                        
+                    ],
+                    "rels": [
+                        
+                    ],
                     "resultDomain": "www.youtube.com",
                     "template": "https://www.youtube.com/results?search_query={searchTerms}&page={startPage?}&utm_source=opensearch"
                 }
@@ -169,8 +181,12 @@
             },
             "_urls": [
                 {
-                    "params": [],
-                    "rels": [],
+                    "params": [
+                        
+                    ],
+                    "rels": [
+                        
+                    ],
                     "resultDomain": "www.seslisozluk.net",
                     "template": "http://www.seslisozluk.net/?word={searchTerms}"
                 }
@@ -194,8 +210,12 @@
             },
             "_urls": [
                 {
-                    "params": [],
-                    "rels": [],
+                    "params": [
+                        
+                    ],
+                    "rels": [
+                        
+                    ],
                     "resultDomain": "translate.google.com",
                     "template": "https://translate.google.com/?source=osdd#auto|auto|{searchTerms}"
                 }
@@ -220,8 +240,12 @@
             },
             "_urls": [
                 {
-                    "params": [],
-                    "rels": [],
+                    "params": [
+                        
+                    ],
+                    "rels": [
+                        
+                    ],
                     "resultDomain": "github.com",
                     "template": "https://github.com/search?q={searchTerms}&ref=opensearch"
                 }
