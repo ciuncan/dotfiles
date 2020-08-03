@@ -189,6 +189,7 @@ export PATH=$PATH:$HOME/.local/bin
 alias gdd='git difftool --dir-diff'
 alias gvim='gvim -p --remote-tab-silent'
 alias clip='xclip -selection clipboard'
+alias paste='xclip -selection cliplboard -o'
 alias top="htop"
 alias du="ncdu"
 alias df="pydf"

@@ -135,10 +135,6 @@ def add(prefix: String) = {
   backupPath |> read |> addSearchEngine |> strToBytes |> overwriteTo(backupPath)
 }
 
-def remove(prefix: String) = {
-  ???
-}
-
 def getFaviconDataUrl(domain: String): String = {
   val faviconResp = requests.get(s"https://$domain/favicon.ico")
   val dataString = faviconResp.data.array |> java.util.Base64.getEncoder.encodeToString
@@ -192,7 +188,7 @@ def askSearchEngineConfig(nextOrder: Int) = {
 
 @main
 def main(op: String = "backup", prefix: String = "dev-edition-") = {
-  val acceptedOps = Set("backup", "restore", "add", "remove")
+  val acceptedOps = Set("backup", "restore", "add")
   if (!acceptedOps.contains(op)) {
     sys.error(s"""--op can be one of ${acceptedOps}!""")
   }
@@ -200,6 +196,5 @@ def main(op: String = "backup", prefix: String = "dev-edition-") = {
     case "backup"   => backup(prefix)
     case "restore"  => restore(prefix)
     case "add"      => add(prefix)
-    case "remove"   => remove(prefix)
   }
 }
