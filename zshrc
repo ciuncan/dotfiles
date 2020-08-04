@@ -185,6 +185,7 @@ export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/dev/oss/dotty/bin
 
 alias gdd='git difftool --dir-diff'
 alias gvim='gvim -p --remote-tab-silent'
@@ -299,4 +300,18 @@ export PS1="$host_if_remote$PS1"
 function wake_at {
   mac_address='e0:d5:5e:a0:1e:77'
   wol "$mac_address"
+}
+
+function switch_jdk {
+  version="java-$1-openjdk"
+  status_output="$(archlinux-java status)"
+  if [[ "$status_output" == *"$version"* ]]; then
+    sudo archlinux-java set "$version"
+  else
+    echo "Version you entered is not found: $version"
+    echo "$status_output"
+    echo "Usage"
+    echo "In order to switch to using JDK 14 (java-14-openjdk), issue following command:"
+    echo "switch_jdk 14"
+  fi
 }
