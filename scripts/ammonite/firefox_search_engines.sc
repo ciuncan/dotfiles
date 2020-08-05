@@ -1,15 +1,17 @@
-import ammonite.ops._
-
-import $file.shared
-import shared._
-
 import $ivy.`com.lihaoyi::requests:0.6.5`
 import $ivy.`com.lihaoyi::ujson:1.2.0`
+import $ivy.`org.jsoup:jsoup:1.13.1`
 import $ivy.`org.lz4:lz4-java:1.7.1`
 import $ivy.`io.lemonlabs::scala-uri:2.2.4`
 
+import $file.shared._
+
+import ammonite.ops._
 import io.lemonlabs.uri.{Url, AbsoluteUrl}
 import net.jpountz.lz4.LZ4Factory
+import org.jsoup.Jsoup
+
+import scala.util.Try
 
 import java.nio.{ByteBuffer, ByteOrder}
 
@@ -136,9 +138,32 @@ def add(prefix: String) = {
 }
 
 def getFaviconDataUrl(domain: String): String = {
-  val faviconResp = requests.get(s"https://$domain/favicon.ico")
-  val dataString = faviconResp.data.array |> java.util.Base64.getEncoder.encodeToString
-  s"data:${faviconResp.contentType.get};base64,$dataString"
+  def download(url: String): Option[String] = {
+    println(s"Trying favicon url: $url")
+    val faviconResp = requests.get(url)
+    if (faviconResp.statusCode == 200) {
+      val dataString = faviconResp.data.array |> java.util.Base64.getEncoder.encodeToString
+      Some(s"data:${faviconResp.contentType.get};base64,$dataString")
+    } else {
+      None
+    }
+  }
+  val downloadedInitialGuess = download(s"https://$domain/favicon.ico")
+  def downloadedRelIconHref = Try({
+    Jsoup
+      .connect(s"https://$domain")
+      .get
+      .select("link[rel=icon]")
+      .attr("href")
+  })
+    .toOption
+    .flatMap(download)
+
+  def downloadedFromUserResponse = askCont("Could not get favicon url in expected places. Please enter:", download)
+
+  downloadedInitialGuess
+    .orElse(downloadedRelIconHref)
+    .getOrElse(downloadedFromUserResponse)
 }
 
 def askSearchEngineConfig(nextOrder: Int) = {
