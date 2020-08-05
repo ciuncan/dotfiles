@@ -4,7 +4,7 @@ import $ivy.`org.jsoup:jsoup:1.13.1`
 import $ivy.`org.lz4:lz4-java:1.7.1`
 import $ivy.`io.lemonlabs::scala-uri:2.2.4`
 
-import $file.shared._
+import $exec.shared
 
 import ammonite.ops._
 import io.lemonlabs.uri.{Url, AbsoluteUrl}
@@ -148,7 +148,12 @@ def getFaviconDataUrl(domain: String): String = {
       None
     }
   }
-  val downloadedInitialGuess = download(s"https://$domain/favicon.ico")
+  val defaultUrl = s"https://$domain/favicon.ico"
+  
+  val downloadedInitialGuess = download(
+    askOpt(s"Favicon url: (defaults to $defaultUrl)")
+      .getOrElse(defaultUrl)
+  )
   def downloadedRelIconHref = Try({
     Jsoup
       .connect(s"https://$domain")
