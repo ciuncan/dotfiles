@@ -42,6 +42,9 @@ bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+space exec --no-startup-id rofi -show run
 bindsym $mod+Ctrl+space exec --no-startup-id rofi -show window
 
+# switch between keyboard layouts
+bindsym $mod+alt+u exec --no-startup-id "/bin/bash ~/dotfiles/scripts/keyboard_layout.sh toggle"
+
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################

@@ -31,7 +31,7 @@ sudo pacman -Sy \
   jdk8-openjdk
 
 # Install aur packages
-sudo yay -S bloop ammonite
+sudo yay -S bloop ammonite visual-studio-code-bin
 
 # Install global npm packages
 sudo npm i -g diff-so-fancy tldr
