@@ -60,12 +60,14 @@ code --install-extension eamodio.gitlens
 code --install-extension formulahendry.code-runner
 code --install-extension humao.rest-client
 code --install-extension James-Yu.latex-workshop
+code --install-extension mathiasfrohlich.Kotlin
 code --install-extension mechatroner.rainbow-csv
 code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 code --install-extension ms-vscode-remote.remote-containers
 code --install-extension ms-vscode-remote.remote-ssh
 code --install-extension ms-vscode-remote.remote-ssh-edit
 code --install-extension oderwat.indent-rainbow
+code --install-extension redhat.java
 code --install-extension redhat.vscode-yaml
 code --install-extension RReverser.llvm
 code --install-extension rust-lang.rust
@@ -74,4 +76,10 @@ code --install-extension scalameta.metals
 code --install-extension serayuzgur.crates
 code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension timonwong.shellcheck
+code --install-extension VisualStudioExptTeam.vscodeintellicode
+code --install-extension vscjava.vscode-java-debug
+code --install-extension vscjava.vscode-java-dependency
+code --install-extension vscjava.vscode-java-pack
+code --install-extension vscjava.vscode-java-test
+code --install-extension vscjava.vscode-maven
 code --install-extension vscodevim.vim
