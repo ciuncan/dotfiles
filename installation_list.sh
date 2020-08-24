@@ -26,12 +26,19 @@ sudo pacman -Sy \
   ttf-jetbrains-mono \
   yay \
   pacui \
+  i3blocks \
+  i3lock-color \
 
 sudo pacman -Sy \
   jdk8-openjdk
 
 # Install aur packages
-sudo yay -S bloop ammonite visual-studio-code-bin
+yay -S \
+  bloop \
+  ammonite \
+  visual-studio-code-bin \
+  i3lock-fancy-git \
+  i3blocks-contrib \
 
 # Install global npm packages
 sudo npm i -g diff-so-fancy tldr

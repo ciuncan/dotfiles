@@ -6,3 +6,4 @@ oh-my-zsh/
 *~
 .ammonite/
 .metals/
+.vscode/
