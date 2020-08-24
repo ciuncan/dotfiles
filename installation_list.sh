@@ -1,7 +1,7 @@
 #! /bin/bash
 
 sudo pacman -Sy \
-  jdk-openjdk \
+  jdk8-openjdk \
   xclip \
   ripgrep \
   fzf \
@@ -26,11 +26,16 @@ sudo pacman -Sy \
   ttf-jetbrains-mono \
   yay \
   pacui \
+  exa \
+  bat \
+  alacritty \
+  diff-so-fancy \
+  tldr \
   i3blocks \
   i3lock-color \
 
 sudo pacman -Sy \
-  jdk8-openjdk
+  jdk-openjdk jdk11-openjdk
 
 # Install aur packages
 yay -S \
@@ -41,11 +46,10 @@ yay -S \
   i3blocks-contrib \
 
 # Install global npm packages
-sudo npm i -g diff-so-fancy tldr
+# sudo npm i -g diff-so-fancy tldr
 
 # Install rust
 rustup component add rust-src rls
-cargo install exa
 
 # Install vscode
 code --install-extension 13xforever.language-x86-64-assembly
