@@ -39,6 +39,7 @@ sudo pacman -Sy \
 
 # Install aur packages
 yay -S \
+  native-image-jdk11-bin \
   bloop \
   ammonite \
   visual-studio-code-bin \
