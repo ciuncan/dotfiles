@@ -303,15 +303,23 @@ function wake_at {
 }
 
 function switch_jdk {
-  version="java-$1-openjdk"
+  version_pattern="$1"
   status_output="$(archlinux-java status)"
-  if [[ "$status_output" == *"$version"* ]]; then
-    sudo archlinux-java set "$version"
+  available_versions=$(echo "$status_output" | grep "^ " | awk '{ print $1 }')
+  selected_version=$(echo "$available_versions" | grep "$version_pattern")
+  select_version_count=$(echo "$selected_version" | wc -l)
+  if [[ "$select_version_count" == "1" && "$selected_version" != "" ]]; then
+    echo "Setting version: $selected_version"
+    sudo archlinux-java set "$selected_version"
   else
-    echo "Version you entered is not found: $version"
+    echo "Version you entered is not found: $version_pattern"
     echo "$status_output"
     echo "Usage"
+    echo ""
+    echo "switch_jdk <version-pattern>"
+    echo ""
     echo "In order to switch to using JDK 14 (java-14-openjdk), issue following command:"
     echo "switch_jdk 14"
   fi
 }
+
