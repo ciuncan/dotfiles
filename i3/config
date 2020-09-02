@@ -209,6 +209,8 @@ assign [class="^(?i)virtualbox$"] $ws4
 
 assign [class="(?i)thunderbird"] $ws5
 assign [class="(?i)telegram"] $ws5
+assign [class="(?i)slack"] $ws5
+assign [class="(?i)discord"] $ws5
 assign [class="(?i)skype"] $ws5
 
 assign [class="^Steam$"] $ws6
