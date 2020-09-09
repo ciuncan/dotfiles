@@ -20,6 +20,7 @@ sudo pacman -Sy \
   happy \
   alex \
   haskell-haddock-library \
+  dhall \
   shellcheck \
   remmina \
   libvncserver \
@@ -42,6 +43,7 @@ yay -S \
   native-image-jdk11-bin \
   bloop \
   ammonite \
+  dhall-lsp-server-bin \
   visual-studio-code-bin \
   i3lock-fancy-git \
   i3blocks-contrib \
