@@ -32,6 +32,7 @@ sudo pacman -Sy \
   exa \
   bat \
   alacritty \
+  net-tools \
   diff-so-fancy \
   tldr \
   i3blocks \
