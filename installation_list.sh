@@ -11,6 +11,8 @@ sudo pacman -Sy \
   nodejs-lts-erbium \
   npm \
   jq \
+  docker \
+  docker-compose \
   kubectl \
   helm \
   rustup \
