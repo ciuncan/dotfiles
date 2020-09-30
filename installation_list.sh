@@ -6,6 +6,7 @@ sudo pacman -Sy \
   ripgrep \
   fzf \
   deluge \
+  firefox-developer-edition \
   keepassxc \
   sbt \
   nodejs-lts-erbium \
