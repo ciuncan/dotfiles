@@ -1,6 +1,8 @@
 ## Now, we'll give a few examples of what you might want to use in your
 ## .zshrc.local file (just copy'n'paste and uncomment it there):
 
+# zmodload zsh/zprof
+
 zmodload zsh/complist
 ## ZLE tweaks ##
 
@@ -183,6 +185,7 @@ export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local
 
 # Customize to your needs...
 export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/dev/oss/dotty/bin
@@ -280,7 +283,9 @@ bindkey '^Z' fancy-ctrl-z
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(~/.oh-my-zsh/zsh-completions/src $fpath)
-source <(kubectl completion zsh)
+if [ $(command -v kubectl) ]; then
+  source <(kubectl completion zsh)
+fi
 alias k=kubectl
 complete -F __start_kubectl k
 autoload -Uz compinit
@@ -343,3 +348,31 @@ if [ $(command -v direnv) ]; then
   eval "$(direnv hook zsh)"
 fi
 
+export NVM_DIR="$HOME/.nvm"
+
+# Default node version
+alias node="$HOME/.nvm/versions/node/v12.13.0/bin/node"
+# Function to load the original nvm and execute it
+load_and_exec_nvm(){
+    unalias node
+    unalias nvm
+    echo "Loading NVM..."
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    echo "Executing NVM..."
+    nvm $@
+}
+# Default nvm, the wrapper to load it and execute it
+alias nvm="load_and_exec_nvm"
+
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+
+if [ $(command -v brew) ]; then
+  export PATH="/Users/ceyhun/Library/Python/2.7/bin:$PATH"
+
+  source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+  source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+fi
+
+# zprof
