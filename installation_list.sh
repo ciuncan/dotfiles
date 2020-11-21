@@ -51,6 +51,7 @@ yay -S \
   visual-studio-code-bin \
   i3lock-fancy-git \
   i3blocks-contrib \
+  starship \
 
 # Install global npm packages
 # sudo npm i -g diff-so-fancy tldr
