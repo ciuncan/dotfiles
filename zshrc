@@ -360,6 +360,10 @@ if [ $(command -v brew) ]; then
   source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 fi
 
+if [ -f "$HOME/env_custom_settings.sh" ] ; then
+  source "$HOME/env_custom_settings.sh"
+fi
+
 if [ $(command -v starship) ]; then
   eval "$(starship init zsh)"
 fi
