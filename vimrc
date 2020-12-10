@@ -292,7 +292,7 @@ function! RelativeNumberToggle()
 endfunc
 
 " Toggle relative numbers
-noremap <A-n> :call RelativeNumberToggle()<cr>
+noremap <C-m> :call RelativeNumberToggle()<cr>
 call RelativeNumberToggle()
 
 "Set colorscheme to 'vividchalk'
