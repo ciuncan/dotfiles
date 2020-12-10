@@ -328,6 +328,17 @@ function switch_jdk {
   fi
 }
 
+function kill_by_tcp_port {
+  port="$1"
+  pid="$(lsof -nP -i4TCP:"$port" | grep LISTEN | awk '{ print $2 }')"
+  if [[ "$pid" != "" ]]; then
+    printf "Killing"
+    ps ux -p "$pid"
+    kill -9 "$pid"
+  else
+    echo "No process found that binds $port"
+  fi
+}
 
 if [ $(command -v direnv) ]; then
   eval "$(direnv hook zsh)"
