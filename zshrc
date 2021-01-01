@@ -304,7 +304,13 @@ export PS1="$host_if_remote$PS1"
 
 function wake_at {
   mac_address='e0:d5:5e:a0:1e:77'
-  wol "$mac_address"
+  if [ $(command -v wol) ]; then
+    wol "$mac_address"
+  elif [ $(command -v wakeonlan) ]; then
+    wakeonlan "$mac_address"
+  else
+    echo "wol or wakeonlan commands not found."
+  fi
 }
 
 function switch_jdk {
