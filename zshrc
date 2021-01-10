@@ -370,20 +370,15 @@ alias nvm="load_and_exec_nvm"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
-if [ $(command -v brew) ]; then
-  export PATH="/Users/ceyhun/Library/Python/2.7/bin:$PATH"
-
-  source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-  source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-fi
-
-if [ -f "$HOME/env_custom_settings.sh" ] ; then
+if [[ -f "$HOME/env_custom_settings.sh" ]]; then
   source "$HOME/env_custom_settings.sh"
 fi
 
 if [ $(command -v starship) ]; then
   eval "$(starship init zsh)"
 fi
+
+[[ -f ~/.kubectl_aliases ]] && source ~/.kubectl_aliases
 
 # zprof
 
