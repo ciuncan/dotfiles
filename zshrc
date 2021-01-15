@@ -307,7 +307,10 @@ function wake_at {
   if [ $(command -v wol) ]; then
     wol "$mac_address"
   elif [ $(command -v wakeonlan) ]; then
-    wakeonlan "$mac_address"
+    wifi_interface=$(networksetup -listallhardwareports  | awk '/Hardware Port: Wi-Fi/{getline; print $2}')
+    wifi_ip=$(ipconfig getifaddr $wifi_interface)
+    wifi_broadcast_ip=$(echo $wifi_ip | sed -e 's/\.[0-9]\+$/.255/g')
+    wakeonlan -i $wifi_broadcast_ip $mac_address
   else
     echo "wol or wakeonlan commands not found."
   fi
