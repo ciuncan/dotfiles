@@ -6,7 +6,7 @@
 \pset linestyle unicode
 \pset border 2
 \pset null '[NULL]'
-\pset pager off
+\pset pager on
 \pset format wrapped
 \timing
 \encoding unicode
