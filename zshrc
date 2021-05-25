@@ -199,6 +199,8 @@ alias du="ncdu"
 alias df="pydf"
 alias lsf="less +F --follow-name"
 alias jql="jq . -C | less"
+alias jqb="jq . | bat -l json"
+alias lsbt="./sbt"
 
 command -v exa >/dev/null 2>&1 && alias ls="exa" && alias ll="exa -laF"
 
